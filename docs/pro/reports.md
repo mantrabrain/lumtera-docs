@@ -7,7 +7,7 @@ description: Create branded, printable accessibility reports with a full WCAG 2.
 
 Turn your results into a branded report you can send to a client. Every report covers all **55 WCAG 2.2 level A and AA success criteria**. Go to <span class="screen-path">Accessibility → Reports</span>. Anyone with the **See reports and check the site** permission can create reports (editors and administrators by default).
 
-![A client report cover and summary](/screenshots/pro-report.webp)
+![The cover of a client report, with the Download HTML and Save as PDF buttons](/screenshots/pro-report.webp)
 
 ## Create a report
 

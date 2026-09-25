@@ -13,6 +13,8 @@ The **Permissions** section lists every role on your site under three headings. 
 
 **Administrator (always)** is ticked and can't be unticked, so no one can lock the site owner out.
 
+![The Permissions settings, with roles ticked for each permission](/screenshots/permissions.webp)
+
 | Permission | What it allows | Default roles |
 | --- | --- | --- |
 | **See reports and check the site** | Opens the Overview, Content report and Free vs Pro screens and the Dashboard widget, and runs site-wide checks such as **Check all content**. With Lumtera Pro, it also opens Page checks, Documents and Reports, and shows every fix task. | Administrator, Editor |

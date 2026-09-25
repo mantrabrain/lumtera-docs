@@ -23,6 +23,8 @@ Anyone with the **See reports and check the site** permission can open and edit 
 
 There's one conformance report per site. It always reflects your current results, and the report date is the day you view or export it.
 
+![The Accessibility Conformance Report screen, with product information and the save and export bar](/screenshots/pro-acr.webp)
+
 ## Before you start
 
 The report is only as good as the evidence behind it:

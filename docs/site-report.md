@@ -9,7 +9,7 @@ description: The Overview, the same issue grouped across many pages, the filtera
 
 <span class="screen-path">Accessibility → Overview</span> is your site at a glance. By default, editors and administrators can open it. Administrators choose which roles can under <span class="screen-path">Accessibility → Settings → Permissions</span>, in **See reports and check the site**. See [Roles & permissions](/permissions).
 
-![The Accessibility overview](/screenshots/screenshot-3.webp)
+![The Overview: Fix once, clear many, Most common issues and Needs attention](/screenshots/screenshot-3.webp)
 
 ### Check all content
 
