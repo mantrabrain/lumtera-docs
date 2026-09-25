@@ -16,6 +16,10 @@ npm run check-links  # check internal links and #anchors
 
 The build fails on any broken internal link (`ignoreDeadLinks: false`), so a bad cross-reference can't ship.
 
+## Deployment
+
+The site is hosted on Netlify (site `lumtera`, custom domain `lumtera.mantrabrain.com`). `netlify.toml` holds the build settings. Every push to `main` builds and deploys once the repository is linked to the Netlify site.
+
 ## Base path
 
 The site is built for the `/docs/` path. To serve it from the root of a domain instead, build with:
