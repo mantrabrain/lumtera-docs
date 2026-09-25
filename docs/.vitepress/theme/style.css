@@ -1,0 +1,333 @@
+/* ============================================================
+ * Lumtera docs: brand tokens and page components
+ * ============================================================ */
+
+:root {
+  --lt-navy: #1f4e79;
+  --lt-navy-2: #173d61;
+  --lt-navy-3: #11304d;
+  --lt-gold: #e5a900;
+
+  --vp-c-brand-1: #1f4e79;
+  --vp-c-brand-2: #173d61;
+  --vp-c-brand-3: #11304d;
+  --vp-c-brand-soft: rgba(31, 78, 121, 0.12);
+
+  --vp-home-hero-name-color: var(--lt-navy);
+}
+
+/* Navy is too dark to read on the dark background, so links and accents
+ * switch to a lighter blue there. */
+.dark {
+  --vp-c-brand-1: #7fb2e5;
+  --vp-c-brand-2: #a3c8ee;
+  --vp-c-brand-3: #5d97cf;
+  --vp-c-brand-soft: rgba(127, 178, 229, 0.16);
+}
+
+/* ============================================================
+ * Home hero
+ * ============================================================ */
+
+.lt-hero {
+  position: relative;
+  margin: 0 0 2rem;
+  padding: 2rem 2rem 1.75rem;
+  border-radius: 16px;
+  border: 1px solid var(--vp-c-divider);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(229, 169, 0, 0.12), transparent 45%),
+    linear-gradient(135deg, rgba(31, 78, 121, 0.08), rgba(31, 78, 121, 0.02));
+  overflow: hidden;
+}
+
+/* The gold "curb" dots from the logo, as a border under the hero. */
+.lt-hero::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: radial-gradient(circle, var(--lt-gold) 1.6px, transparent 2px) 0 50% / 10px 4px repeat-x;
+  opacity: 0.8;
+}
+
+.lt-hero__eyebrow {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc .lt-hero__title {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: 0;
+  font-size: clamp(1.7rem, 4vw, 2.35rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.lt-hero__lede {
+  margin: 0 0 1.25rem !important;
+  max-width: 44rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.lt-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.lt-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.1rem;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.lt-btn--primary {
+  color: #fff !important;
+  background: var(--lt-navy);
+}
+
+.lt-btn--primary:hover {
+  background: var(--lt-navy-2);
+}
+
+.dark .lt-btn--primary {
+  color: #0b1524 !important;
+  background: #7fb2e5;
+}
+
+.lt-btn--ghost {
+  color: var(--vp-c-brand-1) !important;
+  border-color: var(--vp-c-divider);
+  background: var(--vp-c-bg);
+}
+
+.lt-btn--ghost:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.vp-doc ul.lt-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vp-doc .lt-hero__chips li {
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+}
+
+/* ============================================================
+ * Card grid (home and section index pages)
+ * ============================================================ */
+
+.lt-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.lt-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem 1.1rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.lt-card:hover {
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+}
+
+.vp-doc .lt-card h3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc .lt-card p {
+  margin: 0;
+  flex: 1;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}
+
+.lt-card__cta {
+  margin-top: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+}
+
+/* ============================================================
+ * Pro callout: marks a Pro-only feature, with a link to pricing
+ * ============================================================ */
+
+.pro-callout {
+  margin: 1.25rem 0;
+  padding: 0.9rem 1.15rem;
+  background: linear-gradient(135deg, rgba(229, 169, 0, 0.1), rgba(31, 78, 121, 0.05));
+  border: 1px solid rgba(229, 169, 0, 0.4);
+  border-left: 4px solid var(--lt-gold);
+  border-radius: 10px;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.pro-callout strong {
+  color: var(--vp-c-text-1);
+}
+
+.pro-callout a {
+  font-weight: 600;
+}
+
+.pro-pill {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.08rem 0.45rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: #3d2c00 !important;
+  background: var(--lt-gold);
+  border-radius: 999px;
+}
+
+/* ============================================================
+ * Step list: numbered "do this, then this" instructions
+ * ============================================================ */
+
+.step-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  counter-reset: step;
+  margin: 1rem 0;
+}
+
+.step-list > li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 2.5rem;
+  margin: 0 0 0.4rem;
+  counter-increment: step;
+}
+
+.step-list > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  background: var(--lt-navy);
+  border-radius: 999px;
+}
+
+.dark .step-list > li::before {
+  color: #0b1524;
+  background: #7fb2e5;
+}
+
+/* ============================================================
+ * Screen path: "Accessibility → Settings → AI"
+ * ============================================================ */
+
+.screen-path {
+  display: inline-block;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.88em;
+  font-weight: 600;
+  background: var(--vp-c-default-soft);
+  color: var(--vp-c-text-1);
+  border-radius: 4px;
+}
+
+/* Severity labels, matching the colours used inside the plugin. */
+.sev {
+  display: inline-block;
+  padding: 0.05rem 0.45rem;
+  font-size: 0.8em;
+  font-weight: 700;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.sev--error {
+  color: #b42318;
+  background: #fdf0ee;
+}
+
+.sev--review {
+  color: #a74406;
+  background: #fdf3e8;
+}
+
+.sev--tip {
+  color: #175cd3;
+  background: #eef4fe;
+}
+
+.dark .sev--error {
+  color: #fda29b;
+  background: rgba(180, 35, 24, 0.25);
+}
+
+.dark .sev--review {
+  color: #fdb022;
+  background: rgba(167, 68, 6, 0.25);
+}
+
+.dark .sev--tip {
+  color: #84adff;
+  background: rgba(23, 92, 211, 0.25);
+}

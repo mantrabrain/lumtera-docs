@@ -1,0 +1,30 @@
+{
+  "name": "lumtera-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Documentation website for Lumtera, the WCAG 2.2 accessibility checker for WordPress",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs --port 5175",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs --port 5175",
+    "check-links": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "medium-zoom": "^1.1.0",
+    "vitepress": "^1.6.3"
+  },
+  "devDependencies": {
+    "vue": "^3.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["lumtera", "wordpress", "accessibility", "wcag", "documentation", "vitepress"],
+  "author": "MantraBrain",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mantrabrain/lumtera-docs.git"
+  }
+}
