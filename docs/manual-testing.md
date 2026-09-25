@@ -21,7 +21,7 @@ Lumtera takes the opposite approach. It adds nothing to your site for visitors. 
 
 ## The five-minute manual check
 
-The **Overview** screen includes this checklist. Run it on your key pages: the home page, a typical post, your contact form and your checkout.
+The **Overview** screen includes this checklist, under **What a score cannot tell you**. Run it on your key pages: the home page, a typical post, your contact form and your checkout.
 
 <ol class="step-list">
   <li><strong>Keyboard only.</strong> Put the mouse away and press <kbd>Tab</kbd> through the page. Can you see where focus is, and reach and use every link, menu and form?</li>
@@ -32,12 +32,18 @@ The **Overview** screen includes this checklist. Run it on your key pages: the h
 
 The W3C's [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) guide goes further.
 
+## Guided manual checks
+
+For a more thorough pass, use the **Manual accessibility checks** panel in the block editor. It walks you through nine short checks, step by step: keyboard, zoom and reflow, text spacing, a screen reader skim, forms, video and audio, motion and time limits, pop-ups on hover or focus, and screen orientation. You record **Pass**, **Fail** or **Not applicable** on each page, with an optional note, so your team can see what has been tested. See [Guided manual checks](/manual-checks).
+
 ## Getting closer with Lumtera
 
 Some of the manual work can be narrowed down:
 
 - The **Whole page** tab in [review mode](/review-mode#whole-page) checks the rendered page, theme included: real color contrast, landmarks, the skip link, focus hidden behind sticky headers, blocked zoom and sideways scrolling.
 - [Page checks](/pro/page-checks) in Lumtera Pro run those whole-page checks on a schedule, as a logged-out visitor.
+- [Guided manual checks](/manual-checks) record the results of your own testing on each page.
 - [Client reports](/pro/reports) in Lumtera Pro list all 55 WCAG 2.2 A and AA criteria and mark the ones no automated check covers as **Manual check needed**, so the client can see what is left to test.
+- The [Accessibility Conformance Report](/pro/acr) in Lumtera Pro uses your automated results and your guided manual check results on published pages to suggest a conformance level for each criterion, which you review before exporting.
 
 For a formal conformance claim, get a manual audit by an accessibility specialist, ideally including testing by disabled people.

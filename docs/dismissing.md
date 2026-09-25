@@ -13,7 +13,7 @@ In the block editor sidebar:
 
 <ol class="step-list">
   <li>Click <strong>Dismiss…</strong> on the issue (<strong>Dismiss this error…</strong> for errors).</li>
-  <li>Optionally, fill in <strong>Why is this not a problem?</strong> The reason is saved with the dismissal.</li>
+  <li>Optionally, fill in <strong>Why is this not a problem? (optional)</strong> The reason is saved with the dismissal.</li>
   <li>Click <strong>Dismiss</strong>.</li>
 </ol>
 
@@ -31,22 +31,30 @@ Dismissing re-checks and saves the post's results straight away, so the score an
 | Severity | Who can dismiss it |
 | --- | --- |
 | Needs review, Tip | Anyone who can edit the post |
-| Error | Editors and administrators (anyone who can edit others' posts) |
+| Error | Anyone who can edit the post and whose role may dismiss errors. By default, that's editors and administrators. |
 
-Authors who can't dismiss an error see *"Only an editor can dismiss an error."* Restoring needs the same permission as dismissing.
+An administrator chooses which roles may dismiss errors under <span class="screen-path">Accessibility → Settings → Permissions</span>, in **Dismiss errors**. Administrators always can. See [Roles & permissions](/permissions).
 
-Developers can change who may dismiss errors with the [`lumtera_dismiss_errors_capability`](/developers/hooks#permissions) filter.
+People who can't dismiss an error see *"Only an editor can dismiss an error."* in the sidebar instead of the button. Restoring needs the same permission as dismissing.
+
+Developers can also change this with the `lumtera_dismiss_errors_capability` filter. See [Hooks & filters](/developers/hooks).
 
 ## How dismissals work
 
 - **They survive re-scans and updates.** A dismissal is tied to the check and the exact markup it found.
 - **They come back if the markup changes.** Edit the image, link or block and Lumtera looks at it fresh.
 - **They never hide something worse.** If the same markup later triggers a more severe finding, it shows.
+- **They don't count.** Dismissed items don't affect the score or the report's totals.
 - **Each one is recorded**, with who dismissed it, when, and why.
 
 ## See and restore dismissed items
 
-At the bottom of the sidebar (or the Elementor panel), expand **N dismissed items**. Each shows **Dismissed by** *name* **on** *date*, and the reason. Click **Restore** to bring it back.
+At the bottom of the sidebar (or the Elementor panel), expand **N dismissed items**. Each shows *"Dismissed by name on date"* and the reason. Click **Restore** to bring it back.
+
+## Ignore everywhere <span class="pro-pill">Pro</span> {#ignore-everywhere}
+Dismissing works on one post. If the same finding comes from your theme or a pattern and appears on many pages, [Ignore everywhere](/pro/ignore) in Lumtera Pro hides it across the whole site, with a reason and an optional expiry.
+
+Findings ignored this way also appear in the sidebar's dismissed list, marked *"Ignored site-wide by name on date"*. The **Restore** button appears only for people allowed to manage site-wide ignores.
 
 With [Lumtera Pro](/pro/activity-webhooks), dismissals and restores also appear in the **Activity** log. Dismissing an issue that has a tracked fix closes the task as **Won't fix**.
 
@@ -56,4 +64,4 @@ If a check never applies to your site, don't dismiss it again and again. Switch 
 
 ## Privacy
 
-Dismissals store the user's ID and optional note. They're included in WordPress's personal data export and erase tools. Erasing removes the name and note but keeps the dismissal. See [Data & uninstall](/developers/data#privacy).
+Dismissals store the user's ID and optional note. They're included in WordPress's personal data export and erase tools. Erasing removes the name and note but keeps the dismissal. See [Data & uninstall](/developers/data).

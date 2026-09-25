@@ -7,7 +7,7 @@ description: Create a draft accessibility statement that follows the W3C structu
 
 An accessibility statement tells visitors how accessible your site is, what you know doesn't work yet, and how to reach you if they hit a barrier. The European Accessibility Act (EAA) expects one for many businesses selling in the EU.
 
-Lumtera creates a **draft** statement page that follows the structure of the W3C statement generator. Go to <span class="screen-path">Accessibility → Statement</span>. Editors and administrators can use it.
+Lumtera creates a **draft** statement page that follows the structure of the W3C statement generator. Go to <span class="screen-path">Accessibility → Statement</span>. Anyone who can publish pages can use it, which means editors and administrators by default.
 
 ![The accessibility statement generator](/screenshots/screenshot-8.webp)
 
@@ -29,15 +29,15 @@ Lumtera creates a **draft** statement page that follows the structure of the W3C
 | **Organization name** | Required. Defaults to your site title. |
 | **Contact email** | Defaults to the admin email. It's protected from spam bots on the page. |
 | **Phone** | Optional |
-| **Feedback form address** | Optional. A link to your contact or feedback form. |
+| **Feedback form address** | Optional. A contact form where visitors can report a barrier or ask for content in another format. |
 | **We aim to respond within** | Defaults to "5 business days" |
 | **Conformance status** | **Partially conformant** (the default, and the honest choice for most sites), **Fully conformant** (only after a full manual audit found no failures), **Non-conformant** or **Not yet assessed** |
-| **Known limitations** | One per line. **Pre-filled** with up to five checks that have open errors on published content. |
-| **Tested with** | Optional. Browsers and assistive technology, one per line. |
+| **Known limitations** | One per line. **Pre-filled** with up to five checks that found errors on published content, each with its WCAG number. Edit them into plain language for visitors. |
+| **Tested with** | Optional. Browsers and assistive technology you've checked the site with, one per line. For example, "NVDA with Firefox". |
 | **Disproportionate burden** | Optional. See the EAA section below. |
-| **Enforcement procedure** | Optional. Text, and/or the **Enforcement body web address**. |
-| **Statement first prepared** / **Last reviewed** | Dates. Left empty, "last reviewed" becomes today. |
-| **Mention Lumtera as the testing tool** | Off by default |
+| **Enforcement procedure** | Optional. Where visitors can complain if your reply doesn't help. Text, and/or the **Enforcement body web address**. |
+| **Statement first prepared** / **Last reviewed** | Dates. Left empty, "first prepared" keeps its earlier date (or today), and "last reviewed" becomes today. |
+| **Mention Lumtera as the testing tool** | Off by default. When on, the assessment approach names Lumtera. |
 
 ## What the statement contains
 
@@ -66,7 +66,8 @@ Fill in the form again and click **Update draft statement**. Lumtera never overw
 
 - If you haven't edited the draft, it's updated in place.
 - **If you've edited the draft**, your edits are kept, and a new draft is created from the form.
-- **If the statement is already published**, the live page is left unchanged, and a new draft is created for you to review and publish.
+- **If the statement is already published**, the live page is left unchanged, and a new draft is created for you to review and publish. The Statement screen links to it with **Open the new draft**.
+- **If the statement page is in the trash**, a new draft is created. You can also restore the old page from the trash.
 
 ## Review it every year
 

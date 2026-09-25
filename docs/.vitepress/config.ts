@@ -29,7 +29,7 @@ export default defineConfig({
       }
     ],
     ['meta', { name: 'author', content: 'MantraBrain' }],
-    ['meta', { name: 'theme-color', content: '#1f4e79' }],
+    ['meta', { name: 'theme-color', content: '#1f5288' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${BASE}favicon.svg` }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${BASE}favicon-32x32.png` }],
     ['link', { rel: 'apple-touch-icon', href: `${BASE}apple-touch-icon.png` }],
@@ -104,6 +104,7 @@ export default defineConfig({
           { text: 'License & plans', link: '/pro/license' },
           { text: 'Page checks', link: '/pro/page-checks' },
           { text: 'Client reports', link: '/pro/reports' },
+          { text: 'Conformance report (ACR)', link: '/pro/acr' },
           { text: 'Agency portfolio', link: '/pro/portfolio' }
         ]
       },
@@ -111,6 +112,7 @@ export default defineConfig({
         text: 'Developers',
         items: [
           { text: 'WP-CLI', link: '/developers/wp-cli' },
+          { text: 'CI (SARIF & JUnit)', link: '/developers/ci' },
           { text: 'REST API', link: '/developers/rest-api' },
           { text: 'Hooks & filters', link: '/developers/hooks' },
           { text: 'Custom checks', link: '/developers/custom-checks' },
@@ -150,6 +152,7 @@ export default defineConfig({
           { text: 'Review mode (live page)', link: '/review-mode' },
           { text: 'Site report', link: '/site-report' },
           { text: 'Dismissing issues', link: '/dismissing' },
+          { text: 'Guided manual checks', link: '/manual-checks' },
           { text: 'All checks', link: '/checks' }
         ]
       },
@@ -161,6 +164,7 @@ export default defineConfig({
           { text: 'AI suggestions', link: '/ai' },
           { text: 'Site fixes', link: '/site-fixes' },
           { text: 'Accessibility statement', link: '/statement' },
+          { text: 'Weekly email summary', link: '/email-summary' },
           { text: 'Settings', link: '/settings' },
           { text: 'Roles & permissions', link: '/permissions' }
         ]
@@ -175,7 +179,9 @@ export default defineConfig({
           { text: 'PDF checks', link: '/pro/documents' },
           { text: 'Monitoring & alerts', link: '/pro/monitoring' },
           { text: 'Fix tracking', link: '/pro/fix-tracking' },
+          { text: 'Ignore everywhere', link: '/pro/ignore' },
           { text: 'Client reports', link: '/pro/reports' },
+          { text: 'Conformance report (ACR)', link: '/pro/acr' },
           { text: 'Agency portfolio', link: '/pro/portfolio' },
           { text: 'Multisite network', link: '/pro/multisite' },
           { text: 'Activity log & webhooks', link: '/pro/activity-webhooks' }
@@ -186,6 +192,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'WP-CLI', link: '/developers/wp-cli' },
+          { text: 'CI (SARIF & JUnit)', link: '/developers/ci' },
           { text: 'REST API', link: '/developers/rest-api' },
           { text: 'Hooks & filters', link: '/developers/hooks' },
           { text: 'Custom checks', link: '/developers/custom-checks' },

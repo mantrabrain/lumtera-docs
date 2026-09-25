@@ -25,7 +25,7 @@ Each post, page or product gets a score from 1 to 100:
 score = 100 × 0.85^errors × 0.96^items to review
 ```
 
-Rounded, and never lower than 1. Tips and dismissed items don't count.
+Rounded, and never lower than 1. Tips don't count, and neither do dismissed items or findings ignored everywhere with [Lumtera Pro](/pro/ignore). Results of [guided manual checks](/manual-checks) don't change the score either.
 
 | Found | Score |
 | --- | --- |
@@ -57,11 +57,11 @@ On the [Overview](/site-report#overview):
 A post's stored score updates whenever it's checked:
 
 - when it's saved (if **Check content on save** is on, which is the default)
-- when you run **Check all content**, or **Check** on a row of the Content report
+- when you run **Check all content** from the Overview, or **Check** or **Check again** on an item in the Content report
 - when an issue on it is dismissed or restored
-- when the Alt text manager adds alt text to it
+- when the Alt text manager adds alt text to it (this saves the post, so it's re-checked if **Check content on save** is on)
 - when you run `wp lumtera scan`
 
-**Changing settings doesn't re-check anything.** After you change a check's severity, run **Check all content again** from the Overview to update existing results.
+**Changing settings doesn't re-check anything.** After you change a check's severity or switch a check off, run **Check all content again** from the Overview to update existing results.
 
 Live checks in the editor sidebar are never stored. They update as you type, and the stored result updates when you save.

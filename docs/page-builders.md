@@ -1,11 +1,11 @@
 ---
 title: Classic editor & page builders
-description: How Lumtera checks content in the classic editor, Elementor, WooCommerce products, block libraries and shortcodes.
+description: How Lumtera checks content in the classic editor, Elementor, Divi, Beaver Builder, Bricks, Oxygen, WPBakery, Advanced Custom Fields, WooCommerce products, block libraries and shortcodes.
 ---
 
 # Classic editor & page builders
 
-Lumtera checks what your content really outputs. Blocks are rendered the same way they are on the front end, and shortcodes are expanded. Page builders are checked from their own output.
+Lumtera checks what your content really outputs. Blocks are rendered the same way they are on the front end, and shortcodes are expanded. Page builders are checked from their own output, and custom fields are checked with the post.
 
 ## Classic editor
 
@@ -15,7 +15,7 @@ In the classic editor, an **Accessibility check** box appears below the content.
 - Each issue has a **Dismiss** button, which asks for an optional reason.
 - Where a fix mentions block settings: in the classic editor, click an image and choose the pencil (**Edit**) to set its alternative text, or edit the markup in the **Text** tab.
 
-The classic editor doesn't check live, show a reading level or hold publishing.
+The classic editor doesn't check live, show a reading level or hold publishing. [Guided manual checks](/manual-checks) are only in the block editor.
 
 ## Elementor
 
@@ -32,7 +32,54 @@ Inside the Elementor editor, an **Accessibility** button floats at the bottom of
 
 The panel checks your **unsaved changes** too, a moment after each edit. Anywhere else in Lumtera, links to an Elementor page open it in Elementor.
 
+If you open an Elementor page in the block editor, the Lumtera sidebar shows results for its saved layout, with an **Edit with Elementor** button.
+
 The panel appears for the content types Lumtera checks, for people who can edit the page. Elementor's own Role Manager still applies.
+
+## Other page builders
+
+Lumtera also checks layouts built with these builders. Each one turns on by itself when the builder is active. There's nothing to set up.
+
+| Builder | What's checked | "Edit" links open |
+| --- | --- | --- |
+| **Divi 4** | The layout, rendered by Divi | The Visual Builder |
+| **Divi 5** | Divi 5 layouts are blocks, so they're checked like any block content | The Visual Builder |
+| **Beaver Builder** | The published layout, rendered by Beaver Builder | Beaver Builder |
+| **Bricks** | The post's content area, rendered by Bricks | The Bricks builder |
+| **Oxygen 2 to 4** (classic Oxygen) | The layout, rendered by Oxygen | The Oxygen builder |
+| **WPBakery** | The layout, rendered by WPBakery | WPBakery's front-end editor if it's switched on, otherwise the normal edit screen |
+
+Unlike Elementor, these builders don't get a Lumtera panel inside the builder. Their results appear in the [site report](/site-report), the **Accessibility** column and [review mode](/review-mode). Links to the post from Lumtera's screens open it in the builder.
+
+Good to know:
+
+- **Only the post's own content is checked.** Headers, footers and templates made in the builder, such as Beaver Themer layouts or Bricks templates, aren't part of the post. Use the **Whole page** tab in [review mode](/review-mode#whole-page) to check them.
+- **Beaver Builder:** unpublished drafts of a layout aren't checked, only the published layout.
+- **Bricks:** dynamic data that depends on the page being viewed, such as query loops, may come out differently from what visitors see.
+- **Divi 4:** if Divi's modules can't be loaded while Lumtera checks, only the text inside the modules is checked. Settings stored in the modules, such as image alt text and button text, are then missed.
+- **Results update when the post is checked.** If a result looks out of date after you edit in a builder, click **Check again** on the item in the [Content report](/site-report#content-report).
+
+### Not supported yet
+
+**Oxygen 6** and **Breakdance** aren't supported yet. Posts built with them get Lumtera's normal check of the post content, which usually finds nothing, because their layouts are stored elsewhere. Use [review mode](/review-mode#whole-page) to check these pages as they're rendered.
+
+## Advanced Custom Fields
+
+If you use **Advanced Custom Fields** (free or Pro), the values saved in a post's fields are checked along with its content. These field types are checked:
+
+- **Text**, **Text area** and **WYSIWYG editor** (rich text)
+- **Link**, using the link's title as its text, or the web address if it has no title
+- **Image** and **Gallery**, using each image's alt text from the Media Library
+- **oEmbed**, when the embed has already been fetched and cached
+- **Repeater**, **Group** and **Flexible content** fields, and the fields inside them, up to five levels deep
+
+Not checked: plain URL fields, choice, number, date and relationship fields, clone fields, and fields on options pages, terms or users.
+
+Keep in mind:
+
+- **Saved values are used.** A live check in the editor uses your unsaved post content with the field values from the last save.
+- **Field content is added after the post content.** Your theme decides where each field really appears, so findings that depend on order, such as skipped heading levels, may differ from the real page.
+- **Findings don't name the field yet.** They show the markup that caused them, which you can use to find the field.
 
 ## WooCommerce
 

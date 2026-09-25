@@ -10,8 +10,9 @@ You can add your own checks to Lumtera. For example, you could enforce a house s
 - the editor sidebar, Elementor panel and review mode
 - scans on save, the Overview and the Content report
 - <span class="screen-path">Accessibility → Settings → Checks</span>, where it can be made stricter, softer or switched off
-- `wp lumtera check`, `scan` and `rules`
-- the `lumtera/list-rules` ability, and Pro page checks
+- `wp lumtera check`, `scan`, `issues` and `rules`, including the [SARIF and JUnit](/developers/wp-cli#sarif-and-junit) reports for CI
+- the `lumtera/list-rules` ability
+- Pro page checks, and the list of checks for Pro [ignore rules](/pro/ignore)
 
 ## 1. Write the check
 
@@ -98,7 +99,7 @@ add_filter( 'lumtera_rule_classes', static function ( array $classes ): array {
 } );
 ```
 
-The filter only runs when Lumtera starts, so loading the class inside the callback means it's never loaded without Lumtera. (`extends \Lumtera\AbstractRule` would fail otherwise.)
+The filter only runs when Lumtera starts, so loading the class inside the callback means it's never loaded without Lumtera. (`extends \Lumtera\AbstractRule` would fail otherwise.) Classes that don't implement `Lumtera\RuleInterface` are skipped.
 
 If your check needs constructor arguments, register an instance instead:
 
@@ -114,12 +115,14 @@ Both hooks fire once, on `plugins_loaded` at priority 10. A theme's `functions.p
 
 ```php
 add_action( 'after_setup_theme', function () {
-	if ( class_exists( \Lumtera\Plugin::class ) ) {
+	if ( class_exists( \Lumtera\Plugin::class ) && \Lumtera\Plugin::instance()->is_booted() ) {
 		require_once __DIR__ . '/inc/class-details-no-summary.php';
 		\Lumtera\Plugin::instance()->rules->register( new DetailsNoSummary() );
 	}
 } );
 ```
+
+`is_booted()` is false when Lumtera stopped itself, for example on a server without the PHP DOM extension.
 :::
 
 ## Replace or remove a built-in check
@@ -157,13 +160,15 @@ Site owners can also switch any check off under **Settings → Checks**, without
 
 It doesn't see your theme's CSS. Only inline styles and classes are available.
 
-If `run()` throws, the error is logged (with `WP_DEBUG` on) and the rest of the scan carries on.
+If `run()` throws, the rest of the scan carries on without your check. With `WP_DEBUG` on, the error is written to the PHP error log.
+
+Findings the site owner dismissed, or that match a Pro ignore rule, are removed after `run()` returns. Your check doesn't need to handle them.
 
 ## Helpers in AbstractRule
 
 | Helper | What it does |
 | --- | --- |
-| `issue( $message, $node, $severity = null )` | Builds an issue for this check. **Always pass the node**: it gives the snippet, maps the issue to its block, and makes the fingerprint for dismissals. |
+| `issue( $message, $node, $severity = null )` | Builds an issue for this check. **Always pass the node**: it gives the snippet and line, maps the issue to its block, and makes the fingerprint that dismissals, Pro tasks and Pro ignore rules use. |
 | `elements( $xpath, $query, $context = null )` | Runs an XPath query and returns only elements |
 | `attr( $el, $name )` | Trimmed attribute value, or `''` |
 | `inside_link( $el )` | Whether the element is inside an `<a href>` |

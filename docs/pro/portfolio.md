@@ -5,7 +5,7 @@ description: See every client site's accessibility score on one screen, connecte
 
 # Agency portfolio <span class="pro-pill">Pro</span>
 
-<div class="pro-callout">The portfolio is included in the <strong>Agency</strong> and <strong>Unlimited</strong> plans.</div>
+<div class="pro-callout">The portfolio is included in the <strong>Agency</strong> and <strong>Unlimited</strong> plans. On other plans, the Portfolio screen says which plan it needs.</div>
 
 See every client site on one screen, straight from their WordPress. There's no external service: your own WordPress site is the hub, and it reads each client site's summary directly over its REST API. Go to <span class="screen-path">Accessibility → Portfolio</span> (administrators only).
 
@@ -41,21 +41,23 @@ The password is stored encrypted with your site's secret keys, and it's only use
 ## The portfolio dashboard
 
 - Tiles: **Average score** across all sites, **Errors**, **Sites with errors** and **Sites in portfolio**.
-- The **Sites** table: each site's **Score**, **Errors**, **Needs review** and how much content has been **Checked**, with when it last synced. Your own site is always the first row. Click a site's name to open its Lumtera overview.
+- The **Sites** table: each site's **Score**, **Errors**, **Needs review** and how much content has been **Checked** (for example "40 of 52"), with when it last synced. Your own site is always the first row, marked **(this site)**. Click a site's name to open its Lumtera overview in a new tab.
 
 Sites sync **twice a day** in the background. Use **Refresh all**, or **Refresh** on one site, to sync now.
 
-To change a site's username or password, use **Update a site's connection**. The new details are tested before they're saved. **Remove** takes a site out of your portfolio. Revoke its Application Password on the client site too.
+To change a site's username or password, click **Edit connection** on its row, then use **Update a site's connection** and click **Update connection**. The new details are tested before they're saved. For security, the Application Password is never kept in the form: enter it again. **Remove** takes a site out of your portfolio. Revoke its Application Password on the client site too.
 
 ## Troubleshooting connections
 
 | Message | Fix |
 | --- | --- |
-| The user needs the "Lumtera Reporter" role… | Give the user the Lumtera Reporter role, or use an editor or administrator. |
+| The username or Application Password was not accepted… | Check the username and paste the Application Password again. The user needs the Lumtera Reporter role, or to be an editor or administrator. |
 | Lumtera is not active on that site… | Install and activate the free Lumtera plugin on the client site. |
 | The site redirects to … | Connect the site with its final address. |
 | Client sites must use https://… | Connect over HTTPS. |
-| The saved password can't be read | Your site's secret keys changed (for example, the salts were regenerated). Use **Update a site's connection** to enter the password again. To stop this happening, define `LUMTERA_PRO_ENCRYPTION_KEY` in `wp-config.php`. |
+| That address cannot be reached from this site… | Use the site's public address. Local and private network addresses are refused. |
+| That is this site's own address… | Your own site is already the first row. Connect client sites only. |
+| The saved application password can no longer be read… | Your site's secret keys changed (for example, the salts were regenerated). Use **Update a site's connection** to enter the password again. To stop this happening, define `LUMTERA_PRO_ENCRYPTION_KEY` in `wp-config.php`. |
 
 ## How it works
 

@@ -20,6 +20,7 @@ The fastest way to a fix is a report we can reproduce:
 - Your Lumtera version, and Lumtera Pro's if you use it (<span class="screen-path">Plugins</span> screen).
 - Your WordPress and PHP versions (<span class="screen-path">Tools → Site Health → Info</span>).
 - The theme and page builder you use.
+- Which optional features are on: [site fixes](/site-fixes), [AI suggestions](/ai) (and which AI provider), and any changes under [Permissions](/permissions).
 - For a wrong result: the check's ID (for example `link-ambiguous-text`, see [All checks](/checks)) and a small piece of HTML or a block that triggers it. `wp lumtera check` is a quick way to test HTML on its own. See [WP-CLI](/developers/wp-cli).
 - For an error: the message on screen, and anything in your PHP error log from the same moment.
 

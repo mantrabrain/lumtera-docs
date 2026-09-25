@@ -16,11 +16,11 @@ Go to <span class="screen-path">Accessibility → Overview</span> and click **Ch
 - **Needs review**: things a person should confirm
 - **Coverage**: how much of your content has been checked
 
-## 2. Fix the most common issue first
+## 2. Fix the most common issues first
 
-The **Most common issues** card lists the checks that fire most often across your site. Fixing a pattern once often fixes it everywhere. For example, a vague "Read more" link in a reusable block, or a missing label in a form used on every page.
+Start with the **Fix once, clear many** card, if you see it. It lists the same problem in the same markup on several items, such as a vague "Read more" link in a synced pattern, or a missing label in a form used on every page. Fix it in the theme, pattern or block it comes from, and every item clears.
 
-Click an issue to see every post that has it in the [Content report](/site-report#content-report). Then click **Issues** on a row to see what to fix.
+The **Most common issues** card lists the checks that fire most often across your site. Click an issue to see every post that has it in the [Content report](/site-report#content-report). Then click **Issues** on a row to see what to fix. The report's **By issue** view groups the same finding across pages.
 
 ## 3. Describe your images
 
@@ -32,7 +32,7 @@ Open a post from **Needs attention** on the Overview. In the editor's **Accessib
 
 - Click **Select block** to jump to the problem.
 - Use the **quick fix** button where there is one, such as **Change to H3** or **Convert to a list**. You can undo it like any edit.
-- For items that need review, decide. If it's fine, **Dismiss** it with a short reason.
+- For items that need review, decide. If it's fine, click **Dismiss…** and add a short reason.
 
 See [Block editor sidebar](/block-editor).
 
@@ -46,6 +46,7 @@ In <span class="screen-path">Accessibility → Settings</span>:
 
 - **Before publishing**: choose whether authors see a summary of errors before they publish (the default), or must confirm to publish anyway.
 - **Checks**: make any check stricter or softer, or switch it off.
+- **Permissions**: choose which roles see the reports, dismiss errors and use review mode. See [Roles & permissions](/permissions).
 
 See [Settings](/settings).
 
@@ -55,4 +56,4 @@ Go to <span class="screen-path">Accessibility → Statement</span>, fill in your
 
 ## 8. Test the rest by hand
 
-A score of 100 means "no automated issues found", not "compliant". Spend five minutes on the [manual check](/manual-testing#the-five-minute-manual-check) on your key pages.
+A score of 100 means "no automated issues found", not "compliant". Spend five minutes on the [manual check](/manual-testing#the-five-minute-manual-check) on your key pages. For a fuller pass, work through the [guided manual checks](/manual-checks) in the block editor and record the results on each page.

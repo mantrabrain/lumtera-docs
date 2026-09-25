@@ -18,9 +18,15 @@ Review mode shows accessibility issues on the published page itself, and checks 
 
 The page reloads with a panel on the side, and each issue is outlined in place. Click **Accessibility** again, or **Close review**, to leave.
 
-**Only logged-in users who can edit the post can open it.** Visitors never see or load any of it. Review mode only reads the page. It never changes it, and never saves results.
+Visitors never see or load any of it. Review mode only reads the page. It never changes it, and never saves results.
 
 The panel is built so your theme's CSS can't restyle it. Press <kbd>Escape</kbd> to collapse it. Use the arrow keys to move between its tabs.
+
+## Who can use it
+
+The **Accessibility** item appears only for logged-in users who can edit that post, and whose role may use review mode. By default, every role that can edit posts may use it: contributors, authors, editors and administrators, each on the posts they can edit.
+
+An administrator can change which roles may use it under <span class="screen-path">Accessibility → Settings → Permissions</span>, in **Review pages on the site**. Administrators always can. See [Roles & permissions](/permissions).
 
 ## This post
 
@@ -56,6 +62,8 @@ The **Whole page** tab checks the page as your browser renders it, logged in. Th
 | Small, crowded click target (under 24 × 24 px) | 2.5.8 | Needs review |
 | Sticky bar can hide the keyboard focus | 2.4.11 | Needs review |
 | Focus outline removed in CSS | 2.4.7 | Needs review |
+
+Findings about the page as a whole, such as a missing title, say **Applies to the whole page** instead of **Show on page**.
 
 **Color contrast** is measured from the real colors on screen: 4.5:1 for normal text, 3:1 for large text (24 px, or 18.66 px bold). This catches low contrast from your theme and page builder, which the content checks can't see.
 

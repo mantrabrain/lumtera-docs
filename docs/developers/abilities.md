@@ -9,12 +9,16 @@ On **WordPress 6.9 and later**, Lumtera registers four abilities with the WordPr
 
 Each ability needs the same permission a person would need in wp-admin. They're registered in core's **site** category, shown in the REST API (`show_in_rest`), and marked public for the MCP Adapter (`meta.mcp.public`). None of them are destructive.
 
-| Ability | Does | Permission |
-| --- | --- | --- |
-| `lumtera/check-content` | Checks a piece of HTML or block markup. Nothing is saved. | `edit_posts` |
-| `lumtera/check-post` | Checks a post and **stores** the result, like saving it | `edit_post` on that post |
-| `lumtera/site-summary` | Site-wide totals and the most common issues | Lumtera's report capability (editors and administrators) |
-| `lumtera/list-rules` | Every check, with its current severity | `edit_posts` |
+| Ability | Does | Permission | Annotations |
+| --- | --- | --- | --- |
+| `lumtera/check-content` | Checks a piece of HTML or block markup. Nothing is saved. | `edit_posts` | read-only, idempotent |
+| `lumtera/check-post` | Checks a post and **stores** the result, like saving it | `edit_post` on that post | idempotent |
+| `lumtera/site-summary` | Site-wide totals and the most common issues | Lumtera's report capability: `lumtera_view_reports` by default, given to roles under [Settings → Permissions](/permissions) | read-only, idempotent |
+| `lumtera/list-rules` | Every check, with its current severity | `edit_posts` | read-only, idempotent |
+
+The abilities are registered only when WordPress has the Abilities API (`wp_register_ability()`).
+
+To run one through the REST API, call `/wp-abilities/v1/abilities/{name}/run`, for example `/wp-abilities/v1/abilities/lumtera/check-post/run`. WordPress picks the method from the annotations: read-only abilities need `GET`, with the input in the `input` query parameter. `lumtera/check-post` needs `POST`, with `{ "input": { … } }` in the JSON body. Because `check-content` is read-only, its content travels in the URL, so long content can hit URL length limits. For those, use Lumtera's own [`POST /lumtera/v1/check`](/developers/rest-api#post-check) route.
 
 ## lumtera/check-content
 
@@ -49,15 +53,15 @@ Each ability needs the same permission a person would need in wp-admin. They're 
 
 ## lumtera/check-post
 
-**Input:** `{ "post_id": 42 }`. Output has the same shape as `check-content`. The result is stored, so reports update. Returns a `lumtera_not_found` error if the post doesn't exist or isn't a content type Lumtera checks.
+**Input:** `{ "post_id": 42 }`. `post_id` is required and at least 1. Output has the same shape as `check-content`. The saved post is checked as it's stored now, and the result is stored, so reports update and `lumtera_post_scanned` fires. Returns a `lumtera_not_found` error if the post doesn't exist or isn't a content type Lumtera checks.
 
 ## lumtera/site-summary
 
-**Input:** none. **Output:** `{ "totals": { … }, "top_issues": [ { "rule", "title", "issues", "posts" } ] }`, with the ten most common issues.
+**Input:** none. **Output:** `{ "totals": { … }, "top_issues": [ { "rule", "title", "issues", "posts" } ] }`, with the ten most common checks. `totals` has `content`, `scanned`, `unscanned`, `average`, `errors`, `warnings`, `notices`, `failing` and `passing`, as in [`wp lumtera stats`](/developers/wp-cli#wp-lumtera-stats).
 
 ## lumtera/list-rules
 
-**Input:** none. **Output:** an array of `{ "rule", "title", "wcag", "level", "severity" }`. `severity` is the current setting, which may be `off`.
+**Input:** none. **Output:** an array of `{ "rule", "title", "wcag", "level", "severity" }`, one for every registered check, [custom checks](/developers/custom-checks) included. `severity` is the current setting, which may be `off`.
 
 ## Example: asking an assistant
 

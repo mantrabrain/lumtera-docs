@@ -24,7 +24,7 @@ import { withBase } from 'vitepress'
   <ul class="lt-hero__chips" aria-label="Requirements">
     <li>WordPress 6.6+</li>
     <li>PHP 8.1+</li>
-    <li>Block editor, classic editor &amp; Elementor</li>
+    <li>Block editor, classic editor &amp; page builders</li>
     <li>No account, no API key</li>
   </ul>
 </div>
@@ -53,7 +53,7 @@ import { withBase } from 'vitepress'
 
 <a class="lt-card" :href="withBase('/site-report')">
   <h3>Site report</h3>
-  <p>Your score, the most common issues and a filterable report of every post, page and product.</p>
+  <p>Your score, the same issue grouped across pages, and a filterable report of every post, page and product.</p>
   <span class="lt-card__cta">Read the report →</span>
 </a>
 
@@ -80,9 +80,19 @@ import { withBase } from 'vitepress'
   <p>Every image in the Media Library on one screen. Describe an image once and add the text to the posts that use it.</p>
 </a>
 
+<a class="lt-card" :href="withBase('/manual-checks')">
+  <h3>Guided manual checks</h3>
+  <p>Nine step-by-step checks for what no tool can test, such as keyboard use and zoom, with results saved on each page.</p>
+</a>
+
+<a class="lt-card" :href="withBase('/page-builders')">
+  <h3>Page builders &amp; custom fields</h3>
+  <p>Elementor, Divi, Beaver Builder, Bricks, Oxygen and WPBakery layouts, and Advanced Custom Fields values, checked from their real output.</p>
+</a>
+
 <a class="lt-card" :href="withBase('/ai')">
-  <h3>AI alt text suggestions</h3>
-  <p>Optional and off by default. Suggestions use the page the image appears on, and a person approves every one.</p>
+  <h3>AI suggestions</h3>
+  <p>Optional and off by default: alt text, link text, headings and plain-language summaries. A person approves every one.</p>
 </a>
 
 <a class="lt-card" :href="withBase('/site-fixes')">
@@ -95,10 +105,19 @@ import { withBase } from 'vitepress'
   <p>A draft statement page that follows the W3C structure and includes the sections the EAA needs.</p>
 </a>
 
+<a class="lt-card" :href="withBase('/permissions')">
+  <h3>Permissions</h3>
+  <p>Choose which roles see the reports, dismiss errors and use review mode.</p>
+</a>
+
+<a class="lt-card" :href="withBase('/email-summary')">
+  <h3>Weekly email summary</h3>
+  <p>Optional. Your score and how it changed, top issues and pages that got worse, sent by your own site.</p>
+</a>
+
 </div>
 
-## Lumtera Pro <span class="pro-pill">Pro</span>
-
+## Lumtera Pro <span class="pro-pill">Pro</span> {#lumtera-pro}
 Everything above is free, with no page limits. [Lumtera Pro](/pro/) is an optional add-on for teams and agencies:
 
 <div class="lt-cards">
@@ -118,9 +137,19 @@ Everything above is free, with no page limits. [Lumtera Pro](/pro/) is an option
   <p>Assign issues to people. Tasks close themselves when a re-scan confirms the fix.</p>
 </a>
 
+<a class="lt-card" :href="withBase('/pro/ignore')">
+  <h3>Ignore everywhere</h3>
+  <p>Ignore a repeated finding across the whole site, with a reason, an expiry and a log.</p>
+</a>
+
 <a class="lt-card" :href="withBase('/pro/reports')">
   <h3>Client reports</h3>
   <p>Branded reports covering all 55 WCAG 2.2 A and AA criteria, with PDF and CSV export and white-label.</p>
+</a>
+
+<a class="lt-card" :href="withBase('/pro/acr')">
+  <h3>Accessibility Conformance Report</h3>
+  <p>A report in the VPAT 2.5 format, filled from your automated and manual results, for you to review and edit.</p>
 </a>
 
 <a class="lt-card" :href="withBase('/pro/portfolio')">
@@ -137,7 +166,7 @@ Everything above is free, with no page limits. [Lumtera Pro](/pro/) is an option
 
 ## For developers
 
-[WP-CLI](/developers/wp-cli) (including a `check` command with exit codes for CI) · [REST API](/developers/rest-api) · [Hooks & filters](/developers/hooks) · [Custom checks](/developers/custom-checks) · [Abilities API for AI assistants](/developers/abilities)
+[WP-CLI](/developers/wp-cli) (including a `check` command with exit codes) · [CI with SARIF and JUnit](/developers/ci) · [REST API](/developers/rest-api) · [Hooks & filters](/developers/hooks) · [Custom checks](/developers/custom-checks) · [Abilities API for AI assistants](/developers/abilities)
 
 ::: info Honest by design
 Automated testing finds only part of what WCAG covers. Independent studies put it at between a third and a half of real barriers. A score of 100 in Lumtera means "no automated issues found", never "compliant". [What automated testing can't do →](/manual-testing)

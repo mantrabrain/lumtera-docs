@@ -1,6 +1,6 @@
 ---
 title: Block editor sidebar
-description: Check posts as you write in the block editor. The Accessibility sidebar, one-click quick fixes, jumping to blocks, outlines, decorative images, reading level and the check before publishing.
+description: Check posts as you write in the block editor. The Accessibility sidebar, one-click quick fixes, jumping to blocks, outlines, decorative images, reading level, AI writing help, manual checks and the check before publishing.
 ---
 
 # Block editor sidebar
@@ -43,8 +43,9 @@ Each card has these buttons:
 
 - **Select block** jumps straight to the block with the problem.
 - A **quick fix** button, when one applies. See below.
-- **Dismiss…** for issues that aren't a problem. See [Dismissing issues](/dismissing).
-- With [Lumtera Pro](/pro/fix-tracking), **Track fix**.
+- **Dismiss…** for issues that aren't a problem (**Dismiss this error…** on errors, for people allowed to dismiss them). See [Dismissing issues](/dismissing).
+- With AI writing help switched on, **Suggest link text**, **Suggest heading** or **Suggest subheadings** on the issues they help with. See [AI writing help](#ai-writing-help).
+- With Lumtera Pro: **Track fix** (see [Fix tracking](/pro/fix-tracking)) and **Ignore everywhere…** (see [Ignore everywhere](/pro/ignore)). <span class="pro-pill">Pro</span>
 
 ## Quick fixes
 
@@ -79,11 +80,42 @@ Lumtera recognizes both, so a deliberately decorative image is never reported as
 
 ### Suggest alt text with AI
 
-If an administrator has switched on [AI suggestions](/ai), the Image block's **Accessibility** panel also has **Suggest alt text**. It offers up to three suggestions. Click **Use** to set one, then read it and edit it before publishing.
+If an administrator has switched on [AI alt text suggestions](/ai), the Image block's **Accessibility** panel also has **Suggest alt text**. It offers up to three suggestions. Click **Use** on one to set it, then read it and edit it before publishing. If the AI thinks the image may be decorative, it says so and points you to the decorative setting instead.
 
 ## Reading level
 
-For English content of 100 words or more, the sidebar shows a **Reading level**: a Flesch–Kincaid grade with a label from **Very easy to read** to **Difficult to read**. Above grade 9, it suggests shorter sentences and simpler words. WCAG 3.1.5 (AAA) suggests offering a plain summary above that level.
+For content of 100 words or more, the sidebar shows a **Reading level**, such as **Grade 8 · Easy to read**. It works in six languages, each with a formula made for that language:
+
+| Language | Formula |
+| --- | --- |
+| English | Flesch–Kincaid grade level |
+| Spanish | Fernández Huerta reading ease |
+| French | Kandel–Moles reading ease |
+| German | Flesch–Amstad reading ease, with the Wiener Sachtextformel for the grade |
+| Italian | Gulpease index |
+| Dutch | Flesch–Douma reading ease |
+
+Scores are turned into an approximate school grade, so every language shows a grade. Lumtera uses the post's language from **Polylang** or **WPML** when either is active, and your site language otherwise. Content in other languages gets no reading level, because a formula made for one language gives meaningless numbers in another.
+
+Above grade 9, the sidebar suggests shorter sentences and simpler words. WCAG 3.1.5 (AAA) suggests offering a plain summary above that level. With AI writing help switched on, **Draft a plain-language summary** appears here too.
+
+## AI writing help
+
+If an administrator has switched on AI writing help under <span class="screen-path">Accessibility → Settings → AI</span>, some issue cards get a button that asks your AI provider for a draft:
+
+| Button | On these issues |
+| --- | --- |
+| **Suggest link text** | [Link text is vague](/checks#link-ambiguous-text), [Link text is a web address](/checks#link-url-as-text), [Same link text goes to different pages](/checks#link-same-text-different-url) |
+| **Suggest heading** | [Bold text may be a heading](/checks#heading-possible) |
+| **Suggest subheadings** | [Long content has no subheadings](/checks#content-no-headings) |
+
+**Draft a plain-language summary** appears under the reading level when the content reads above grade 9.
+
+Nothing is sent until you click, and nothing changes until you choose a draft. Using a draft is a normal edit that **Undo** reverts. Drafts can be wrong, so read each one before you use it. See [AI suggestions](/ai) for what is sent and how to switch each feature on.
+
+## Manual accessibility checks
+
+In the post settings sidebar (the **Post** or **Page** tab), the **Manual accessibility checks** panel lists nine short guided checks for the things no automated check can test, such as using the page with only a keyboard. You record **Pass**, **Fail** or **Not applicable** for each one, and the result is saved on the post. See [Guided manual checks](/manual-checks).
 
 ## Before publishing
 

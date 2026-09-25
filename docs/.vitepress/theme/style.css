@@ -3,15 +3,16 @@
  * ============================================================ */
 
 :root {
-  --lt-navy: #1f4e79;
-  --lt-navy-2: #173d61;
-  --lt-navy-3: #11304d;
-  --lt-gold: #e5a900;
+  /* From the Lumtera mark: blue gradient #2a64a0 → #17406a, gold badge #f5b700. */
+  --lt-navy: #1f5288;
+  --lt-navy-2: #17406a;
+  --lt-navy-3: #10243a;
+  --lt-gold: #f5b700;
 
-  --vp-c-brand-1: #1f4e79;
-  --vp-c-brand-2: #173d61;
-  --vp-c-brand-3: #11304d;
-  --vp-c-brand-soft: rgba(31, 78, 121, 0.12);
+  --vp-c-brand-1: #1f5288;
+  --vp-c-brand-2: #17406a;
+  --vp-c-brand-3: #10243a;
+  --vp-c-brand-soft: rgba(31, 82, 136, 0.12);
 
   --vp-home-hero-name-color: var(--lt-navy);
 }
@@ -36,12 +37,12 @@
   border-radius: 16px;
   border: 1px solid var(--vp-c-divider);
   background:
-    radial-gradient(circle at 100% 0%, rgba(229, 169, 0, 0.12), transparent 45%),
-    linear-gradient(135deg, rgba(31, 78, 121, 0.08), rgba(31, 78, 121, 0.02));
+    radial-gradient(circle at 100% 0%, rgba(245, 183, 0, 0.14), transparent 45%),
+    linear-gradient(135deg, rgba(42, 100, 160, 0.1), rgba(23, 64, 106, 0.02));
   overflow: hidden;
 }
 
-/* The gold "curb" dots from the logo, as a border under the hero. */
+/* A gold bar under the hero, echoing the check badge in the logo. */
 .lt-hero::after {
   content: '';
   position: absolute;
@@ -49,8 +50,7 @@
   right: 0;
   bottom: 0;
   height: 4px;
-  background: radial-gradient(circle, var(--lt-gold) 1.6px, transparent 2px) 0 50% / 10px 4px repeat-x;
-  opacity: 0.8;
+  background: var(--lt-gold);
 }
 
 .lt-hero__eyebrow {
@@ -205,8 +205,8 @@
 .pro-callout {
   margin: 1.25rem 0;
   padding: 0.9rem 1.15rem;
-  background: linear-gradient(135deg, rgba(229, 169, 0, 0.1), rgba(31, 78, 121, 0.05));
-  border: 1px solid rgba(229, 169, 0, 0.4);
+  background: linear-gradient(135deg, rgba(245, 183, 0, 0.1), rgba(31, 82, 136, 0.05));
+  border: 1px solid rgba(245, 183, 0, 0.45);
   border-left: 4px solid var(--lt-gold);
   border-radius: 10px;
   font-size: 0.94rem;

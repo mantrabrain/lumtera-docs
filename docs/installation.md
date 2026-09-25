@@ -17,7 +17,7 @@ import { withBase } from 'vitepress'
 Optional:
 
 - WordPress **6.9+** for the [Abilities API](/developers/abilities), which lets AI assistants run Lumtera's checks.
-- WordPress **7.0+** and an AI provider for [AI alt text suggestions](/ai).
+- WordPress **7.0+** and an AI provider connected under <span class="screen-path">Settings → Connectors</span> for [AI suggestions](/ai): alt text, link text, headings and plain-language summaries.
 
 ## Install the free plugin
 
@@ -32,7 +32,7 @@ Lumtera needs no account and no API key. Everything runs inside your own WordPre
 
 ## Your first check
 
-After you activate it, a notice says **"Lumtera is ready."** on the Dashboard and Plugins screens.
+After you activate it, a notice says **"Lumtera is ready."** on the Dashboard and Plugins screens, until you run your first check or dismiss it.
 
 <ol class="step-list">
   <li>Click <strong>Check my site</strong>, or go to <span class="screen-path">Accessibility → Overview</span>.</li>
@@ -48,7 +48,7 @@ Open any post in the block editor and click the **Lumtera icon** in the top tool
 
 ## Add Lumtera Pro (optional)
 
-[Lumtera Pro](/pro/) is a separate add-on plugin. Keep the free plugin active, then upload and activate `lumtera-pro.zip` and enter your license key. See [Install Lumtera Pro](/pro/#install-lumtera-pro).
+[Lumtera Pro](/pro/) is a separate add-on plugin. Keep the free plugin active, then upload and activate `lumtera-pro.zip` and enter your license key. See [Lumtera Pro](/pro/).
 
 ## Multisite
 
