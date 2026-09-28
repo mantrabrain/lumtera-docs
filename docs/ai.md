@@ -14,6 +14,8 @@ Lumtera works fully without AI. If you'd like help, you can switch on AI-assiste
 | [Headings](#headings-and-subheadings) | **Suggest headings** | Block editor sidebar, on some heading issues |
 | [Plain-language summary](#plain-language-summary) | **Draft a plain-language summary** | Block editor sidebar, under **Reading level** |
 
+The alt text, link text and heading features also add **Draft with AI** to the [fix dialog](/fixing-issues#draft-with-ai) in the Content report and the block editor.
+
 Every switch is off by default.
 
 ## How it works
@@ -29,7 +31,7 @@ Every switch is off by default.
 
 <ol class="step-list">
   <li>Connect an AI provider under <span class="screen-path">Settings → Connectors</span>. For alt text, choose one with a model that can read images.</li>
-  <li>Go to <span class="screen-path">Accessibility → Settings → AI</span>.</li>
+  <li>Go to <span class="screen-path">Lumtera → Settings → AI suggestions</span>.</li>
   <li>Check the status lines (see below).</li>
   <li>Switch on the features you want and click <strong>Save changes</strong>.</li>
 </ol>
@@ -118,9 +120,13 @@ The draft is up to about 120 words. You can edit it in the panel, then click **A
 
 Summaries aren't offered for posts built with a page builder.
 
+## Draft with AI in the fix dialog {#draft-with-ai}
+
+When **Suggest alt text**, **Suggest better link text** or **Suggest headings** is on, the [fix dialog](/fixing-issues) for those issues has **Draft with AI**. It sends the same data as the matching feature above: the image and where it is used for alt text, the link and its context for link text, and the bold line and its context for a heading. The draft is marked **AI-drafted — review before applying**, and nothing is saved until a person clicks **Apply fix**. **Draft with AI** appears only when a connected provider can do the job, for example one that can write text for link text and headings.
+
 ## Limits
 
-Each person can make 30 AI requests in 10 minutes, across all four features. After that, Lumtera shows *"Too many AI requests in a short time. Wait a few minutes and try again."* Developers can change the limit with the `lumtera_ai_rate_limit` filter. See [Hooks & filters](/developers/hooks).
+Each person can make 30 AI requests in 10 minutes, across all four features and **Draft with AI**. With Lumtera Pro, the same limit applies to AI drafts in the [fixes queue](/pro/fixes-queue). After that, Lumtera shows *"Too many AI requests in a short time. Wait a few minutes and try again."* Developers can change the limit with the `lumtera_ai_rate_limit` filter. See [Hooks & filters](/developers/hooks).
 
 The writing features work in the block editor only. They aren't available in Elementor, other page builders or the classic editor.
 

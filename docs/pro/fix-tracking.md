@@ -3,7 +3,9 @@ title: Fix tracking
 description: Assign accessibility issues to people, follow their progress, let Lumtera Pro confirm each fix with a re-scan, and send fixes to GitHub, GitLab, Jira or Linear.
 ---
 
-# Fix tracking <span class="pro-pill">Pro</span>
+# Fix tracking
+
+<p><span class="pro-pill">Pro</span> Every plan</p>
 
 Turn any issue into a task, assign it to someone, and let re-scans confirm the fix. Tasks close themselves once Lumtera no longer finds the issue. If your team works in GitHub, GitLab, Jira or Linear, each fix can become an issue there too.
 
@@ -15,7 +17,7 @@ A **Track fix** button appears on every issue:
 
 - in the block editor's Lumtera sidebar
 - in the classic editor's Accessibility box
-- in the issue lists on <span class="screen-path">Accessibility → Content</span>
+- in the issue lists on <span class="screen-path">Lumtera → Checks → Content</span>
 
 <ol class="step-list">
   <li>Click <strong>Track fix</strong> on the issue.</li>
@@ -52,13 +54,19 @@ Every time a post is scanned (for example when it's saved), Lumtera Pro checks i
 
 Deleting a post deletes its tasks.
 
-## The Fixes screen
+### Fixes applied from the queue
 
-Go to <span class="screen-path">Accessibility → Fixes</span>. Tiles show **Open**, **In progress**, **Fixed in the last 30 days** (verified by re-scan only) and **Assigned to me**.
+When a fix for a tracked issue is applied, from the [fixes queue](/pro/fixes-queue), the editor or the Content report, the task records the change in its **History**. If the re-check no longer finds the issue, the task closes as **Fixed** (verified), even when the markup moved. If the fix is undone, the task records that too, and the next check reopens it if the issue is back.
+
+Fixes applied at the source, to a template part, pattern or menu, aren't linked to tasks, because a task tracks one page. The next check of each page still confirms or reopens its tasks.
+
+## The Fix tracking screen {#the-fixes-screen}
+
+Go to <span class="screen-path">Lumtera → Fixes → Fix tracking</span>. Tiles show **Open**, **In progress**, **Fixed in the last 30 days** (verified by re-scan only) and **Assigned to me**.
 
 Filter by **Show** (**Open and in progress** by default, any single status, or **Everything**) and **Assigned to** (**Anyone**, **Nobody yet** or a person). In the table you can change a task's assignee and status in place, and open its **History**.
 
-People without the **See reports and check the site** permission, such as authors and contributors, see **My fixes** instead: tasks assigned to them, or on posts they wrote.
+People without the **See reports and check the site** permission, such as authors and contributors, see **My fixes** instead, in the menu and as the screen's title: tasks assigned to them, or on posts they wrote.
 
 ## History
 
@@ -70,7 +78,7 @@ Send tracked fixes to the tool your developers already use: **GitHub**, **GitLab
 
 ### Connect a tracker
 
-Go to <span class="screen-path">Accessibility → Settings → Issue trackers</span> (administrators only).
+Go to <span class="screen-path">Lumtera → Settings → Issue trackers</span> (administrators only).
 
 <ol class="step-list">
   <li>Under <strong>Send issues to</strong>, choose your tracker. Only its fields are shown.</li>
@@ -96,7 +104,7 @@ Once a tracker is connected, each tracked fix gets a **Create issue in** button 
 
 - in the editor, next to the fix's status chip
 - in the classic editor's Accessibility box and on the Content screen
-- in the table on the **Fixes** screen
+- in the table on the **Fix tracking** screen
 
 When the issue is created, the button becomes a link such as **#12 in GitHub** or **WEB-4 in Jira**, which opens the issue in a new tab. The creation is recorded in the fix's **History**. Each fix gets one issue: clicking again, or two people at once, never makes a second one.
 
@@ -109,10 +117,19 @@ Turn on **Create an issue for every new tracked fix** to open an issue each time
 ### What each issue contains
 
 - **Title:** "[Accessibility] *issue* on *page*".
-- **Body:** the finding, its severity, the WCAG success criterion with a link to W3C's explanation, the HTML snippet, how to fix it, links to edit and view the page, and a link back to the fix on the Fixes screen.
+- **Body:** the finding, its severity, the WCAG success criterion with a link to W3C's explanation, the HTML snippet, how to fix it, links to edit and view the page, and a link back to the fix on the Fix tracking screen.
 - GitLab and Jira issues get the label `accessibility`.
 
-Nothing else from your site is sent. Lumtera doesn't update or close the issue in the tracker later.
+Nothing else from your site is sent.
+
+### Comments when a fix is applied
+
+Lumtera never closes or edits the issue in the tracker. It adds a comment when something happens to the fix:
+
+- *"Fixed by change #12, verified by re-scan."* when a fix for it is applied and the re-check confirms it;
+- *"Change #12 was undone. The next check reopens this fix if the issue is back."* when that fix is undone.
+
+Comments are sent in the background, a few seconds apart, like automatic issues. The tracker must still be connected, with a readable token.
 
 ### Tokens and requests
 
@@ -121,3 +138,10 @@ Nothing else from your site is sent. Lumtera doesn't update or close the issue i
 - If your site's secret keys change, the saved token can't be read any more. Enter it again.
 - Requests go straight from your site to the tracker, time out after 15 seconds and never follow redirects.
 - When a tracker asks Lumtera to slow down, no request is sent to it until the time it names. Automatic issues wait and try again then.
+
+## For developers
+
+- New issues are created in the background by the `lumtera_pro_tracker_issue` job, and comments by the `lumtera_pro_tracker_comment` job. Both run through Action Scheduler or WP-Cron, and wait when a tracker asks Lumtera to slow down.
+- Fix tracking events (`task.*`) go to the [activity log and webhooks](/pro/activity-webhooks#events).
+
+See [Hooks & filters](/developers/hooks).

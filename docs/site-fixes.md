@@ -5,13 +5,17 @@ description: Optional server-side fixes for common theme accessibility problems,
 
 # Site fixes
 
-Some accessibility problems come from your theme, not your content. Under <span class="screen-path">Accessibility → Settings → Site fixes</span> you can switch on small fixes for the most common ones.
+Some accessibility problems come from your theme, not your content. Under <span class="screen-path">Lumtera → Settings → Site fixes</span> you can switch on small fixes for the most common ones.
 
 - **Every fix is off by default.** Each one explains **What it changes:** and when to **Leave it off if**.
 - **This isn't an overlay.** Each fix is a small change to the HTML or CSS your server sends. Every visitor gets the same page, there's no widget, and nothing rewrites the page in the browser.
 - **Fixing the theme itself is always better.** Use these while you wait for a theme fix, or when you can't change the theme.
 
 Only administrators can change these settings. Changes show on your site right away. Clear any page cache to see them. Use **Preview on your site** to open your home page, then check a page with the keyboard and a screen reader.
+
+The skip link, the focus outline and pinch zoom are the **baseline fixes** in the Overview's **Get started** checklist. Like every site fix, they stay free.
+
+Site fixes change only the tags they are for. The rest of the page, including text in any language, structured data (JSON-LD) and inline scripts, stays exactly as your theme sent it.
 
 ## Keyboard
 
@@ -20,7 +24,8 @@ Only administrators can change these settings. Changes show on your site right a
 Adds a **Skip to content** link as the first thing on every page. It's hidden until someone presses <kbd>Tab</kbd>, then appears as a high-contrast box in the top-left corner.
 
 - **Target:** when you save with this fix on, Lumtera looks at your home page for an existing skip link and the main content area, and shows what it found, for example *"Found your main area on the home page: #primary."* To set it yourself, fill in **Skip to the element with this ID (optional)**, without the `#`. The element must exist on every page. If you leave the field empty and Lumtera found no main area, the link points to `#content`.
-- **No link is added** if your theme already has a skip link, or if it's a block theme (WordPress adds its own skip link to block themes that have a main area).
+- **No link is added** if your theme already has a skip link, or if it's a block theme whose template has a main area: WordPress adds its own skip link there.
+- **Block themes with WordPress's skip link switched off.** Some sites switch WordPress's own skip link off. Then Lumtera adds one, and gives your template's main area the ID `lumtera-main`, so the link has somewhere to go. The settings screen says when this is the case. If WordPress's older footer script still adds a link, Lumtera adds none, so there is never a second skip link.
 - Your theme must call `wp_body_open()`, as almost all modern themes do.
 
 ### Show where keyboard focus is
@@ -58,7 +63,7 @@ Stopping links from opening new tabs is the better fix.
 
 ### Show file type and size on document links
 
-Adds the file type and size, such as *"(PDF, 1.2 MB)"*, to links in post content that point to PDF, DOC, DOCX, XLS, XLSX, PPT and PPTX files in your Media Library.
+Adds the file type and size, such as *"(PDF, 1.2 MB)"*, to links in post content that point to PDF, DOC, DOCX, XLS, XLSX, PPT and PPTX files in your Media Library. It works for full addresses and for links written from the site root (`/wp-content/uploads/…`), also on sites with a port in the address.
 
 **Show the file details:**
 

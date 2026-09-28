@@ -3,9 +3,11 @@ title: PDF checks
 description: Lumtera Pro checks the PDFs in your Media Library for tags, a title, a language, real text, bookmarks and security settings that block screen readers.
 ---
 
-# PDF checks <span class="pro-pill">Pro</span>
+# PDF checks
 
-PDFs are often the least accessible part of a site. Lumtera Pro checks every PDF in your Media Library for the basics a machine can decide. Open <span class="screen-path">Accessibility → Documents</span>. Anyone with the **See reports and check the site** permission can use it (editors and administrators by default).
+<p><span class="pro-pill">Pro</span> Every plan</p>
+
+PDFs are often the least accessible part of a site. Lumtera Pro checks every PDF in your Media Library for the basics a machine can decide. Open <span class="screen-path">Lumtera → Checks → Documents</span>. Anyone with the **See reports and check the site** permission can use it (editors and administrators by default).
 
 ![The Documents screen listing PDFs with their results](/screenshots/pro-documents.webp)
 
@@ -42,10 +44,16 @@ These are the basics a machine can decide. Passing them doesn't make a PDF fully
 
 ## The Documents screen
 
-Summary tiles show how many **PDFs** you have, how many are **Passing**, how many are **With problems**, and how many are **Not checked** (new, changed or unreadable).
+Summary tiles show how many **PDFs** you have in the Media Library, how many are **Passing**, how many are **With problems**, and how many are **Not checked** (new, changed or unreadable).
 
-The table lists each file with its **Pages**, whether it's **Tagged**, its **Title**, **Language** and **Result**, such as **Passes basic checks**. **Linked from** shows how much published content links to the file, so you can start with the PDFs people actually open. Use **Details** to read the findings, and **Check** or **Re-check** to run it again. Files with problems are listed first.
+The table lists each file with its **Pages**, whether it's **Tagged**, its **Title**, **Language** and **Result**, such as **Passes basic checks**. **Linked from** shows how much published content links to the file, so you can start with the PDFs people actually open. Use **Details** to read the findings, each with its WCAG criterion and how to fix it, and **Check** or **Re-check** to run it again. Files with problems are listed first.
+
+Results that fail, such as **Not tagged**, show as errors. Items like **Tags may be unreliable** need review, and **Viewers show the file name, not the title** is a tip.
 
 ## Links to PDFs in your content
 
-The free plugin's [Link opens a document file](/checks#link-to-document) check flags links to PDFs so people know what they're opening. With Pro, when the PDF is in your Media Library, the finding adds: *"Lumtera Pro checks this PDF: see its result under Accessibility → Documents."*
+The free plugin's [Link opens a document file](/checks#link-to-document) check flags links to PDFs so people know what they're opening. With Pro, when the PDF is in your Media Library, the finding adds: *"Lumtera Pro checks this PDF: see its result under Lumtera → Documents."* The Documents screen is under <span class="screen-path">Lumtera → Checks → Documents</span>.
+
+## If the license stops
+
+PDF checks need an active license. While Pro is paused or not activated, new and changed PDFs aren't checked, and the Documents screen shows the activation card. Results are kept, and checking resumes when the license is active again. See [License & plans](/pro/license#if-the-license-can-t-be-confirmed).

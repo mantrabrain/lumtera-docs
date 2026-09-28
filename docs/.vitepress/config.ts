@@ -74,7 +74,8 @@ export default defineConfig({
               { text: 'Installation', link: '/installation' },
               { text: 'Quick start', link: '/quick-start' },
               { text: 'Your WordPress admin', link: '/admin-map' },
-              { text: 'Scores & severities', link: '/scoring' }
+              { text: 'Scores & severities', link: '/scoring' },
+              { text: 'How accurate is Lumtera?', link: '/accuracy' }
             ]
           },
           {
@@ -83,6 +84,7 @@ export default defineConfig({
               { text: 'Block editor sidebar', link: '/block-editor' },
               { text: 'Review mode', link: '/review-mode' },
               { text: 'Site report', link: '/site-report' },
+              { text: 'Fixing issues', link: '/fixing-issues' },
               { text: 'All checks', link: '/checks' }
             ]
           },
@@ -91,6 +93,7 @@ export default defineConfig({
             items: [
               { text: 'Alt text manager', link: '/alt-text' },
               { text: 'Site fixes', link: '/site-fixes' },
+              { text: 'Feedback form & inbox', link: '/feedback' },
               { text: 'Accessibility statement', link: '/statement' },
               { text: 'Settings', link: '/settings' }
             ]
@@ -103,9 +106,11 @@ export default defineConfig({
           { text: 'What Pro adds', link: '/pro/' },
           { text: 'License & plans', link: '/pro/license' },
           { text: 'Page checks', link: '/pro/page-checks' },
+          { text: 'Fixes queue', link: '/pro/fixes-queue' },
+          { text: 'Evidence log', link: '/pro/evidence' },
           { text: 'Client reports', link: '/pro/reports' },
           { text: 'Conformance report (ACR)', link: '/pro/acr' },
-          { text: 'Agency portfolio', link: '/pro/portfolio' }
+          { text: 'Client portfolio', link: '/pro/portfolio' }
         ]
       },
       {
@@ -140,7 +145,8 @@ export default defineConfig({
           { text: 'Installation', link: '/installation' },
           { text: 'Quick start', link: '/quick-start' },
           { text: 'Your WordPress admin', link: '/admin-map' },
-          { text: 'Scores & severities', link: '/scoring' }
+          { text: 'Scores & severities', link: '/scoring' },
+          { text: 'How accurate is Lumtera?', link: '/accuracy' }
         ]
       },
       {
@@ -151,8 +157,10 @@ export default defineConfig({
           { text: 'Classic editor & page builders', link: '/page-builders' },
           { text: 'Review mode (live page)', link: '/review-mode' },
           { text: 'Site report', link: '/site-report' },
+          { text: 'Fixing issues', link: '/fixing-issues' },
+          { text: 'Site parts', link: '/site-parts' },
           { text: 'Dismissing issues', link: '/dismissing' },
-          { text: 'Guided manual checks', link: '/manual-checks' },
+          { text: 'Guided checklists', link: '/manual-checks' },
           { text: 'All checks', link: '/checks' }
         ]
       },
@@ -163,6 +171,7 @@ export default defineConfig({
           { text: 'Alt text manager', link: '/alt-text' },
           { text: 'AI suggestions', link: '/ai' },
           { text: 'Site fixes', link: '/site-fixes' },
+          { text: 'Feedback form & inbox', link: '/feedback' },
           { text: 'Accessibility statement', link: '/statement' },
           { text: 'Weekly email summary', link: '/email-summary' },
           { text: 'Settings', link: '/settings' },
@@ -176,13 +185,22 @@ export default defineConfig({
           { text: 'What Pro adds', link: '/pro/' },
           { text: 'License & plans', link: '/pro/license' },
           { text: 'Page checks', link: '/pro/page-checks' },
+          { text: 'Form tests', link: '/pro/form-tests' },
+          { text: 'Signed-in checks', link: '/pro/signed-in-checks' },
+          { text: 'Consistency across pages', link: '/pro/consistency' },
           { text: 'PDF checks', link: '/pro/documents' },
-          { text: 'Monitoring & alerts', link: '/pro/monitoring' },
+          { text: 'Test sessions', link: '/pro/test-sessions' },
+          { text: 'Fixes queue', link: '/pro/fixes-queue' },
           { text: 'Fix tracking', link: '/pro/fix-tracking' },
           { text: 'Ignore everywhere', link: '/pro/ignore' },
+          { text: 'Monitoring & alerts', link: '/pro/monitoring' },
           { text: 'Client reports', link: '/pro/reports' },
           { text: 'Conformance report (ACR)', link: '/pro/acr' },
-          { text: 'Agency portfolio', link: '/pro/portfolio' },
+          { text: 'Evidence log', link: '/pro/evidence' },
+          { text: 'Compare scans', link: '/pro/compare-scans' },
+          { text: 'Feedback response targets', link: '/pro/feedback-targets' },
+          { text: 'Burden records', link: '/pro/burden' },
+          { text: 'Client portfolio', link: '/pro/portfolio' },
           { text: 'Multisite network', link: '/pro/multisite' },
           { text: 'Activity log & webhooks', link: '/pro/activity-webhooks' }
         ]

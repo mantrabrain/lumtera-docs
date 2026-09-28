@@ -1,17 +1,17 @@
 ---
 title: Block editor sidebar
-description: Check posts as you write in the block editor. The Accessibility sidebar, one-click quick fixes, jumping to blocks, outlines, decorative images, reading level, AI writing help, manual checks and the check before publishing.
+description: Check posts as you write in the block editor. The Lumtera Accessibility sidebar, quick fixes and reviewed fixes with undo, the contrast fixer, why each issue is flagged, outlines, decorative images, reading level, AI writing help, guided checklists and the check before publishing.
 ---
 
 # Block editor sidebar
 
 Lumtera checks your post while you write and lists each issue next to the block that caused it, with a plain-language fix.
 
-![The Accessibility sidebar in the block editor](/screenshots/screenshot-1.webp)
+![The Lumtera Accessibility sidebar in the block editor](/screenshots/screenshot-1.webp)
 
 ## Open the sidebar
 
-Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review. You'll also find it in the **Options** menu (⋮) as **Accessibility checker**.
+Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review. The sidebar is called **Lumtera Accessibility**. You'll also find it in the **Options** menu (⋮) under that name.
 
 The sidebar appears for the content types Lumtera checks: posts, pages and products by default. You can change this in [Settings](/settings#content-to-check).
 
@@ -32,20 +32,25 @@ At the top:
 - a headline, such as **3 errors to fix**, **2 items to review** or **No automated issues found**
 - **Go to next issue**, which steps through every issue and selects its block
 - filters: **All**, **Errors**, **Review** and **Tips**, each with a count
+- **Show possible issues**, when the checks found tips they are least sure of. These are hidden by default, because they often flag things that are fine. See [How sure is each check?](/checks#confidence)
 
 Below that, one card per issue. Click the title to expand it and see:
 
 - **How to fix**: what to do, in WordPress terms
 - **Markup**: the HTML that triggered it
-- a link to the **WCAG success criterion** it relates to
+- a link to the **WCAG success criterion** it relates to, and **Learn more** about the check
+- **Why is this flagged?**: the reason in plain words, and what would make it fine. If you still think it's wrong, **Report a false positive…** opens a report in the WordPress.org support forum with the details filled in. Nothing is sent from your site.
+- **Showing again**, when an issue someone dismissed before has come back, with the reason. See [Showing again](/dismissing#showing-again).
+- where the issue comes from, when it isn't in the post itself, such as a synced pattern. See [Site parts](/site-parts).
 
 Each card has these buttons:
 
 - **Select block** jumps straight to the block with the problem.
 - A **quick fix** button, when one applies. See below.
+- **Review fix**, for fixes Lumtera can make to the saved post. It opens a dialog that shows the change before anything is saved. See [Reviewed fixes](#reviewed-fixes).
 - **Dismiss…** for issues that aren't a problem (**Dismiss this error…** on errors, for people allowed to dismiss them). See [Dismissing issues](/dismissing).
 - With AI writing help switched on, **Suggest link text**, **Suggest heading** or **Suggest subheadings** on the issues they help with. See [AI writing help](#ai-writing-help).
-- With Lumtera Pro: **Track fix** (see [Fix tracking](/pro/fix-tracking)) and **Ignore everywhere…** (see [Ignore everywhere](/pro/ignore)). <span class="pro-pill">Pro</span>
+- With Lumtera Pro: **Track fix** (see [Fix tracking](/pro/fix-tracking)) and **Ignore everywhere…** (see [Ignore everywhere](/pro/ignore)).
 
 ## Quick fixes
 
@@ -62,6 +67,18 @@ Quick fixes repair mechanical problems in one click. They work on WordPress's ow
 | [Table has no header cells](/checks#table-no-headers) | **Use first row as header** | Moves the first row of the table into a header row |
 | [Empty paragraphs used for spacing](/checks#empty-paragraph-spacing) | **Remove empty paragraphs** | Removes the run of empty paragraphs. Use a Spacer block for extra space. |
 | Alt text problems on an Image block | **Edit alt text** | Selects the image and puts the cursor in its **Alternative text** field. It doesn't change anything itself. |
+
+## Reviewed fixes {#reviewed-fixes}
+
+For other fixes, click **Review fix**. A dialog shows **What will change**, with **Before** and **After**, and **Where**. Nothing is saved until you click **Apply fix**. Lumtera then saves a new revision, checks the post again and tells you whether the issue is gone. **Undo** puts it back.
+
+The fix is made to the saved post, so save your changes first. If the issue comes from a shared part, such as a synced pattern or a template part, the dialog offers to fix it there instead, for every page that uses it. See [Fixing issues](/fixing-issues).
+
+## Fix low contrast
+
+On a [Text color has low contrast](/checks#color-contrast) issue in a block, Lumtera suggests the nearest text color that passes, taken from your theme's palette where it can. Click **Use this color** to change the block's text color. The sidebar confirms the new contrast ratio, and **Undo** reverts it. Nothing changes until you click.
+
+If the color comes from a template part, the button opens the Site Editor instead. For a synced pattern, it opens the pattern.
 
 ## Outlines
 
@@ -101,7 +118,7 @@ Above grade 9, the sidebar suggests shorter sentences and simpler words. WCAG 3.
 
 ## AI writing help
 
-If an administrator has switched on AI writing help under <span class="screen-path">Accessibility → Settings → AI</span>, some issue cards get a button that asks your AI provider for a draft:
+If an administrator has switched on AI writing help under <span class="screen-path">Lumtera → Settings → AI suggestions</span>, some issue cards get a button that asks your AI provider for a draft:
 
 | Button | On these issues |
 | --- | --- |
@@ -111,20 +128,26 @@ If an administrator has switched on AI writing help under <span class="screen-pa
 
 **Draft a plain-language summary** appears under the reading level when the content reads above grade 9.
 
+In the **Review fix** dialog, **Draft with AI** asks for a draft for alt text, link text and heading fixes. It is marked **AI-drafted — review before applying**, and it is never applied on its own.
+
 Nothing is sent until you click, and nothing changes until you choose a draft. Using a draft is a normal edit that **Undo** reverts. Drafts can be wrong, so read each one before you use it. See [AI suggestions](/ai) for what is sent and how to switch each feature on.
 
 ## Manual accessibility checks
 
-In the post settings sidebar (the **Post** or **Page** tab), the **Manual accessibility checks** panel lists nine short guided checks for the things no automated check can test, such as using the page with only a keyboard. You record **Pass**, **Fail** or **Not applicable** for each one, and the result is saved on the post. See [Guided manual checks](/manual-checks).
+In the post settings sidebar (the **Post** or **Page** tab), the **Manual accessibility checks** panel holds the guided checklist: one short item for each WCAG criterion a person has to judge, such as using the page with only a keyboard. You record **Pass**, **Fail** or **Not applicable** for each one, and the result is saved on the post. Items that probably don't apply to the page are suggested for you. See [Guided checklists](/manual-checks).
+
+## Accessibility exception
+
+The **Accessibility exception** panel lets you record that you believe an ADA Title II exception applies to this post, with your reasoning. The post stays in every total and report. See [ADA Title II exception tags](/statement#exception-tags).
 
 ## Before publishing
 
-An administrator chooses what happens when an author publishes content with errors, under <span class="screen-path">Accessibility → Settings → General → Before publishing</span>.
+An administrator chooses what happens when an author publishes content with errors, under <span class="screen-path">Lumtera → Settings → General → Before publishing</span>.
 
 | Setting | What happens |
 | --- | --- |
 | **Do nothing** | Issues are only shown in the sidebar. |
-| **Show a summary** (default) | WordPress's pre-publish panel gets an **Accessibility** section. It runs a fresh check and lists up to four errors, with **Review in the sidebar**. Publishing is never blocked. |
+| **Show a summary** (default) | WordPress's pre-publish panel gets a **Lumtera Accessibility** section. It runs a fresh check and lists up to four errors, with **Review in the sidebar**. Publishing is never blocked. |
 | **Require confirmation** | If there are errors, the author must tick **Publish anyway — I will fix these later** before publishing or scheduling. |
 
 With **Require confirmation**:

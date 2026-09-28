@@ -1,13 +1,13 @@
 ---
 title: Alt text manager
-description: See every image in your Media Library on one screen, describe each one once, and add the text to the posts that show it without a description.
+description: See every image in your Media Library on one screen, describe each one once, and add the text to the posts that show it without a description. Images from outside the Media Library are listed too.
 ---
 
 # Alt text manager
 
 Missing alt text is one of the most common accessibility errors. The alt text manager puts every image in your Media Library on one screen. Describe an image once, and Lumtera offers to add the description to the posts that show it without one.
 
-Go to <span class="screen-path">Accessibility → Alt text</span>.
+Go to <span class="screen-path">Lumtera → Alt text</span>. With Lumtera Pro, the **Fixes** group has more screens, so it's <span class="screen-path">Lumtera → Fixes → Alt text</span>.
 
 ![The alt text manager](/screenshots/screenshot-5.webp)
 
@@ -19,7 +19,7 @@ Elementor reads alt text from the Media Library, so Elementor pages update on th
 
 ## Tabs
 
-- **Missing alt text**: images with no description
+- **Missing alt text**: images with no description, including [images outside the Media Library](#images-outside-the-media-library)
 - **Needs review**: images whose alt text looks wrong, such as a file name, "image of…", a generic word like "photo", or text that's very long
 - **All images**
 
@@ -28,6 +28,14 @@ The screen opens on the first tab that has something in it. Search by title, fil
 On a very large library, only the newest images with alt text are counted under **Needs review**, and the screen says so. Older images are still checked when you view them under **All images**.
 
 Each row shows the image, its file name, and how many checked posts use it.
+
+## Images outside the Media Library {#images-outside-the-media-library}
+
+Some images in your content have no Media Library entry: they're linked from another site, or added as HTML. There's nothing to describe once for these, so under **Missing alt text** a card lists them as **N images not in your Media Library**. The tab's count includes them, so it matches the error count in your reports.
+
+For each image, the card shows its address (or **Image embedded in the page code** / **Image with no address**), **No alt text.**, and **Found in:** with links to edit the posts that show it. Add the alt text in the editor: select the image and fill in **Alternative text**. When the list is long, **See every image without alt text in the content report** opens the full list.
+
+Copies of a Media Library image aren't listed here: the main list covers them.
 
 ## Describe an image and update its posts
 
@@ -97,3 +105,16 @@ If an administrator has switched on **Suggest alt text** under [AI suggestions](
 If the AI thinks the image may be purely decorative, it says so. If the image adds nothing to the content, leave its alt text empty.
 
 Suggestions you save here are recorded against the image, with who accepted them and when. See [A record of accepted alt text](/ai#a-record-of-accepted-alt-text).
+
+### Suggest alt text for several images
+
+When your provider can read images, the **Suggest alt text for several images** bar lets you ask for drafts in one go:
+
+<ol class="step-list">
+  <li>Tick <strong>Select</strong> on the images you want, or click <strong>Select all missing</strong>.</li>
+  <li>Click <strong>Suggest alt text</strong>. Images are sent one at a time, with progress, such as <em>"Suggesting 3 of 12"</em>. <strong>Pause</strong>, <strong>Resume</strong> and <strong>Stop</strong> are there while it runs.</li>
+  <li>Each draft appears in its image's <strong>Alt text</strong> field, marked <em>"AI draft, not saved."</em> Read each one, edit it if needed, and either click <strong>Save</strong> on the image, or tick <strong>I have reviewed this draft</strong>.</li>
+  <li>Click <strong>Save all reviewed</strong> to save every draft you ticked. <strong>Discard draft</strong> throws one away.</li>
+</ol>
+
+Nothing is saved until a person saves it. The same limit on AI requests applies as for single suggestions. If it is reached, the run pauses: wait a few minutes, then choose **Resume**.

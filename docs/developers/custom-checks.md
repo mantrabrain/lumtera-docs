@@ -5,20 +5,26 @@ description: Add your own accessibility check to Lumtera with a PHP class. It th
 
 # Custom checks
 
-You can add your own checks to Lumtera. For example, you could enforce a house style, or check the markup of a custom block. A registered check appears everywhere a built-in one does:
+You can add your own checks to Lumtera. For example, you could enforce a house style, or check the markup of a custom block.
+
+## Where your check appears {#where-your-check-appears}
+
+A registered check appears everywhere a built-in one does:
 
 - the editor sidebar, Elementor panel and review mode
 - scans on save, the Overview and the Content report
-- <span class="screen-path">Accessibility → Settings → Checks</span>, where it can be made stricter, softer or switched off
+- <span class="screen-path">Lumtera → Settings → Checks</span>, where it can be made stricter, softer or switched off
 - `wp lumtera check`, `scan`, `issues` and `rules`, including the [SARIF and JUnit](/developers/wp-cli#sarif-and-junit) reports for CI
-- the `lumtera/list-rules` ability
+- the `lumtera/list-rules`, `lumtera/list-issues` and `lumtera/explain-rule` [abilities](/developers/abilities)
 - Pro page checks, and the list of checks for Pro [ignore rules](/pro/ignore)
+
+One thing differs: only Lumtera's own checks link to a page in these docs. For an add-on check, the "Learn more" link is left out, and `docs_url` is empty in `lumtera/explain-rule`. Put what people need in `how_to_fix()` and `rationale()`.
 
 ## 1. Write the check
 
-A check is a class that extends `Lumtera\AbstractRule` and implements `id()`, `title()`, `category()`, `wcag()`, `how_to_fix()` and `run()`.
+A check is a class that extends `\Lumtera\AbstractRule` and implements `id()`, `title()`, `category()`, `wcag()`, `how_to_fix()` and `run()`. It can also override `criteria()`, `rationale()` and `level()`, and set `$severity` and `$confidence`.
 
-This example flags expandable `<details>` sections that have no `<summary>`, or an empty one:
+This example flags expandable `<details>` sections that have no `<summary>`, or an empty one. Put it in its own file in your plugin, and keep the `namespace` and `use` lines: Lumtera's classes live in the `Lumtera` namespace, so a bare `AbstractRule` or `Issue` in another namespace stops PHP with a "class not found" error.
 
 ```php
 <?php // class-details-no-summary.php
@@ -35,6 +41,9 @@ final class DetailsNoSummary extends AbstractRule {
 	// Default severity. level() returns 'A' unless you override it.
 	protected string $severity = Issue::SEVERITY_WARNING;
 
+	// How sure the check is. 'certain' is the default.
+	protected string $confidence = Issue::CONFIDENCE_CERTAIN;
+
 	public function id(): string {
 		return 'acme-details-no-summary';
 	}
@@ -47,12 +56,22 @@ final class DetailsNoSummary extends AbstractRule {
 		return Wcag::CATEGORY_STRUCTURE;
 	}
 
+	// The main criterion.
 	public function wcag(): string {
 		return '4.1.2';
 	}
 
+	// Every criterion a finding counts against, main one first.
+	public function criteria(): array {
+		return [ '4.1.2', '2.4.6' ];
+	}
+
 	public function how_to_fix(): string {
 		return __( 'Add a <summary> with a short label as the first child of <details>, e.g. <summary>Shipping details</summary>.', 'acme' );
+	}
+
+	public function rationale(): string {
+		return __( 'WCAG 4.1.2 asks that every control has a name. Without a summary, the toggle is announced only as "Details", which says nothing about what it opens.', 'acme' );
 	}
 
 	public function run( \DOMXPath $xpath ): array {
@@ -66,7 +85,13 @@ final class DetailsNoSummary extends AbstractRule {
 			$summary = $this->elements( $xpath, './summary', $details )[0] ?? null;
 
 			if ( null === $summary ) {
-				$issues[] = $this->issue( __( 'This expandable section has no <summary>, so its toggle is announced only as "Details".', 'acme' ), $details );
+				// Less sure for this finding: a heading inside may explain it.
+				$issues[] = $this->issue(
+					__( 'This expandable section has no <summary>, so its toggle is announced only as "Details".', 'acme' ),
+					$details,
+					null,
+					Issue::CONFIDENCE_LIKELY
+				);
 			} elseif ( '' === $this->accessible_name( $summary ) ) {
 				// A single finding can carry its own severity.
 				$issues[] = $this->issue( __( 'This expandable section\'s summary is empty.', 'acme' ), $summary, Issue::SEVERITY_ERROR );
@@ -106,7 +131,7 @@ If your check needs constructor arguments, register an instance instead:
 ```php
 add_action( 'lumtera_register_rules', static function ( \Lumtera\RuleRegistry $rules ): void {
 	require_once __DIR__ . '/class-details-no-summary.php';
-	$rules->register( new DetailsNoSummary() );
+	$rules->register( new DetailsNoSummary() ); // This file is in the Acme\LumteraChecks namespace too.
 } );
 ```
 
@@ -117,13 +142,24 @@ Both hooks fire once, on `plugins_loaded` at priority 10. A theme's `functions.p
 add_action( 'after_setup_theme', function () {
 	if ( class_exists( \Lumtera\Plugin::class ) && \Lumtera\Plugin::instance()->is_booted() ) {
 		require_once __DIR__ . '/inc/class-details-no-summary.php';
-		\Lumtera\Plugin::instance()->rules->register( new DetailsNoSummary() );
+		// functions.php has no namespace, so give the class its full name.
+		\Lumtera\Plugin::instance()->rules->register( new \Acme\LumteraChecks\DetailsNoSummary() );
 	}
 } );
 ```
 
 `is_booted()` is false when Lumtera stopped itself, for example on a server without the PHP DOM extension.
 :::
+
+## 3. Try it
+
+With the plugin active, check some markup from the command line. Nothing is stored:
+
+```sh
+echo '<details><p>Hidden text</p></details><details><summary> </summary><p>More</p></details>' | wp lumtera check - --format=json
+```
+
+The report lists two findings from your check: an **Error** for the empty summary, and a **Needs review** for the `<details>` with no summary (its confidence was lowered to `likely`, which caps it). `wp lumtera rules` lists `acme-details-no-summary` with the other checks.
 
 ## Replace or remove a built-in check
 
@@ -135,7 +171,9 @@ add_filter( 'lumtera_rule_classes', fn( $classes ) => array_values(
 ) );
 ```
 
-Site owners can also switch any check off under **Settings → Checks**, without code.
+Site owners can also switch any check off under <span class="screen-path">Lumtera → Settings → Checks</span>, without code.
+
+A check you register with a built-in check's ID keeps the ID, but not the link to its page in these docs: see [Where your check appears](#where-your-check-appears).
 
 ## The contract
 
@@ -144,13 +182,38 @@ Site owners can also switch any check off under **Settings → Checks**, without
 | `id()` | A stable, unique ID. It's stored with findings, dismissals and settings, so never change it. Use lowercase letters, numbers and hyphens, 64 characters at most. Prefix it with your own name. |
 | `title()` | Short title shown in the issue list |
 | `category()` | One of the `Wcag::CATEGORY_*` constants (below) |
-| `wcag()` | The WCAG success criterion, for example `'1.1.1'` |
-| `level()` | `'A'` (default in `AbstractRule`), `'AA'` or `'AAA'` |
+| `wcag()` | The main WCAG success criterion, for example `'1.1.1'` |
+| `level()` | The main criterion's level: `'A'` (default in `AbstractRule`), `'AA'` or `'AAA'` |
 | `severity()` | The default severity. In `AbstractRule`, set `protected string $severity`. |
 | `how_to_fix()` | Plain-language fix, in WordPress terms |
 | `run( \DOMXPath $xpath )` | An array of `Issue` objects |
+| `criteria()` | Optional. Every criterion a finding counts against, main one first. Default in `AbstractRule`: `[ wcag() ]`. |
+| `rationale()` | Optional. Why a finding matters, in one or two plain sentences: what the criterion asks, why this pattern was flagged, and when it's fine. Never a claim about conformance. Default: empty. |
+| `confidence()` | Optional. How sure the check is. In `AbstractRule`, set `protected string $confidence`. Default: `certain`. |
+
+The first eight methods are `\Lumtera\RuleInterface`. A class that implements the interface directly, without `AbstractRule`, works too. It counts as `certain` and has no rationale.
 
 **Severities:** `Issue::SEVERITY_ERROR` (Error), `Issue::SEVERITY_WARNING` (Needs review), `Issue::SEVERITY_NOTICE` (Tip). Use **Needs review** when a person has to decide. Lumtera is built not to cry wolf.
+
+### Confidence {#confidence}
+
+Every check says [how sure it is](/checks#confidence) that a finding is a real barrier. Confidence caps the severity:
+
+| Confidence | Constant | Most severe finding it allows |
+| --- | --- | --- |
+| Certain | `Issue::CONFIDENCE_CERTAIN` | Error |
+| Likely | `Issue::CONFIDENCE_LIKELY` | Needs review |
+| Possible | `Issue::CONFIDENCE_POSSIBLE` | Tip, hidden by default |
+
+- A check with `likely` confidence and an `error` severity reports "Needs review". Set the confidence honestly, and the severity follows.
+- `issue()` takes a fourth argument to make **one finding** less sure than the check's default, as the example does for a `<details>` with no summary. It can lower confidence, never raise it: passing `certain` to a `likely` check still gives `likely`.
+- Findings of `possible` confidence are hidden until someone ticks **Show possible issues** in the Content report or the editor sidebar, and they never count in the score.
+
+### Several criteria {#multiple-criteria}
+
+A finding can fail more than one criterion. A form field with no label, for example, fails 4.1.2, 1.3.1 and 3.3.2. Return every criterion from `criteria()`, main one (`wcag()`) first. `AbstractRule` implements `\Lumtera\MultiCriteriaRule`, so overriding `criteria()` is all you need.
+
+Lumtera reads them with `\Lumtera\Wcag::criteria_of( $rule )`, which falls back to `wcag()` for a class that doesn't implement `MultiCriteriaRule`. Coverage, the WCAG filters in reports, `lumtera/explain-rule` and Pro's conformance report use every criterion. SARIF tags and `wp lumtera rules` show the main one.
 
 **Categories:** `CATEGORY_IMAGES`, `CATEGORY_LINKS`, `CATEGORY_HEADINGS`, `CATEGORY_FORMS`, `CATEGORY_TABLES`, `CATEGORY_MEDIA`, `CATEGORY_STRUCTURE`, `CATEGORY_COLOR`, `CATEGORY_ARIA`, `CATEGORY_LANGUAGE`.
 
@@ -206,4 +269,4 @@ wp.hooks.addFilter( 'lumtera.quickFixers', 'acme/details', ( fixers ) => ( {
 
 `label` is the button text. `done` is announced and shown in a notice with **Undo**. Return `null` when no fix applies.
 
-To add your own button to every issue card, use the `lumtera.issueActions` filter. See [Hooks & filters](/developers/hooks#javascript-hooks).
+To add your own button to every issue card, use the `lumtera.issueActions` filter. See [Hooks & filters](/developers/hooks#javascript).

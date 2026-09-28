@@ -3,7 +3,9 @@ title: Ignore everywhere
 description: Hide a finding that repeats on every page, such as markup your theme adds to every footer, with a required reason, an optional expiry and a log of every change.
 ---
 
-# Ignore everywhere <span class="pro-pill">Pro</span>
+# Ignore everywhere
+
+<p><span class="pro-pill">Pro</span> Every plan</p>
 
 Some findings repeat on every page because of markup you can't change, such as a link your theme adds to every footer. Dismissing it on each page one by one isn't practical. An **ignore rule** hides that finding everywhere it appears, with a reason your team can see.
 
@@ -11,12 +13,12 @@ Some findings repeat on every page because of markup you can't change, such as a
 Use ignore rules for findings that are genuinely not a barrier, or for markup you can't change and have reported to its maker. An ignored finding is still there for visitors. Findings come back when the rule is removed or expires.
 :::
 
-Only administrators can add and remove ignore rules.
+Only administrators can add and remove ignore rules. The settings are under <span class="screen-path">Lumtera → Settings → Ignore rules</span>, in the **Checking** group.
 
 ## What an ignore rule does
 
 - Every matching finding, on every post and page, is hidden. It counts as dismissed, so it leaves scores and totals the same way a [dismissal](/dismissing) does.
-- It applies to content checks and to [page checks](/pro/page-checks).
+- It applies to content checks and to [page checks](/pro/page-checks), both browser and scheduled.
 - A rule made in the editor from an item that needs review never hides an error of the same check.
 - When you add or remove a rule, the pages that may be affected are checked again in the background, so scores and totals catch up.
 
@@ -36,10 +38,10 @@ In the block editor's Lumtera sidebar, ignored findings are listed with the page
 
 ## Add a rule in Settings
 
-Go to <span class="screen-path">Accessibility → Settings → Ignore rules</span>. Under **Add an ignore rule**:
+Go to <span class="screen-path">Lumtera → Settings → Ignore rules</span>. Under **Add an ignore rule**:
 
 <ol class="step-list">
-  <li>Choose the <strong>Check</strong>: any content check or page check.</li>
+  <li>Choose the <strong>Check</strong>: any content check, whole-page check or Pro page check, such as <strong>Controls fade on hover, focus or press</strong>.</li>
   <li>Under <strong>Match</strong>, choose <strong>Exact markup</strong> or <strong>Pattern</strong>.</li>
   <li>Enter the <strong>Markup or pattern</strong> (up to 1,000 characters).</li>
   <li>Enter the <strong>Reason (required)</strong> (up to 500 characters).</li>

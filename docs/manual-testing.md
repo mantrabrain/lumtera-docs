@@ -5,7 +5,13 @@ description: Why a Lumtera score of 100 means "no automated issues found", not "
 
 # What automated testing can't do
 
-Lumtera finds the accessibility problems a machine can reliably detect in your content. That is only part of WCAG. Independent studies put automated testing at between **a third and a half** of real barriers. The rest need a person: is this alt text accurate? Does the page make sense when read aloud? Can you use the menu with a keyboard?
+Lumtera finds the accessibility problems a machine can reliably detect in your content and on the rendered page. That is only part of WCAG. Independent studies put automated testing at between **a third and a half** of real barriers. The rest need a person: is this alt text accurate? Does the page make sense when read aloud? Can you use the menu with a keyboard?
+
+## How much of WCAG the checks cover {#coverage}
+
+WCAG 2.2 has 55 success criteria at levels A and AA. With review mode's whole-page checks, Lumtera's automated checks cover **37 of 55** of them, fully or in part. The checks of saved content alone cover **25 of 55**. With Lumtera Pro's form tests, it's **40 of 55**.
+
+"Covers" means a check looks at that criterion. It doesn't mean your site meets it. Many criteria are covered only in part: a check can find an image with no alt text, but not whether the alt text is accurate. The Overview's **Review coverage** meter shows your own site's numbers, from the checks you have switched on, next to the score and never merged into it. See [Review coverage](/scoring#review-coverage) and [How accurate is Lumtera?](/accuracy).
 
 That's why:
 
@@ -32,18 +38,19 @@ The **Overview** screen includes this checklist, under **What a score cannot tel
 
 The W3C's [Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) guide goes further.
 
-## Guided manual checks
+## Guided checklists
 
-For a more thorough pass, use the **Manual accessibility checks** panel in the block editor. It walks you through nine short checks, step by step: keyboard, zoom and reflow, text spacing, a screen reader skim, forms, video and audio, motion and time limits, pop-ups on hover or focus, and screen orientation. You record **Pass**, **Fail** or **Not applicable** on each page, with an optional note, so your team can see what has been tested. See [Guided manual checks](/manual-checks).
+For a more thorough pass, use the guided checklist, in the block editor's **Manual accessibility checks** panel or review mode's **Manual** tab. It has one short item for each WCAG criterion a person has to judge, grouped by topic: keyboard, zoom, text spacing, screen reader, forms, video and audio, motion and time limits, pop-ups, orientation, touch and pointer, images and color, and consistency across pages. Items that probably don't apply to the page are suggested for you. You record **Pass**, **Fail** or **Not applicable** on each page, with an optional note, so your team can see what has been tested, and the results count as evidence on the Overview's coverage meter. See [Guided checklists](/manual-checks).
 
 ## Getting closer with Lumtera
 
 Some of the manual work can be narrowed down:
 
-- The **Whole page** tab in [review mode](/review-mode#whole-page) checks the rendered page, theme included: real color contrast, landmarks, the skip link, focus hidden behind sticky headers, blocked zoom and sideways scrolling.
-- [Page checks](/pro/page-checks) in Lumtera Pro run those whole-page checks on a schedule, as a logged-out visitor.
-- [Guided manual checks](/manual-checks) record the results of your own testing on each page.
+- The **Whole page** tab in [review mode](/review-mode#whole-page) checks the rendered page, theme included: real color contrast, landmarks, the skip link, blocked zoom and sideways scrolling.
+- The **Keyboard** tab walks the page with the Tab key and tests menus, dialogs and tabs from the keyboard. The **Screen reader** tab previews what a screen reader lists. Neither replaces a real keyboard or screen reader, but they show you where to look.
+- [Page checks](/pro/page-checks) in Lumtera Pro run those whole-page checks on a schedule, as a logged-out visitor, and [form tests](/pro/form-tests) check error messages by submitting forms empty.
+- [Guided checklists](/manual-checks) record the results of your own testing on each page, and [test sessions](/pro/test-sessions) in Lumtera Pro organize them per template, with sign-off.
 - [Client reports](/pro/reports) in Lumtera Pro list all 55 WCAG 2.2 A and AA criteria and mark the ones no automated check covers as **Manual check needed**, so the client can see what is left to test.
-- The [Accessibility Conformance Report](/pro/acr) in Lumtera Pro uses your automated results and your guided manual check results on published pages to suggest a conformance level for each criterion, which you review before exporting.
+- The [Accessibility Conformance Report](/pro/acr) in Lumtera Pro uses your automated results, your checklist results and your test sessions to suggest a conformance level for each criterion, which you review before exporting. Clean automated results alone are never enough for "Supports".
 
 For a formal conformance claim, get a manual audit by an accessibility specialist, ideally including testing by disabled people.
