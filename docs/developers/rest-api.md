@@ -566,7 +566,7 @@ A summary of the site for an agency hub, such as the Lumtera Pro [client portfol
 
 - `pro_active`: `true` while the license is active.
 - `can_report`: the licence is active and the user has `manage_options`, so the hub may call [`POST /reports`](#pro-reports).
-- `can_share`: `can_report`, and the plan includes share links (Freelancer and up).
+- `can_share`: `can_report`, and the plan includes share links (Growth and up).
 - `feedback.overdue`: the number of overdue messages, and `feedback.source` becomes `pro`.
 - `run_diff`: `{ "new", "fixed", "persisting", "at", "since", "version_changed" }` between the last two full checks, or `null`.
 
@@ -587,7 +587,7 @@ Returns what happens now, in words, for example *"Lumtera will ask again in 30 d
 
 ## Lumtera Pro routes: `lumtera-pro/v1` {#pro}
 
-<div class="pro-callout">These routes come with Lumtera Pro. Unless a route says otherwise, its permission check also needs an <strong>active license</strong>. Some need a plan: <strong>Freelancer and up</strong> for consistency checks and the client portfolio. Signed-in checks are on every plan, for as many roles as the plan allows. See <a href="/pro/license">License</a>.</div>
+<div class="pro-callout">These routes come with Lumtera Pro. Unless a route says otherwise, its permission check also needs an <strong>active license</strong>. Some need a plan: <strong>Growth and up</strong> for consistency checks and the client portfolio. Signed-in checks are on every plan, for as many roles as the plan allows. See <a href="/pro/license">License</a>.</div>
 
 | Route | Methods | Permission | Plan |
 | --- | --- | --- | --- |
@@ -613,7 +613,7 @@ Returns what happens now, in words, for example *"Lumtera will ask again in 30 d
 | [`/sessions/{id}/env`](#pro-test-sessions) | POST | report capability | Every plan |
 | [`/sessions/{id}/signoff`](#pro-test-sessions) | POST | report capability | Every plan |
 | [`/sessions/{id}/reopen`](#pro-test-sessions) | POST | `manage_options` | Every plan |
-| [`/consistency/run`](#pro-consistency) | POST | report capability | Freelancer and up |
+| [`/consistency/run`](#pro-consistency) | POST | report capability | Growth and up |
 | [`/remediation/changes`](#pro-fixes-queue) | GET | Propose or approve fixes | Every plan |
 | [`/remediation/changes/{id}`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
 | [`/remediation/approve`](#pro-fixes-queue) | POST | Approve fixes | Every plan |
@@ -625,8 +625,8 @@ Returns what happens now, in words, for example *"Lumtera will ask again in 30 d
 | [`/remediation/run`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
 | [`/remediation/run/cancel`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
 | [`/remediation/run/dismiss`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
-| [`/portfolio/rescans`](#pro-portfolio) | GET | `manage_options` | Freelancer and up |
-| [`/reports`](#pro-reports) | POST | `manage_options` (licence checked in the route) | Every plan; share link Freelancer and up |
+| [`/portfolio/rescans`](#pro-portfolio) | GET | `manage_options` | Growth and up |
+| [`/reports`](#pro-reports) | POST | `manage_options` (licence checked in the route) | Every plan; share link Growth and up |
 
 ### Fix tracking {#pro-fix-tracking}
 
@@ -737,7 +737,7 @@ A result looks like `{ "id", "url", "title", "errors", "warnings", "notices", "s
 | `sitemap` | bool | | Also check pages from the site's sitemap |
 | `list` | string | | Your own list of addresses, one per line, up to 200,000 characters |
 
-`GET` returns the schedule and its state, including `limit`: the plan's pages per scheduled run (Business 25, Freelancer 100, Agency 250, Unlimited 500; `lumtera_pro_limit` filter). Other fields include `pages`, `summary`, `skipped` (list lines left out and why), `running`, `done`, `total`, `last` and `next`.
+`GET` returns the schedule and its state, including `limit`: the plan's pages per scheduled run (Personal 25, Growth 100, Agency 250, Unlimited 500; `lumtera_pro_limit` filter). Other fields include `pages`, `summary`, `skipped` (list lines left out and why), `running`, `done`, `total`, `last` and `next`.
 
 ### Documents {#pro-documents}
 
@@ -784,7 +784,7 @@ The Page checks screen submits a form on a page with test data, while a safety g
 
 ### Signed-in checks {#pro-signed-in-checks}
 
-<div class="pro-callout">Signed-in checks are on every plan: 1 role on <strong>Business</strong> and <strong>Freelancer</strong>, any number on <strong>Agency</strong> and <strong>Unlimited</strong> (<code>lumtera_pro_limit</code> feature <code>role_scans</code>). See <a href="/pro/signed-in-checks">Signed-in checks</a>.</div>
+<div class="pro-callout">Signed-in checks are on every plan: 1 role on <strong>Personal</strong> and <strong>Growth</strong>, any number on <strong>Agency</strong> and <strong>Unlimited</strong> (<code>lumtera_pro_limit</code> feature <code>role_scans</code>). See <a href="/pro/signed-in-checks">Signed-in checks</a>.</div>
 
 Checks pages as a test user of a role, such as a shop customer.
 
@@ -827,7 +827,7 @@ Each returns the session: `{ "items": { "2.1.1": { "result", "note", "tester", "
 
 ### Consistency {#pro-consistency}
 
-<div class="pro-callout">Consistency checks are on the <strong>Freelancer</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. See <a href="/pro/consistency">Consistency checks</a>.</div>
+<div class="pro-callout">Consistency checks are on the <strong>Growth</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. See <a href="/pro/consistency">Consistency checks</a>.</div>
 
 `POST /consistency/run` compares the stored browser checks across pages: consistent navigation, consistent identification, consistent help and multiple ways to find pages. No arguments.
 
@@ -871,13 +871,13 @@ The run routes accept `POST` only: reading a run's progress can advance it, and 
 | `fingerprint` | string | For `group` |
 | `part_type`, `part_key` | string | For `part` |
 
-Each run handles up to the plan's fixes per queue run: Business 25, Freelancer 100, Agency 250, Unlimited 500 (`cap` in the responses; `lumtera_pro_limit` filter). `preview` returns `{ "found", "queued", "left", "cap", "pages", "sample", "origin", "part" }`.
+Each run handles up to the plan's fixes per queue run: Personal 25, Growth 100, Agency 250, Unlimited 500 (`cap` in the responses; `lumtera_pro_limit` filter). `preview` returns `{ "found", "queued", "left", "cap", "pages", "sample", "origin", "part" }`.
 
 **Errors:** 400 `lumtera_pro_none_selected`, 403 `lumtera_pro_not_approver`, 403 `lumtera_pro_batch_none` when a `lumtera_pro_limit` filter gives the plan no queue changes (`-1`).
 
 ### Portfolio {#pro-portfolio}
 
-<div class="pro-callout">The client portfolio is on the <strong>Freelancer</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. See <a href="/pro/portfolio">Client portfolio</a>.</div>
+<div class="pro-callout">The client portfolio is on the <strong>Growth</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. See <a href="/pro/portfolio">Client portfolio</a>.</div>
 
 `GET /portfolio/rescans` returns the progress of rescans started from the Client portfolio screen, keyed by client site ID: `{ "<site id>": { "name", "status", "text" } }`. `status` is `''`, `queued`, `running`, `done` or `failed`. The screen starts rescans itself. This route only reads progress.
 
@@ -906,7 +906,7 @@ Returns HTTP 201:
   "share_url": "https://client.example/…", "expires": 1792592000, "note": "" }
 ```
 
-Share links need the Freelancer plan or above on the client site. Without it, `share_url` and `expires` are `null` and `note` says which plan is needed. **Error:** 500 `lumtera_pro_report`.
+Share links need the Growth plan or above on the client site. Without it, `share_url` and `expires` are `null` and `note` says which plan is needed. **Error:** 500 `lumtera_pro_report`.
 
 ## Related {#related}
 

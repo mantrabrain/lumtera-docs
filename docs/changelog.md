@@ -83,8 +83,8 @@ First public release.
 
 First release. The current build of 1.0.0 also includes:
 
-- The first plan is now called **Business** (it was Personal). Each plan can be a yearly or a [lifetime license](/pro/license#yearly-and-lifetime-licenses).
-- [Signed-in checks](/pro/signed-in-checks) on every plan: 1 role on Business and Freelancer, any number on Agency and Unlimited.
+- The plans are **Personal**, **Growth**, **Agency** and **Unlimited**. Each plan can be a yearly or a [lifetime license](/pro/license#yearly-and-lifetime-licenses).
+- [Signed-in checks](/pro/signed-in-checks) on every plan: 1 role on Personal and Growth, any number on Agency and Unlimited.
 - A [first-run checklist](/pro/license#first-run-checklist) after a license is activated, tailored to the plan, with steps that tick themselves off.
 - Plan limits that link to the plan with more, and a quiet tip at 80% of a limit. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
 - A [renewal reminder](/pro/license#renewal-reminders) 30 and 7 days before a yearly license expires, on Lumtera screens only. Pro keeps working after a license expires.
@@ -98,10 +98,10 @@ Features in 1.0.0:
 
 - [Page checks](/pro/page-checks) in the browser for many pages, at desktop and phone width, on the free plugin's audit engine.
 - Scheduled page checks as a logged-out visitor, with key templates found automatically and a per-plan page limit.
-- [Signed-in checks](/pro/signed-in-checks) with one-time passes and view-only test users: one role on Business and Freelancer, any number on Agency and Unlimited.
+- [Signed-in checks](/pro/signed-in-checks) with one-time passes and view-only test users: one role on Personal and Growth, any number on Agency and Unlimited.
 - [Form tests](/pro/form-tests) with dry-run safeguards for Contact Form 7, WPForms, Gravity Forms, WooCommerce checkout and plain HTML forms.
 - Hover, focus and pressed-state contrast, and a runtime carousel check.
-- [Consistency checks across pages](/pro/consistency) (Freelancer plan and up).
+- [Consistency checks across pages](/pro/consistency) (Growth plan and up).
 - [PDF checks](/pro/documents) for the Media Library.
 - Tamper-evident [evidence log](/pro/evidence) with verification, monthly summaries and an evidence pack.
 - [Scan comparison](/pro/compare-scans) with new, fixed and persisting issues, the site parts edited in between, and the WordPress, theme and plugin updates in between.
@@ -112,7 +112,7 @@ Features in 1.0.0:
 - [Fix tracking](/pro/fix-tracking) with GitHub, GitLab, Jira and Linear.
 - [Ignore-everywhere rules](/pro/ignore), [activity log and webhooks](/pro/activity-webhooks).
 - Branded [client reports](/pro/reports) and a VPAT 2.5 style [conformance report](/pro/acr) on every plan.
-- White-label reports, [client portfolio](/pro/portfolio) with trends, client emails and share links (Freelancer plan and up).
+- White-label reports, [client portfolio](/pro/portfolio) with trends, client emails and share links (Growth plan and up).
 - [Multisite](/pro/multisite) network overview and network license (Agency plan and up).
 - [Abilities](/developers/abilities) for AI assistants that apply only changes a person approved, unless you allow built-in rule fixes.
 - [Licensing](/pro/license) and automatic updates.

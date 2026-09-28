@@ -24,9 +24,9 @@ Only super admins can manage the network license. On each site, <span class="scr
 
 If the main site already had a license before you network-activated Pro, it's adopted as the network license automatically, without using another activation.
 
-### Business and Freelancer keys
+### Personal and Growth keys
 
-A Business or Freelancer key is refused for a network with *"Network activation needs the Agency or Unlimited plan…"*. A refused key doesn't keep an activation.
+A Personal or Growth key is refused for a network with *"Network activation needs the Agency or Unlimited plan…"*. A refused key doesn't keep an activation.
 
 To use one of these keys on a network, network-deactivate Lumtera Pro, then activate the plugin and the key on each site. Each site then needs its own activation.
 
@@ -42,4 +42,4 @@ Sites where Lumtera isn't active say *"Lumtera is not active on this site."* Sit
 
 On a lower plan, the screen says the network overview needs the Agency plan or above, with a link to the network license.
 
-For client sites that aren't in your network, use the [Client portfolio](/pro/portfolio) (Freelancer plan and up).
+For client sites that aren't in your network, use the [Client portfolio](/pro/portfolio) (Growth plan and up).

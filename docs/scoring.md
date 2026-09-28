@@ -63,7 +63,7 @@ Next to the score, the **Review coverage** meter shows how much of WCAG your che
 - The headline counts the WCAG 2.2 A and AA criteria that **have evidence**, out of 55. A criterion has evidence when a person recorded a pass or "not applicable" for it in the last 12 months (with no newer failure), or when the checks that cover it found no errors or items to review on your published content.
 - The line below says how many criteria your automated checks cover, how many of those fully and how many in part, and how many need a person.
 
-The coverage number is worked out from the checks you have switched on, so it is your site's own number. With every free check on, content checks plus review mode's whole-page checks cover **37 of 55** criteria, fully or in part. The checks of saved content alone cover **25 of 55**. Lumtera Pro's [form tests](/pro/form-tests) bring it to **40 of 55**, and its [consistency checks](/pro/consistency) (Freelancer plan and up) to **44 of 55**.
+The coverage number is worked out from the checks you have switched on, so it is your site's own number. With every free check on, content checks plus review mode's whole-page checks cover **37 of 55** criteria, fully or in part. The checks of saved content alone cover **25 of 55**. Lumtera Pro's [form tests](/pro/form-tests) bring it to **40 of 55**, and its [consistency checks](/pro/consistency) (Growth plan and up) to **44 of 55**.
 
 ::: warning Covering is not meeting
 A criterion is covered when a check looks at it. That doesn't mean your site meets it. Many criteria are covered only in part: for example, a check can find an image with no alt text, but not whether the alt text is accurate. Use the [guided checklists](/manual-checks) to record the rest.

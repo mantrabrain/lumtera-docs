@@ -174,7 +174,7 @@ See [License & plans](/pro/license#common-activation-errors). Most often: the li
 
 ## A client site won't connect to the portfolio {#a-client-site-wont-connect-to-the-portfolio}
 
-<p><span class="pro-pill">Pro</span> Freelancer plan and up</p>
+<p><span class="pro-pill">Pro</span> Growth plan and up</p>
 
 See [Troubleshooting connections](/pro/portfolio#troubleshooting-connections).
 

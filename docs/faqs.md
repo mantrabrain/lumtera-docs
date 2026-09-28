@@ -114,7 +114,7 @@ No. The free plugin checks any number of posts, pages, products and custom post 
 
 ## What does Lumtera Pro add?
 
-Page checks for many pages at desktop and phone width, including scheduled checks as a logged-out visitor, and [signed-in checks](/pro/signed-in-checks) as a test user (one role on the Business and Freelancer plans, any number on Agency and Unlimited). [Form tests](/pro/form-tests) that submit forms empty and check the error messages, without sending anything. Hover and focus contrast, carousel checks, [consistency across pages](/pro/consistency) (Freelancer plan and up) and PDF checks. A tamper-evident [evidence log](/pro/evidence), [compare scans](/pro/compare-scans), [test sessions](/pro/test-sessions), and a [fixes queue](/pro/fixes-queue) to review, apply and undo fixes in bulk. Alerts, fix tracking with issue trackers, branded client reports, an [Accessibility Conformance Report](/pro/acr) on every plan, a [client portfolio](/pro/portfolio) (Freelancer plan and up) and multisite tools (Agency plan and up).
+Page checks for many pages at desktop and phone width, including scheduled checks as a logged-out visitor, and [signed-in checks](/pro/signed-in-checks) as a test user (one role on the Personal and Growth plans, any number on Agency and Unlimited). [Form tests](/pro/form-tests) that submit forms empty and check the error messages, without sending anything. Hover and focus contrast, carousel checks, [consistency across pages](/pro/consistency) (Growth plan and up) and PDF checks. A tamper-evident [evidence log](/pro/evidence), [compare scans](/pro/compare-scans), [test sessions](/pro/test-sessions), and a [fixes queue](/pro/fixes-queue) to review, apply and undo fixes in bulk. Alerts, fix tracking with issue trackers, branded client reports, an [Accessibility Conformance Report](/pro/acr) on every plan, a [client portfolio](/pro/portfolio) (Growth plan and up) and multisite tools (Agency plan and up).
 
 The Content report's CSV export is part of the free plugin. Everything in the free plugin stays free. See [What Pro adds](/pro/).
 
@@ -124,7 +124,7 @@ Pro keeps working on the sites where it is active. Updates, support and activati
 
 ## Can I use Lumtera on client sites?
 
-Yes. The free plugin is GPL and has no site limits. To see all your clients' sites on one screen, use the [client portfolio](/pro/portfolio) in Pro (Freelancer plan and up). Client sites only need the free plugin.
+Yes. The free plugin is GPL and has no site limits. To see all your clients' sites on one screen, use the [client portfolio](/pro/portfolio) in Pro (Growth plan and up). Client sites only need the free plugin.
 
 ## Can I use Lumtera in CI?
 

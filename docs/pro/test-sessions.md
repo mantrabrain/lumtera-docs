@@ -69,7 +69,7 @@ Only an administrator can reopen a signed-off session. Open the session, enter t
 
 ## Cross-page consistency {#consistency}
 
-The **Cross-page consistency** card on the same screen compares the pages scheduled checks visit: menu order (WCAG 3.2.3), names of header and footer links (3.2.4), where help is (3.2.6), and search or a site map (2.4.5). It runs after each scheduled page check. Click **Compare pages again** to run it now. It needs the Freelancer plan or higher. See [Consistency checks](/pro/consistency).
+The **Cross-page consistency** card on the same screen compares the pages scheduled checks visit: menu order (WCAG 3.2.3), names of header and footer links (3.2.4), where help is (3.2.6), and search or a site map (2.4.5). It runs after each scheduled page check. Click **Compare pages again** to run it now. It needs the Growth plan or higher. See [Consistency checks](/pro/consistency).
 
 ## Privacy
 

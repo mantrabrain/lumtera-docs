@@ -97,7 +97,7 @@ The pack's toolbar:
 - **Download HTML** saves a self-contained file.
 - **Timeline (CSV)** downloads the timeline as `accessibility-evidence-<your-host>-<date>.csv`, for example `accessibility-evidence-example.com-2026-09-28.csv`.
 
-The pack uses your report [branding](/pro/reports#branding): logo, agency name and accent color. It ends with a Lumtera credit unless white-label is on (Freelancer plan and up). It states that it isn't legal advice and doesn't certify conformance.
+The pack uses your report [branding](/pro/reports#branding): logo, agency name and accent color. It ends with a Lumtera credit unless white-label is on (Growth plan and up). It states that it isn't legal advice and doesn't certify conformance.
 
 ## How long evidence is kept {#retention}
 

@@ -40,7 +40,7 @@ Only checks that Lumtera knows how to fix are offered. See [What can be fixed th
 
 Each run handles up to your plan's number of changes:
 
-| Business | Freelancer | Agency | Unlimited |
+| Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- |
 | 25 | 100 | 250 | 500 |
 
@@ -110,7 +110,7 @@ Administrators choose who can do what under <span class="screen-path">Lumtera â†
 
 ### Require a second person to approve {#require-a-second-person-to-approve}
 
-<div class="pro-callout">This rule is part of the <strong>Agency</strong> and <strong>Unlimited</strong> plans. On Business and Freelancer the switch is shown, can't be turned on, and says so, with <strong>See the Agency plan</strong> and <strong>Upgrade in your account</strong> links.</div>
+<div class="pro-callout">This rule is part of the <strong>Agency</strong> and <strong>Unlimited</strong> plans. On Personal and Growth the switch is shown, can't be turned on, and says so, with <strong>See the Agency plan</strong> and <strong>Upgrade in your account</strong> links.</div>
 
 With **Require a second person to approve** on, nobody can approve a fix they proposed themselves. Use it when changes to your pages need a second pair of eyes.
 

@@ -42,12 +42,12 @@ After you activate a license, administrators see **Get started with your … pla
 | --- | --- |
 | **Check your key pages in a real browser**: run [page checks](/pro/page-checks) on your home page and the pages people use most | Every plan |
 | **Run your first scheduled check**: press **Run now** under [scheduled checks](/pro/page-checks#scheduled-checks), or wait for the night's run | Every plan |
-| **Connect your first client site** in the [client portfolio](/pro/portfolio) | Freelancer and up |
-| **Check your store as a signed-in customer**: add the Customer role under [signed-in checks](/pro/signed-in-checks) | Business, when WooCommerce is active |
-| **Test your forms** with [form tests](/pro/form-tests) | Business, without WooCommerce |
+| **Connect your first client site** in the [client portfolio](/pro/portfolio) | Growth and up |
+| **Check your store as a signed-in customer**: add the Customer role under [signed-in checks](/pro/signed-in-checks) | Personal, when WooCommerce is active |
+| **Test your forms** with [form tests](/pro/form-tests) | Personal, without WooCommerce |
 | **Choose who gets alerts and the weekly summary** under [Alerts](/pro/monitoring) | Every plan |
-| **Create a white-label client report** under [Client reports](/pro/reports) | Freelancer and up |
-| **Prepare your conformance report (ACR)**: review each row of the [ACR](/pro/acr) and save it | Business |
+| **Create a white-label client report** under [Client reports](/pro/reports) | Growth and up |
+| **Prepare your conformance report (ACR)**: review each row of the [ACR](/pro/acr) and save it | Personal |
 
 When every step is done, the card says **You are set up**. **Hide checklist** (or **Close**, once everything is done) hides it for you only. It comes back if the plan changes, with that plan's steps. While it shows, the free plugin's [getting-started checklist](/quick-start#the-getting-started-checklist) steps aside, so the Overview never has two. Developers can change the steps with the `lumtera_pro_onboarding_steps` filter.
 
@@ -77,7 +77,7 @@ Next to it, **What your license covers** lists what Pro includes, and your plan'
 - a fixes queue to propose, review, apply and undo fixes on many pages at once: built-in fixes or text you write, plus AI drafts if you connect an AI provider. A person approves every change.
 - email and Slack alerts, a weekly summary, score history and fix tracking with issue trackers
 - branded client reports with a full WCAG 2.2 A and AA checklist, and a VPAT 2.5 style conformance report, on every plan
-- Freelancer and above: white-label reports, the client portfolio, client emails, share links and consistency checks across pages
+- Growth and above: white-label reports, the client portfolio, client emails, share links and consistency checks across pages
 - Agency and above: signed-in checks as any number of roles, an approval rule for fixes, and multisite network tools
 - automatic updates and support while the license is active
 - a reminder that if a license expires, Pro keeps working on the sites where it is active; only updates, support and activating new sites pause
@@ -86,7 +86,7 @@ The card shows no prices.
 
 ## Plans
 
-| | Business | Freelancer | Agency | Unlimited |
+| | Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- | --- |
 | Sites | 1 | 5 | 25 | Unlimited |
 | Pages per scheduled run | 25 | 100 | 250 | 500 |
@@ -98,14 +98,14 @@ The card shows no prices.
 
 | Plan | Adds |
 | --- | --- |
-| **Freelancer and up** | White-label (hide the Lumtera credit on reports), the [client portfolio](/pro/portfolio), client emails, share links, and [consistency checks across pages](/pro/consistency) |
+| **Growth and up** | White-label (hide the Lumtera credit on reports), the [client portfolio](/pro/portfolio), client emails, share links, and [consistency checks across pages](/pro/consistency) |
 | **Agency and up** | [Signed-in checks](/pro/signed-in-checks) as any number of roles, the [approval rule](/pro/fixes-queue#require-a-second-person-to-approve) for fixes, the [network overview](/pro/multisite#network-overview) and a [network-wide license](/pro/multisite#one-license-for-the-network) |
 
 ### Yearly and lifetime licenses {#yearly-and-lifetime-licenses}
 
 Each plan is sold as a yearly license or a lifetime license. Both include the same features and limits. A lifetime license never expires, so it never shows a renewal date or reminder; the card says **Expires: Never (lifetime)**.
 
-A key without a plan recorded in the store counts as Business. See [pricing](https://mantrabrain.com/plugins/lumtera/pricing/?utm_source=docs&utm_medium=referral&utm_campaign=lumtera-docs) for current prices.
+A key without a plan recorded in the store counts as Personal. See [pricing](https://mantrabrain.com/plugins/lumtera/pricing/?utm_source=docs&utm_medium=referral&utm_campaign=lumtera-docs) for current prices.
 
 ### Limits per run
 
@@ -116,7 +116,7 @@ A key without a plan recorded in the store counts as Business. See [pricing](htt
 
 ### When you reach a limit {#when-you-reach-a-limit}
 
-When something is held back by your plan, the message names your plan's limit and the plan with more, for example *"Freelancer checks up to 100 pages in each run."*, followed by two links:
+When something is held back by your plan, the message names your plan's limit and the plan with more, for example *"Growth checks up to 100 pages in each run."*, followed by two links:
 
 - **See the … plan** opens that plan on the pricing page.
 - **Upgrade in your account** opens your store account, where each key lists the upgrades available to it, with the price already reduced for the time left.
@@ -127,7 +127,7 @@ Developers can change both with the `lumtera_pro_limit` filter. See [For develop
 
 ### Upgrade or change plan
 
-Buy the upgrade in your store account, then click **Refresh license**. The message says, for example, *"Your plan changed from Freelancer to Agency."*
+Buy the upgrade in your store account, then click **Refresh license**. The message says, for example, *"Your plan changed from Growth to Agency."*
 
 A feature your plan doesn't include shows a short note naming the plan that does, with the same **See the … plan** and **Upgrade in your account** links.
 
@@ -197,13 +197,13 @@ Deleting Lumtera Pro keeps the license key on the site, so a reinstall keeps wor
 
 If Lumtera Pro is **network-activated**, one license covers the whole network and uses a single site activation. A network license needs the **Agency** or **Unlimited** plan. Manage it under <span class="screen-path">Network Admin → Accessibility → License</span>. Each site's License tab shows a read-only summary.
 
-A network license on the Business or Freelancer plan works on the **main site only**, and the network screen says so. To use Pro on the other sites, upgrade the plan, or network-deactivate Pro and activate it and a key on each site. See [Multisite network](/pro/multisite).
+A network license on the Personal or Growth plan works on the **main site only**, and the network screen says so. To use Pro on the other sites, upgrade the plan, or network-deactivate Pro and activate it and a key on each site. See [Multisite network](/pro/multisite).
 
 ## For developers
 
 - `lumtera_pro_limit( $limit, $feature, $plan )` changes a plan's allowance: `scheduled_pages`, `batch_size`, `portfolio_sites` or `role_scans`. `0` means no set number and `-1` means none. Scheduled runs always have a cap: `0` there means the Unlimited plan's 500.
 - `lumtera_pro_can( $allowed, $feature, $plan )` changes whether the plan includes a feature, such as `white_label`, `portfolio`, `consistency` or `approval_policy`.
-- `lumtera_pro_price_plan_map( $map )` maps the store's price IDs to plans. By default, 1–4 are the yearly Business, Freelancer, Agency and Unlimited prices and 5–8 the lifetime prices of the same plans. An ID missing from the map counts as Business.
+- `lumtera_pro_price_plan_map( $map )` maps the store's price IDs to plans. By default, 1–4 are the yearly Personal, Growth, Agency and Unlimited prices and 5–8 the lifetime prices of the same plans. An ID missing from the map counts as Personal.
 - `lumtera_pro_onboarding_steps( $steps, $plan )` changes the [first-run checklist](#first-run-checklist).
 - The `lumtera_pro_license_activated` and `lumtera_pro_license_checked` actions run after a key is activated and after each daily license check.
 

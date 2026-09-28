@@ -111,7 +111,7 @@ Each browser check lists the forms it finds in the **Forms** card. **Test form**
 
 ### Signed-in pages
 
-The **Signed-in checks** card checks My account, cart, checkout and members' pages as a test user with a role you choose: 1 role on Business and Freelancer, any number on Agency and Unlimited. See [Signed-in checks](/pro/signed-in-checks).
+The **Signed-in checks** card checks My account, cart, checkout and members' pages as a test user with a role you choose: 1 role on Personal and Growth, any number on Agency and Unlimited. See [Signed-in checks](/pro/signed-in-checks).
 
 ## Results
 
@@ -155,7 +155,7 @@ Each appears in the results as **Template: …**, for example "Template: Categor
 
 Each run checks up to your plan's limit:
 
-| Business | Freelancer | Agency | Unlimited |
+| Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- |
 | 25 pages | 100 pages | 250 pages | 500 pages |
 
@@ -170,13 +170,13 @@ Pages are taken in this order, each address once, until the limit is reached:
 
 Pages you removed from the results are left out.
 
-When the pages found come close to your plan's limit, people who manage the site see a line such as *"Scheduled runs found 30 pages to check; your Business plan checks 25 in each run, so 5 are left out."*, with links to the plan that checks more. It appears at 80% of the limit and can be dismissed. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
+When the pages found come close to your plan's limit, people who manage the site see a line such as *"Scheduled runs found 30 pages to check; your Personal plan checks 25 in each run, so 5 are left out."*, with links to the plan that checks more. It appears at 80% of the limit and can be dismissed. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
 
 **Timing:** the first run is at 03:00 (site time) the next day, then daily or weekly. Pages are checked five at a time in the background. **Run now** starts a run straight away and shows progress, for example *"Checking as a logged-out visitor: 5 of 25 pages…"*. **Last run** and **Next run** show on the card.
 
 Scheduled checks never add products to a cart, so Checkout is checked in its empty-cart state. They only request pages on your own site, and follow redirects only while they stay on it. They never submit forms.
 
-After each scheduled run, Pro compares the pages it checked for [consistency across pages](/pro/consistency) (Freelancer and up).
+After each scheduled run, Pro compares the pages it checked for [consistency across pages](/pro/consistency) (Growth and up).
 
 ### What scheduled checks can't do
 

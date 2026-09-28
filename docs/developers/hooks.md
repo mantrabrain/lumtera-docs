@@ -428,9 +428,9 @@ Findings from a measure need a matching `MeasuredRule` class on the server, adde
 
 | Hook | Type | Parameters | Purpose |
 | --- | --- | --- | --- |
-| `lumtera_pro_can` | filter | `bool $allowed`, `string $feature`, `int $plan` | Whether the plan includes a feature. Only asked while the license is active. Features on every plan: `acr`, `carousel_motion`, `evidence`, `form_flows`, `role_scans`, `state_contrast`. Freelancer and up: `white_label`, `client_emails`, `share_links`, `portfolio`, `consistency`. Agency and up: `approval_policy`, `network`. An unknown feature is refused. `$plan` is the store's price ID (see `lumtera_pro_price_plan_map`; 0 when unknown). |
+| `lumtera_pro_can` | filter | `bool $allowed`, `string $feature`, `int $plan` | Whether the plan includes a feature. Only asked while the license is active. Features on every plan: `acr`, `carousel_motion`, `evidence`, `form_flows`, `role_scans`, `state_contrast`. Growth and up: `white_label`, `client_emails`, `share_links`, `portfolio`, `consistency`. Agency and up: `approval_policy`, `network`. An unknown feature is refused. `$plan` is the store's price ID (see `lumtera_pro_price_plan_map`; 0 when unknown). |
 | `lumtera_pro_limit` | filter | `int $limit`, `string $feature`, `int $plan` | A plan's allowance for a counted feature: `scheduled_pages` (pages per scheduled run), `batch_size` (fixes per queue run), `portfolio_sites` (client sites) or `role_scans` (roles for [signed-in checks](/pro/signed-in-checks)). 0 means no set number, and -1 that the plan doesn't include it. A feature that isn't listed gets -1. Defaults below. |
-| `lumtera_pro_price_plan_map` | filter | `array $map` (price ID => plan) | Maps the store's price IDs to plans (1 Business, 2 Freelancer, 3 Agency, 4 Unlimited). Default: 1–4 are the yearly prices and 5–8 the [lifetime](/pro/license#yearly-and-lifetime-licenses) prices of the same plans. Entries that aren't a positive price ID mapped to a known plan are ignored, and an ID missing from the map counts as Business. |
+| `lumtera_pro_price_plan_map` | filter | `array $map` (price ID => plan) | Maps the store's price IDs to plans (1 Personal, 2 Growth, 3 Agency, 4 Unlimited). Default: 1–4 are the yearly prices and 5–8 the [lifetime](/pro/license#yearly-and-lifetime-licenses) prices of the same plans. Entries that aren't a positive price ID mapped to a known plan are ignored, and an ID missing from the map counts as Personal. |
 | `lumtera_pro_license_activated` | action | `int $plan` | After a key is activated on this site (or network). Pro uses it to put every scheduled job back in place. |
 | `lumtera_pro_license_checked` | action | `string $status` | After each daily license check with the store, with the stored status, such as `valid` or `expired`. |
 | `lumtera_pro_onboarding_steps` | filter | `array $steps`, `int $plan` | The steps of the [first-run checklist](/pro/license#first-run-checklist). Each step is `{ id, title, text, url, action, done }`; `done` ticks it off. |
@@ -440,7 +440,7 @@ Findings from a measure need a matching `MeasuredRule` class on the server, adde
 
 Default limits for `lumtera_pro_limit`:
 
-| Feature | Business | Freelancer | Agency | Unlimited |
+| Feature | Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- | --- |
 | `scheduled_pages` | 25 | 100 | 250 | 500 |
 | `batch_size` | 25 | 100 | 250 | 500 |

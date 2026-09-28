@@ -1,11 +1,11 @@
 ---
 title: Consistency across pages
-description: Lumtera Pro compares the pages it has checked for menu order, the names of header and footer links, where help is, and a search box or site map. Freelancer, Agency and Unlimited plans.
+description: Lumtera Pro compares the pages it has checked for menu order, the names of header and footer links, where help is, and a search box or site map. Growth, Agency and Unlimited plans.
 ---
 
 # Consistency across pages
 
-<p><span class="pro-pill">Pro</span> Freelancer, Agency and Unlimited plans</p>
+<p><span class="pro-pill">Pro</span> Growth, Agency and Unlimited plans</p>
 
 Some WCAG criteria are about the whole site, not one page. People learn where the menu items are, what a link is called and where to find help. When one page does it differently, they get lost. No single-page check can see that.
 
@@ -43,7 +43,7 @@ Every scheduled check, and every desktop browser check on the Page checks screen
 
 The comparison uses the pages that still have a logged-out desktop result on the Page checks screen. Pages you remove from the results drop out of the next comparison. [Signed-in results](/pro/signed-in-checks) and phone-width results aren't compared.
 
-On Business, the records are still kept, so they're ready if you upgrade.
+On Personal, the records are still kept, so they're ready if you upgrade.
 
 ## Where the findings go
 

@@ -21,8 +21,8 @@ Lumtera Pro is an add-on for the free [Lumtera](/) plugin. **Everything in the f
 | --- | --- | --- |
 | [Page checks](/pro/page-checks) | Checks whole live pages (theme, menus, footer, checkout) with your theme's real CSS, at desktop and phone width. It runs the same engine as [review mode](/review-mode), plus hover, focus and pressed-state contrast and a check for carousels that move on their own. Scheduled checks re-check your key pages daily or weekly as a logged-out visitor. | Every plan |
 | [Form tests](/pro/form-tests) | Submits a form empty in a hidden frame, safely, and checks how its errors are shown and announced. Works with Contact Form 7, WPForms, Gravity Forms, the WooCommerce checkout and plain HTML forms. | Every plan |
-| [Signed-in checks](/pro/signed-in-checks) | Checks My account, cart, checkout and members' pages as a test user with the role you choose. | Every plan: 1 role on Business and Freelancer, any number on Agency and Unlimited |
-| [Consistency across pages](/pro/consistency) | Compares the pages checked for menu order, link names, where help is, and a search box or site map. | Freelancer and up |
+| [Signed-in checks](/pro/signed-in-checks) | Checks My account, cart, checkout and members' pages as a test user with the role you choose. | Every plan: 1 role on Personal and Growth, any number on Agency and Unlimited |
+| [Consistency across pages](/pro/consistency) | Compares the pages checked for menu order, link names, where help is, and a search box or site map. | Growth and up |
 | [PDF checks](/pro/documents) | Checks the PDFs in your Media Library for tags, a title, a language, real text, bookmarks and restrictive security settings. | Every plan |
 | [Test sessions](/pro/test-sessions) | Records a person's tests of each template, with the assistive technology and browser used, and a sign-off. | Every plan |
 | [Ignore everywhere](/pro/ignore) | Hides a finding that repeats on every page, such as a theme footer, with a reason, an optional expiry and a log. | Every plan |
@@ -41,24 +41,24 @@ Lumtera Pro is an add-on for the free [Lumtera](/) plugin. **Everything in the f
 | Feature | What it does | Plan |
 | --- | --- | --- |
 | [Client reports](/pro/reports) | Branded, printable reports with all 55 WCAG 2.2 A and AA criteria. | Every plan |
-| White-label reports | Hides the Lumtera credit on client reports and conformance reports. | Freelancer and up |
-| Client emails and share links | Email reports to clients on a schedule, and share a report with a private link. See [Client reports](/pro/reports) and [Client portfolio](/pro/portfolio). | Freelancer and up |
+| White-label reports | Hides the Lumtera credit on client reports and conformance reports. | Growth and up |
+| Client emails and share links | Email reports to clients on a schedule, and share a report with a private link. See [Client reports](/pro/reports) and [Client portfolio](/pro/portfolio). | Growth and up |
 | [Conformance report (ACR)](/pro/acr) | A draft Accessibility Conformance Report in the VPAT 2.5 layout, filled in from your automated and manual results, for you to review. | Every plan |
 | [Evidence log](/pro/evidence) | A tamper-evident timeline of scans, tests, fixes, feedback and statement changes, with an evidence pack to print or export. Not legal advice. | Every plan |
 | [Compare scans](/pro/compare-scans) | Shows what is new, fixed and still there between two scans, by check and by site part. | Every plan |
 | [Feedback response targets](/pro/feedback-targets) | Your own reply goals for visitor feedback, with an **Overdue** view. | Every plan |
 | [Burden records](/pro/burden) | Records of disproportionate burden decisions, with a public summary for your statement. Not legal advice. | Every plan |
 | [Activity log & webhooks](/pro/activity-webhooks) | Who changed what, and when. Send events to Slack, Microsoft Teams or your own tools. | Every plan |
-| [Client portfolio](/pro/portfolio) | Your client sites on one screen, connected straight from their WordPress. | Freelancer and up |
+| [Client portfolio](/pro/portfolio) | Your client sites on one screen, connected straight from their WordPress. | Growth and up |
 | [Multisite network](/pro/multisite) | One license for a whole network, and every site on one Network Admin screen. | Agency and up |
 
 ## Plans
 
 Without Pro, **Free vs Pro** in the Lumtera menu compares the free plugin with each plan, feature by feature, without prices.
 
-![The Free vs Pro screen: features by plan, Free, Business, Freelancer and Agency or Unlimited](/screenshots/free-vs-pro.webp)
+![The Free vs Pro screen: features by plan, Free, Personal, Growth and Agency or Unlimited](/screenshots/free-vs-pro.webp)
 
-| | Business | Freelancer | Agency | Unlimited |
+| | Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- | --- |
 | Sites | 1 | 5 | 25 | Unlimited |
 | Pages per scheduled run | 25 | 100 | 250 | 500 |
@@ -70,7 +70,7 @@ Each plan is sold yearly or as a lifetime license. Both include the same feature
 
 **Every plan includes** page checks and scheduled checks, signed-in checks, form tests, hover and focus contrast, the carousel check, PDF checks, test sessions, the evidence log, compare scans, the fixes queue, fix tracking and issue trackers, alerts and the weekly digest, ignore rules, the activity log and webhooks, feedback response targets, burden records, client reports with your branding, the conformance report (ACR) and the client role.
 
-**Freelancer and up** add white-label reports, the client portfolio, client emails, share links and consistency checks across pages.
+**Growth and up** add white-label reports, the client portfolio, client emails, share links and consistency checks across pages.
 
 **Agency and up** add signed-in checks as any number of roles, the approval rule for fixes, the multisite network overview and a network-wide license.
 

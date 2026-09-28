@@ -5,7 +5,7 @@ description: Create branded, printable accessibility reports with a full WCAG 2.
 
 # Client reports
 
-<p><span class="pro-pill">Pro</span> Every plan. White-label and share links: Freelancer, Agency and Unlimited plans.</p>
+<p><span class="pro-pill">Pro</span> Every plan. White-label and share links: Growth, Agency and Unlimited plans.</p>
 
 Turn your results into a branded report you can send to a client. Every report covers all **55 WCAG 2.2 level A and AA success criteria**. Go to <span class="screen-path">Lumtera → Reports → Reports</span>. The screen is called **Client reports**. Anyone with the **See reports and check the site** permission can create reports (editors and administrators by default).
 
@@ -60,7 +60,7 @@ The **Reports** list shows your latest 50 reports with their **Score** and **Err
 
 ## Share links {#share-links}
 
-<div class="pro-callout">Share links are included in the <strong>Freelancer</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. On the Business plan, the <strong>Share links</strong> card says which plan it needs.</div>
+<div class="pro-callout">Share links are included in the <strong>Growth</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans. On the Personal plan, the <strong>Share links</strong> card says which plan it needs.</div>
 
 A share link opens one report, read-only, for someone without an account on your site.
 
@@ -115,13 +115,13 @@ Set your branding once under <span class="screen-path">Lumtera → Settings → 
 | **Contact email** | The admin email |
 | **Accent color** | `#1f4e79` |
 | **Footer text (optional)** | Empty (the agency name is used) |
-| **Hide the "Generated with Lumtera" credit (white-label)** | Off. **Freelancer plan and up.** |
+| **Hide the "Generated with Lumtera" credit (white-label)** | Off. **Growth plan and up.** |
 
 Text on the accent color switches between black and white automatically to stay readable, and the accent is darkened where needed to reach 4.5:1 contrast.
 
 Branding is included in every plan. It's also used by the [conformance report](/pro/acr), the [evidence pack](/pro/evidence#evidence-pack) and [client emails](/pro/portfolio#client-emails).
 
-White-label (hiding the credit) needs the Freelancer plan or higher. On the Business plan, the setting is replaced by a note saying which plan it needs. If a plan is downgraded, new reports show the credit again.
+White-label (hiding the credit) needs the Growth plan or higher. On the Personal plan, the setting is replaced by a note saying which plan it needs. If a plan is downgraded, new reports show the credit again.
 
 ## Export findings to CSV
 

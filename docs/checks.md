@@ -1126,7 +1126,7 @@ Every Pro plan. See [Carousel motion](/pro/page-checks).
 
 ### Consistency across pages
 
-Freelancer plan and up. See [Consistency across pages](/pro/consistency).
+Growth plan and up. See [Consistency across pages](/pro/consistency).
 
 | Check | ID | WCAG | Level | Default |
 | --- | --- | --- | --- | --- |
@@ -1227,7 +1227,7 @@ Freelancer plan and up. See [Consistency across pages](/pro/consistency).
 
 #### Menus list their links in a different order on different pages {#consistency-navigation}
 
-`consistency-navigation` · WCAG [3.2.3 Consistent Navigation](https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html) · Level AA · Default: **Needs review** · Freelancer plan and up
+`consistency-navigation` · WCAG [3.2.3 Consistent Navigation](https://www.w3.org/WAI/WCAG22/Understanding/consistent-navigation.html) · Level AA · Default: **Needs review** · Growth plan and up
 
 **Why it's flagged:** Lumtera Pro compares the pages its page checks have seen. Differences are for a person to review: a section can have its own menu, and finding none does not prove the site is consistent.
 
@@ -1235,7 +1235,7 @@ Freelancer plan and up. See [Consistency across pages](/pro/consistency).
 
 #### Links to the same page have different names on different pages {#consistency-identification}
 
-`consistency-identification` · WCAG [3.2.4 Consistent Identification](https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html) · Level AA · Default: **Needs review** · Freelancer plan and up
+`consistency-identification` · WCAG [3.2.4 Consistent Identification](https://www.w3.org/WAI/WCAG22/Understanding/consistent-identification.html) · Level AA · Default: **Needs review** · Growth plan and up
 
 **Why it's flagged:** Lumtera Pro compares the pages its page checks have seen. Differences are for a person to review: a section can have its own menu, and finding none does not prove the site is consistent.
 
@@ -1243,7 +1243,7 @@ Freelancer plan and up. See [Consistency across pages](/pro/consistency).
 
 #### Help is in a different place on different pages {#consistency-help}
 
-`consistency-help` · WCAG [3.2.6 Consistent Help](https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html) · Level A · Default: **Needs review** · Freelancer plan and up
+`consistency-help` · WCAG [3.2.6 Consistent Help](https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html) · Level A · Default: **Needs review** · Growth plan and up
 
 **Why it's flagged:** Lumtera Pro compares the pages its page checks have seen. Differences are for a person to review: a section can have its own menu, and finding none does not prove the site is consistent.
 
@@ -1251,7 +1251,7 @@ Freelancer plan and up. See [Consistency across pages](/pro/consistency).
 
 #### No search box or site map on the pages checked {#consistency-multiple-ways}
 
-`consistency-multiple-ways` · WCAG [2.4.5 Multiple Ways](https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html) · Level AA · Default: **Needs review** · Freelancer plan and up
+`consistency-multiple-ways` · WCAG [2.4.5 Multiple Ways](https://www.w3.org/WAI/WCAG22/Understanding/multiple-ways.html) · Level AA · Default: **Needs review** · Growth plan and up
 
 **Why it's flagged:** Lumtera Pro compares the pages its page checks have seen. Differences are for a person to review: a section can have its own menu, and finding none does not prove the site is consistent.
 

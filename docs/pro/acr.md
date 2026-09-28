@@ -9,7 +9,7 @@ description: Draft an Accessibility Conformance Report in the VPAT 2.5 WCAG edit
 
 An Accessibility Conformance Report (ACR) documents, criterion by criterion, how a website conforms to WCAG. Clients, procurement teams and public bodies often ask for one, usually in the **VPAT®** format.
 
-Lumtera Pro drafts an ACR for your site in the **VPAT 2.5 WCAG edition** layout, covering the 55 WCAG 2.2 level A and AA success criteria. It fills in each row from your results. **You review and complete it.** The conformance report is included in every Lumtera Pro plan, Business included.
+Lumtera Pro drafts an ACR for your site in the **VPAT 2.5 WCAG edition** layout, covering the 55 WCAG 2.2 level A and AA success criteria. It fills in each row from your results. **You review and complete it.** The conformance report is included in every Lumtera Pro plan, Personal included.
 
 ::: warning A draft, not a certification
 Lumtera can't decide conformance for you. Automated checks find only part of what WCAG covers, so the report never marks a criterion as "Supports" from automated results alone. Treat what Lumtera fills in as a starting point. A person who knows the site must review every row before the report is shared. The report itself says it isn't a certification, and it isn't legal advice.
@@ -76,7 +76,7 @@ A page is counted once. A live page check of a published post counts as that pos
 - **[Form tests](/pro/form-tests):** their findings count with the page the form is on.
 - **Manual checks** recorded in the block editor, by page.
 - **Signed-off [test sessions](/pro/test-sessions)**, by page template. The remarks list them under *"Signed-off test sessions:"*, with each template's result, who tested it, the assistive technology and browser, and the date. When a page has both an editor checklist result and a session result, the newer one counts.
-- **[Consistency checks](/pro/consistency)** across pages (Freelancer plan and up), as findings to review.
+- **[Consistency checks](/pro/consistency)** across pages (Growth plan and up), as findings to review.
 
 ::: tip "Not Evaluated" rows need work
 The VPAT reserves "Not Evaluated" for level AAA. Before you call the report complete, evaluate those rows: test them, record manual checks or a test session, review open findings, or set the level yourself with an explanation.

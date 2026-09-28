@@ -1,11 +1,11 @@
 ---
 title: Signed-in checks
-description: Check My account, cart, checkout and members' pages as a test user with the role you choose, safely, with a one-time pass for each page. Lumtera Pro, every plan (1 role on Business and Freelancer, any number on Agency and Unlimited).
+description: Check My account, cart, checkout and members' pages as a test user with the role you choose, safely, with a one-time pass for each page. Lumtera Pro, every plan (1 role on Personal and Growth, any number on Agency and Unlimited).
 ---
 
 # Signed-in checks
 
-<p><span class="pro-pill">Pro</span> Every plan: 1 role on Business and Freelancer, any number on Agency and Unlimited</p>
+<p><span class="pro-pill">Pro</span> Every plan: 1 role on Personal and Growth, any number on Agency and Unlimited</p>
 
 Account, cart and checkout pages change once someone signs in, and they are the pages customers rely on most. Ordinary [page checks](/pro/page-checks) see them as you (an administrator) or as a logged-out visitor. **Signed-in checks** open them as a customer or member would see them, as a dedicated test user with the role you choose.
 
@@ -13,11 +13,11 @@ They're set up in the **Signed-in checks** card on <span class="screen-path">Lum
 
 ## How many roles your plan includes {#roles-per-plan}
 
-| Business | Freelancer | Agency | Unlimited |
+| Personal | Growth | Agency | Unlimited |
 | --- | --- | --- | --- |
 | 1 role | 1 role | Any number, up to the card's 5 | Any number, up to the card's 5 |
 
-On Business and Freelancer, the card says *"Your Business plan includes signed-in checks as 1 role."* For a shop, that one role is usually **Customer**. Once the role is added, adding another says *"To check as another role, remove one first or upgrade the plan."*, with a sentence naming the plan that allows more and **See the … plan** and **Upgrade in your account** links. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
+On Personal and Growth, the card says *"Your Personal plan includes signed-in checks as 1 role."* For a shop, that one role is usually **Customer**. Once the role is added, adding another says *"To check as another role, remove one first or upgrade the plan."*, with a sentence naming the plan that allows more and **See the … plan** and **Upgrade in your account** links. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
 
 The limit is checked every time a test user is signed in, so it also holds for scheduled checks. If a plan is downgraded, the first roles you added keep working, up to the new plan's number.
 

@@ -210,7 +210,7 @@ Pro adds these tables to the free plugin's missing-table check with the `lumtera
 | `lumtera_pro_engine_rebaselined` | Marks that older page results were converted to the current check engine |
 | `lumtera_pro_role_scans` | Signed-in check settings per role |
 | `lumtera_pro_form_flows` | Forms found on checked pages and their latest form test results (up to 100 forms) |
-| `lumtera_pro_consistency` | Consistency findings across pages (Freelancer plan and up) |
+| `lumtera_pro_consistency` | Consistency findings across pages (Growth plan and up) |
 | `lumtera_pro_page_data` | Menus, help links, search and site map links found on each checked page (up to 150 pages), for the consistency checks. Kept on every plan. |
 | `lumtera_pro_feedback_targets` | Response targets per feedback request type |
 | `lumtera_pro_remediation` | **Fix approvals** settings: the approval policy and whether agents may approve rule fixes |

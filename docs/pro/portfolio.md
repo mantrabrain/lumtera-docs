@@ -5,9 +5,9 @@ description: See every client site's accessibility score, trend and coverage on 
 
 # Client portfolio
 
-<p><span class="pro-pill">Pro</span> Freelancer, Agency and Unlimited plans</p>
+<p><span class="pro-pill">Pro</span> Growth, Agency and Unlimited plans</p>
 
-<div class="pro-callout">The client portfolio holds up to <strong>5 client sites on Freelancer</strong>, <strong>25 on Agency</strong> and <strong>no set number on Unlimited</strong>. Your own site is always included and doesn't count. On the Business plan, the Portfolio screen says which plan it needs. When the portfolio reaches 80% of your plan's number, a dismissible line names the plan that holds more, with <strong>See the … plan</strong> and <strong>Upgrade in your account</strong> links.</div>
+<div class="pro-callout">The client portfolio holds up to <strong>5 client sites on Growth</strong>, <strong>25 on Agency</strong> and <strong>no set number on Unlimited</strong>. Your own site is always included and doesn't count. On the Personal plan, the Portfolio screen says which plan it needs. When the portfolio reaches 80% of your plan's number, a dismissible line names the plan that holds more, with <strong>See the … plan</strong> and <strong>Upgrade in your account</strong> links.</div>
 
 See every client site on one screen, straight from their WordPress. There's no external service: your own WordPress site is the hub, and it reads each client site's summary directly over its REST API. Go to <span class="screen-path">Lumtera → Portfolio</span> (administrators only). The screen is called **Client portfolio**.
 
@@ -94,7 +94,7 @@ Click **Details** on a site to see:
 
 ## Client emails {#client-emails}
 
-<div class="pro-callout">Client emails are included in the <strong>Freelancer</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans.</div>
+<div class="pro-callout">Client emails are included in the <strong>Growth</strong>, <strong>Agency</strong> and <strong>Unlimited</strong> plans.</div>
 
 Send your client a short update with their site's numbers, in your [branding](/pro/reports#branding). On a site's page, under **Client emails**:
 
