@@ -5,7 +5,7 @@ description: Every one of Lumtera's 69 content checks and 33 whole-page checks, 
 
 # All checks
 
-Lumtera runs **69 checks** on your content. 65 of them map to WCAG 2.2 level A or AA success criteria. The other 4 are level AAA best practices, which is why they show up as tips. Review mode adds [33 whole-page checks](#whole-page-checks) of the rendered page, and Lumtera Pro adds [form, hover and consistency checks](#lumtera-pro-checks).
+Lumtera runs **69 checks** on your content. 65 of them map to WCAG 2.2 level A or AA success criteria. The other 4 are level AAA best practices, which is why they show up as tips. Review mode adds [33 whole-page checks](#whole-page-checks) of the rendered page, and Lumtera Pro adds [form tests, hover/focus/pressed contrast, carousel motion and consistency checks](#lumtera-pro-checks).
 
 Some checks count against more than one criterion. For example, a link with no text fails both 2.4.4 (link purpose) and 4.1.2 (name, role, value). The tables list every criterion a check covers, the main one first.
 
@@ -35,6 +35,10 @@ Every finding has a **Why is this flagged?** panel that gives the reason in plai
 
 ::: tip Linking to a check
 Every check below has a stable anchor that matches its ID, for example [`/checks#image-missing-alt`](#image-missing-alt). The IDs never change. They are the same ones you see in WP-CLI output, the REST API and the Abilities API, and every **Learn more** link in Lumtera points here.
+:::
+
+::: info Page check IDs in Lumtera Pro
+Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` is [Text has low contrast](#page-contrast), `rendered-reflow` is [Page scrolls sideways at this width](#page-reflow), and `rendered-target-size` is [Small, crowded click target](#page-target-size). You may see these IDs in page check results, ignore rules and the REST API. Links to `/checks#rendered-contrast` and the others land on the matching check.
 :::
 
 ## Summary
@@ -684,7 +688,7 @@ Every check below has a stable anchor that matches its ID, for example [`/checks
 
 **How to fix:** Select the block and open Styles → Color. Pick a darker text color or a lighter background (or the reverse) until the editor's own contrast warning disappears. Normal text needs 4.5:1; large text (24px, or 18.66px bold) needs 3:1.
 
-**Good to know:** Disabled buttons and fields, and the labels of disabled fields, are left out, as WCAG allows. Text with an inline `text-shadow` is **Needs review**, because the shadow can change how readable it is.
+**Good to know:** Disabled buttons and fields, and the labels of disabled fields, are left out, as WCAG allows. Text with an inline `text-shadow` is **Needs review**, because the shadow can change how readable it is. Text on a Cover block or a gradient background is left out here, because its background is an image or a blend; the whole-page checks in review mode measure it as it is painted.
 
 ### ARIA & keyboard
 
@@ -760,7 +764,7 @@ Every check below has a stable anchor that matches its ID, for example [`/checks
 
 ## Whole-page checks {#whole-page-checks}
 
-The checks above read your content. The **33 whole-page checks** below run in your browser on the page as it is rendered, with your theme, menus, footer and page-builder output. They run in [review mode](/review-mode), and in [page checks](/pro/page-checks) with Lumtera Pro, on the same engine, so both give the same results. Like any check, you can change their severity or switch them off under <span class="screen-path">Lumtera → Settings → Checks</span>.
+The checks above read your content. The **33 whole-page checks** below run in your browser on the page as it is rendered, with your theme, menus, footer and page-builder output. They run in [review mode](/review-mode), and in [page checks](/pro/page-checks) with Lumtera Pro, on the same engine, so both give the same results. Review mode runs them on posts and pages, and also on the blog home page, archives, search results and the shop page. Like any check, you can change their severity or switch them off under <span class="screen-path">Lumtera → Settings → Checks</span>.
 
 The keyboard, menu and text-spacing checks run when you ask for them, because they move focus and change the page for a moment. Everything else runs when the page has loaded.
 
@@ -914,9 +918,11 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 #### Text has low contrast {#page-contrast}
 
+<a id="rendered-contrast"></a>
+
 `page-contrast` · WCAG [1.4.3 Contrast (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html) · Level AA · Default: **Error**
 
-**Why it's flagged:** Success criterion 1.4.3 asks for a contrast ratio of at least 4.5:1 for text, or 3:1 for large text, measured here from the colours the browser paints.
+**Why it's flagged:** Success criterion 1.4.3 asks for a contrast ratio of at least 4.5:1 for text, or 3:1 for large text, measured here from the colors the browser paints.
 
 **How to fix:** Darken the text or lighten its background (or the reverse) until the ratio reaches 4.5:1, or 3:1 for large text (24px, or 18.66px bold). On theme parts these colors usually come from the Site Editor's Styles, the Customizer or the page builder's global colors.
 
@@ -927,6 +933,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criterion 1.4.3 asks for enough contrast between text and what is behind it. Over an image the contrast changes from pixel to pixel, so a person has to judge.
 
 **How to fix:** Look at the text against the lightest and darkest parts of the image behind it, at every screen width. If any part is hard to read, add a darker (or lighter) overlay, or move the text off the busy area.
+
+**Good to know:** A Cover block overlay set to 0% paints nothing, so text on it is checked against the cover image behind it, not against the overlay color.
 
 #### Controls or icons are hard to see {#page-nontext-contrast}
 
@@ -948,7 +956,7 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 `page-link-color` · WCAG [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html) · Level A · Default: **Error**
 
-**Why it's flagged:** Success criterion 1.4.1 asks that colour is not the only way to tell things apart. A link in a sentence needs an underline, or 3:1 contrast with the text and another cue on focus.
+**Why it's flagged:** Success criterion 1.4.1 asks that color is not the only way to tell things apart. A link in a sentence needs an underline, or 3:1 contrast with the text and another cue on focus.
 
 **How to fix:** Underline links in body text (the simplest fix, usually a theme or Styles → Elements → Link setting). If you keep them without underlines, the link color needs 3:1 contrast against the text and a visible change such as an underline on hover and keyboard focus.
 
@@ -962,6 +970,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 #### Page scrolls sideways at this width {#page-reflow}
 
+<a id="rendered-reflow"></a>
+
 `page-reflow` · WCAG [1.4.10 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) · Level AA · Default: **Needs review**
 
 **Why it's flagged:** Success criterion 1.4.10 asks that content fits a 320 pixel wide window without scrolling in two directions, except content such as tables and maps.
@@ -969,6 +979,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **How to fix:** Find the element that sticks out (often a wide table, image, embed or fixed-width block) and let it shrink: max-width: 100%, or wrap tables so they scroll on their own. Then test with the window 320 pixels wide, or zoomed to 400%.
 
 #### Small, crowded click target {#page-target-size}
+
+<a id="rendered-target-size"></a>
 
 `page-target-size` · WCAG [2.5.8 Target Size (Minimum)](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) · Level AA · Default: **Needs review**
 
@@ -1094,7 +1106,7 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 ### Form tests
 
-Every Pro plan. See [Form tests](/pro/form-tests).
+Every Pro plan. Form tests cover Contact Form 7, WPForms, Gravity Forms, the WooCommerce classic checkout and plain HTML forms. The WooCommerce block checkout is not tested. See [Form tests](/pro/form-tests).
 
 | Check | ID | WCAG | Level | Default |
 | --- | --- | --- | --- | --- |
@@ -1104,7 +1116,7 @@ Every Pro plan. See [Form tests](/pro/form-tests).
 | [Error messages are not linked to their fields](#form-error-not-linked) | `form-error-not-linked` | 3.3.1 | A | Needs review |
 | [Focus does not move to the first error](#form-error-focus) | `form-error-focus` | 3.3.1 | A | Needs review |
 | [A field has no lasting label](#form-error-label-lost) | `form-error-label-lost` | 3.3.2 | A | Needs review |
-| [Errors are shown by colour alone](#form-error-color-only) | `form-error-color-only` | 1.4.1, 3.3.1 | A | Needs review |
+| [Errors are shown by color alone](#form-error-color-only) | `form-error-color-only` | 1.4.1, 3.3.1 | A | Needs review |
 | [Error messages could say what to fix](#form-error-not-specific) | `form-error-not-specific` | 3.3.3 | AA | Tip |
 
 ### Hover, focus and pressed states
@@ -1122,7 +1134,7 @@ Every Pro plan. See [Carousel motion](/pro/page-checks).
 
 | Check | ID | WCAG | Level | Default |
 | --- | --- | --- | --- | --- |
-| [Carousel moves on its own](#page-carousel-motion) | `page-carousel-motion` | 2.2.2 | A | Error |
+| [Carousel moves on its own](#page-carousel-motion) | `page-carousel-motion` | 2.2.2 | A | Needs review |
 
 ### Consistency across pages
 
@@ -1185,11 +1197,11 @@ Growth plan and up. See [Consistency across pages](/pro/consistency).
 
 **How to fix:** Give every field a visible label that stays on screen: a &lt;label&gt; element, not only placeholder text, and keep it when an error appears (show the error next to it instead).
 
-#### Errors are shown by colour alone {#form-error-color-only}
+#### Errors are shown by color alone {#form-error-color-only}
 
 `form-error-color-only` · WCAG [1.4.1 Use of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html), [3.3.1 Error Identification](https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html) · Level A · Default: **Needs review** · Every Pro plan
 
-**Why it's flagged:** Success criterion 1.4.1 asks that colour is not the only way information is shown, and 3.3.1 that errors are described in text. People who cannot tell the colours apart, and screen reader users, would not know which fields to fix.
+**Why it's flagged:** Success criterion 1.4.1 asks that color is not the only way information is shown, and 3.3.1 that errors are described in text. People who cannot tell the colors apart, and screen reader users, would not know which fields to fix.
 
 **How to fix:** Show a text message next to each field with an error (for example "Enter your email address"), not only a red border or background. An icon can help, but it needs text too.
 
@@ -1219,7 +1231,7 @@ Growth plan and up. See [Consistency across pages](/pro/consistency).
 
 #### Carousel moves on its own {#page-carousel-motion}
 
-`page-carousel-motion` · WCAG [2.2.2 Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html) · Level A · Default: **Error** · Every Pro plan
+`page-carousel-motion` · WCAG [2.2.2 Pause, Stop, Hide](https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html) · Level A · Default: **Needs review** · Confidence: likely · Every Pro plan
 
 **Why it's flagged:** Success criterion 2.2.2 asks that content which moves on its own for more than five seconds can be paused, stopped or hidden. Moving slides distract people with attention difficulties and move text away before some people finish reading it.
 

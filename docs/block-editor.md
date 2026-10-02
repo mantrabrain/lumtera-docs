@@ -11,7 +11,7 @@ Lumtera checks your post while you write and lists each issue next to the block 
 
 ## Open the sidebar
 
-Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review. The sidebar is called **Lumtera Accessibility**. You'll also find it in the **Options** menu (⋮) under that name.
+Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review, and screen readers hear the counts in the button's name, such as *"Lumtera Accessibility: 2 errors, 1 to review"*. The sidebar is called **Lumtera Accessibility**. You'll also find it in the **Options** menu (⋮) under that name.
 
 The sidebar appears for the content types Lumtera checks: posts, pages and products by default. You can change this in [Settings](/settings#content-to-check).
 
@@ -48,7 +48,7 @@ Each card has these buttons:
 - **Select block** jumps straight to the block with the problem.
 - A **quick fix** button, when one applies. See below.
 - **Review fix**, for fixes Lumtera can make to the saved post. It opens a dialog that shows the change before anything is saved. See [Reviewed fixes](#reviewed-fixes).
-- **Dismiss…** for issues that aren't a problem (**Dismiss this error…** on errors, for people allowed to dismiss them). See [Dismissing issues](/dismissing).
+- **Dismiss…** for issues that aren't a problem (**Dismiss this error…** on errors, for people allowed to dismiss them). <kbd>Escape</kbd> closes the form without dismissing. After you dismiss, a notice says **Issue dismissed.** with **Undo**, which reports it again. See [Dismissing issues](/dismissing). Every dismissed issue across the site is also listed in the Content report's [Dismissed](/site-report#dismissed) view.
 - With AI writing help switched on, **Suggest link text**, **Suggest heading** or **Suggest subheadings** on the issues they help with. See [AI writing help](#ai-writing-help).
 - With Lumtera Pro: **Track fix** (see [Fix tracking](/pro/fix-tracking)) and **Ignore everywhere…** (see [Ignore everywhere](/pro/ignore)).
 
@@ -128,7 +128,7 @@ If an administrator has switched on AI writing help under <span class="screen-pa
 
 **Draft a plain-language summary** appears under the reading level when the content reads above grade 9.
 
-In the **Review fix** dialog, **Draft with AI** asks for a draft for alt text, link text and heading fixes. It is marked **AI-drafted — review before applying**, and it is never applied on its own.
+In the **Review fix** dialog, **Draft with AI** asks for a draft for alt text, link text and heading fixes. It is marked **AI draft — review before applying**, and it is never applied on its own.
 
 Nothing is sent until you click, and nothing changes until you choose a draft. Using a draft is a normal edit that **Undo** reverts. Drafts can be wrong, so read each one before you use it. See [AI suggestions](/ai) for what is sent and how to switch each feature on.
 

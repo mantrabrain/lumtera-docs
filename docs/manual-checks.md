@@ -66,7 +66,7 @@ After you save, focus stays in the checklist, on the item you saved or the next 
 
 Lumtera looks at what the page contains, from the post and from the last whole-page check, such as a form, a video, a carousel or a login form. Items that only matter for things the page doesn't have are listed under **Checks that probably do not apply**, for example *"This page does not seem to have a video, so this check probably does not apply. You decide."*
 
-Click **Review suggestions**, untick anything the page does have, then **Mark these as not applicable**. It's only a suggestion: you decide.
+Click **Review suggestions**, untick anything the page does have, then click the button that marks them as not applicable (in the block editor it shows how many, such as **Mark 3 as not applicable**). It's only a suggestion: you decide.
 
 ### The text spacing preview
 

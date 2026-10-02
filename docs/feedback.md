@@ -39,11 +39,13 @@ Each message gets:
 
 Filter the list by status (**All**, **New**, **In progress**, **Answered**, **Closed**) and **Type**, or search messages and references.
 
+**Download all (CSV)** saves every message as a spreadsheet: reference, date received, type, status, page, preferred reply format, name, email, message, replies and internal notes. It's useful as a record, or before you delete Lumtera.
+
 ### Reply, update and note
 
 Open a message to:
 
-- **Reply by email.** Write your reply and click **Send reply**. It is sent from your site, like its other emails, with the subject *"Your accessibility feedback (A11Y-…)"*. A copy is kept with the message, and the status becomes **Answered**. If the visitor left no email address, the inbox says so: record what you did in an internal note instead.
+- **Reply by email.** Write your reply and click **Send reply**. It is sent from your site, like its other emails, with the subject *"Your accessibility feedback (A11Y-…)"*. When the visitor answers, the answer goes to the **Contact email** in your [accessibility statement](/statement), or to you if the statement has none. The email ends with the reference number and the visitor's original message, so they know what you are answering. A copy is kept with the message, and the status becomes **Answered**. If the visitor left no email address, the inbox says so: record what you did in an internal note instead.
 - **Update status.**
 - **Add an internal note.** Only people who handle feedback see notes. They are never sent to the visitor.
 
@@ -61,7 +63,7 @@ Go to <span class="screen-path">Lumtera → Settings → Feedback</span>. Only a
 
 | Setting | Default | What it does |
 | --- | --- | --- |
-| **Email new feedback to** | Empty | Addresses to email when a message arrives, separated by commas. The subject is *"[Site name] New accessibility feedback A11Y-…"*. Leave it empty to send no email; the inbox still lists every message. |
+| **Email new feedback to** | Empty | Addresses to email when a message arrives, separated by commas. The subject is *"[Site name] New accessibility feedback A11Y-…"*. Leave it empty to send no email; the inbox still lists every message. When the visitor left an email address, replying to the notification goes straight to them. |
 | **Keep personal data for (months)** | 24 | After this, the visitor's name, email address, message and your replies are removed. The reference, type, page, status and dates stay, as a record of how the request was handled. The form tells visitors this period. |
 | **Check messages with Akismet** | Off | Sends each message to Akismet to check for spam. Needs the Akismet plugin, active and connected. |
 
@@ -89,8 +91,8 @@ People with the **Handle accessibility feedback** permission can open the inbox.
 - Personal data is removed after the retention period you choose, by a daily clean-up.
 - Feedback is included in WordPress's personal data export and erase tools, as "Lumtera accessibility feedback". Erasing removes the name, email address, message and replies, and keeps the record.
 - The privacy policy guide (<span class="screen-path">Settings → Privacy</span>) has suggested text about the form.
-- Uninstalling Lumtera deletes all feedback. Export anything you need to keep first.
+- Deleting Lumtera keeps your feedback by default. It is removed only if you choose **Delete everything** under <span class="screen-path">Lumtera → Settings → General</span> → [When Lumtera is deleted](/settings#when-lumtera-is-deleted). **Download all (CSV)** in the inbox saves a copy first.
 
 ## For developers
 
-The form posts to `POST /lumtera/v1/feedback` (public, sanitised and rate-limited). The capability is `lumtera_manage_feedback` (filter `lumtera_feedback_capability`). Filters include `lumtera_feedback_rate_limit`, `lumtera_feedback_client_ip` and `lumtera_feedback_is_spam`, and the actions `lumtera_feedback_received` and `lumtera_feedback_updated` fire when a message arrives or changes. See [Hooks & filters](/developers/hooks) and [REST API](/developers/rest-api).
+The form posts to `POST /lumtera/v1/feedback` (public, sanitised and rate-limited). The capability is `lumtera_manage_feedback` (filter `lumtera_feedback_capability`). Filters include `lumtera_feedback_rate_limit`, `lumtera_feedback_client_ip`, `lumtera_feedback_is_spam` and `lumtera_feedback_reply_to` (the Reply-To of inbox replies), and the actions `lumtera_feedback_received` and `lumtera_feedback_updated` fire when a message arrives or changes. See [Hooks & filters](/developers/hooks) and [REST API](/developers/rest-api).

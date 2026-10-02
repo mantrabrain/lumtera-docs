@@ -13,7 +13,7 @@ An accessibility checker can go wrong in two ways: it can **miss** real problems
 
 That result is for those 21 rules only. It is not a score for WCAG as a whole, and it is not a claim that Lumtera finds more than other checkers.
 
-| On the 21 covered ACT rules | Lumtera 1.0.0.2 and later | Before the fixes |
+| On the 21 covered ACT rules | Lumtera 1.0.0.2 (measured; test cases now run on every build) | Before the fixes |
 | --- | --- | --- |
 | Known failures reported, at any severity | **130 of 132 (98%)** | 101 of 132 (77%) |
 | … reported as an error | 95 of 132 | 72 of 132 |
@@ -47,7 +47,7 @@ These were found in the benchmark and left as they are on purpose:
 
 - **Text inside web components** (shadow DOM) isn't checked for contrast yet. Web components are rare on WordPress sites.
 - **Symbols such as "±±±" or a lone "X"** in a Close button can be reported for contrast. WCAG doesn't require contrast for text that isn't in a human language, but telling symbols from words is guesswork, so Lumtera reports them.
-- **Focus traps that a script moves focus out of** can be reported, because only running the page shows the script.
+- **Focusable links inside hidden content** (`aria-hidden`) can be reported even when a script moves focus away the moment it arrives, because only running the page shows the script.
 - **A silent video that plays on its own** can be reported, because whether a file has sound isn't in the page.
 
 ## What no automated checker can find

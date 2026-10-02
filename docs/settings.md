@@ -1,6 +1,6 @@
 ---
 title: Settings
-description: Every Lumtera setting, from the grouped settings index and its search to which content to check, whole-page results, the check before publishing, the weekly home page check, per-check severity, site fixes, AI suggestions, permissions, the email summary and the feedback form.
+description: Every Lumtera setting, from the grouped settings index and its search to which content to check, whole-page results, the check before publishing, what happens to your data when Lumtera is deleted, the weekly home page check, per-check severity, site fixes, AI suggestions, permissions, the email summary and the feedback form.
 ---
 
 # Settings
@@ -18,24 +18,24 @@ Settings are split into sections, listed in groups with a short description of e
 | Checking | **General** | What gets checked, and when | [General](#general) |
 | | **Checks** | Turn checks on or off, set how strict | [Checks](#checks) |
 | | **Ignore rules** (Pro) | Hide findings you have reviewed | [Ignore everywhere](/pro/ignore) |
-| Fixes and AI | **Site fixes** | Optional fixes for your theme | [Site fixes](/site-fixes) |
+| Fixing | **Site fixes** | Optional fixes for your theme | [Site fixes](/site-fixes) |
 | | **AI suggestions** | Suggestions from your AI provider | [AI suggestions](/ai) |
-| People | **Permissions** | Who can see and do what | [Roles & permissions](/permissions) |
 | | **Fix approvals** (Pro) | Who proposes and approves fixes | [Fixes queue](/pro/fixes-queue) |
-| Notifications | **Email summary** | The weekly summary email | [Weekly email summary](/email-summary) |
-| | **Alerts** (Pro) | Email and Slack alerts on new errors | [Monitoring & alerts](/pro/monitoring) |
-| Visitor feedback | **Feedback** | The visitor feedback form and inbox | [Feedback form and inbox](/feedback#settings) |
-| | **Response targets** (Pro) | How quickly you aim to reply | [Response targets](/pro/feedback-targets) |
-| Reports and integrations | **Branding** (Pro) | Your name, logo and colour on reports | [Client reports](/pro/reports#branding) |
-| | **Integrations** (Pro) | Webhooks, Slack and Teams | [Activity log & webhooks](/pro/activity-webhooks#webhooks) |
 | | **Issue trackers** (Pro) | GitHub, GitLab, Jira and Linear | [Fix tracking](/pro/fix-tracking#issue-trackers) |
+| Feedback and notifications | **Feedback** | The visitor feedback form and inbox | [Feedback form and inbox](/feedback#settings) |
+| | **Response targets** (Pro) | How quickly you aim to reply | [Response targets](/pro/feedback-targets) |
+| | **Email summary** | The weekly summary email | [Weekly email summary](/email-summary) |
+| | **Alerts** (Pro) | Email and Slack alerts on new errors | [Monitoring & alerts](/pro/monitoring) |
+| | **Integrations** (Pro) | Webhooks, Slack and Teams | [Activity log & webhooks](/pro/activity-webhooks#webhooks) |
+| People | **Permissions** | Who can see and do what | [Roles & permissions](/permissions) |
+| | **Branding** (Pro) | Your name, logo and color on reports | [Client reports](/pro/reports#branding) |
 | Lumtera Pro | **License** | Your Lumtera Pro license | [License & plans](/pro/license) |
 
-The Pro sections appear once Lumtera Pro is installed. Add-ons can add their own sections, which appear under **More**.
+The Pro sections appear once Lumtera Pro is installed, and with Pro the **People** group is called **People and branding**. Add-ons can add their own sections, which appear under **More**.
 
 **Find a setting** filters the index as you type, by section names and the settings inside them, and says when nothing matches. On a phone, the index becomes a **Section:** menu at the top of the screen.
 
-Each section saves only its own fields. **General**, **Checks** and **AI suggestions** each have **Reset to defaults**, which resets only that section.
+Each section saves only its own fields. **General**, **Checks** and **AI suggestions** each have **Reset to defaults**, which resets only that section. In **General**, that also sets [When Lumtera is deleted](#when-lumtera-is-deleted) back to **Keep my data (recommended)**.
 
 ::: tip Settings apply to the next check
 Changing a setting doesn't re-check content that's already been checked. After changing what's checked or how strict to be, go to the Overview and click **Check all content again**.
@@ -59,7 +59,7 @@ These apply to the block editor, Elementor and the classic editor.
 | --- | --- | --- |
 | **Check content on save** | On | Checks each post when it's saved, so the reports and the list-table column stay up to date. Adds a fraction of a second to saving. |
 | **Outline blocks and widgets with issues** | On | A subtle outline in the editor canvas around blocks with issues. This sets the default. Each author can switch it off for themselves. |
-| **Allow saving whole-page results** | On | Lets review mode's **Whole page** tab save what it finds in the theme, menus and footer to the reports. Each person still chooses **Save results to reports** for themselves. Turn this off to store nothing. See [Save results to reports](/review-mode#save-results-to-reports). |
+| **Let people save review-mode findings (theme, menus, footer) to the reports** | On | Lets review mode's **Whole page** tab save what it finds in the theme, menus and footer to the reports. Each person still chooses **Save results to reports** for themselves. Turn this off to store nothing. See [Save results to reports](/review-mode#save-results-to-reports). |
 
 ### Before publishing
 
@@ -72,6 +72,26 @@ What happens in the block editor when an author publishes content that has error
 | **Require confirmation** | If there are errors, the author must confirm **Publish anyway** before the post can be published or scheduled, even with WordPress's pre-publish checks turned off. Saving drafts always works. |
 
 Elementor and the classic editor show the issues but never hold publishing. See [Before publishing](/block-editor#before-publishing).
+
+### When Lumtera is deleted {#when-lumtera-is-deleted}
+
+What happens to feedback messages, results and settings if Lumtera is deleted from the Plugins screen. Deactivating never removes anything.
+
+| Option | What happens |
+| --- | --- |
+| **Keep my data (recommended)** (default) | Feedback messages, results and settings stay in the database, so installing Lumtera again picks them up. |
+| **Delete everything** | Also deletes every feedback message (visitors' reports, names, email addresses and your replies), every result and every setting. This can't be undone. |
+
+**Download every feedback message (CSV)** under the choice saves a copy first. It shows when there are messages to save.
+
+Either way, deleting Lumtera stops its scheduled tasks, such as the weekly email.
+
+On the <span class="screen-path">Plugins</span> screen, while Lumtera is active:
+
+- With **Keep my data**, Lumtera's row says **Data is kept if deleted**, with a **change** link to this setting.
+- With **Delete everything**, a warning under Lumtera's row says how many feedback messages and results would be deleted, with **Export feedback first (CSV)** and **Keep my data instead**. Clicking **Deactivate** asks you to confirm first, because once Lumtera is inactive it can't warn you again before you delete it.
+
+On a multisite network, each site keeps or deletes its own data as set on that site. Keeping it is the default.
 
 ### Weekly home page check {#weekly-home-page-check}
 
@@ -134,7 +154,7 @@ Optional fixes for common theme problems: a skip link, a visible focus ring, pin
 
 ## Permissions
 
-Choose which roles can see the reports, dismiss errors, use review mode and handle accessibility feedback. Administrators always can. See [Roles & permissions](/permissions).
+Choose which roles can see the reports, dismiss errors, use review mode and handle accessibility feedback. With Lumtera Pro, also who can propose and approve fixes, and who can manage client reports. Administrators always can. See [Roles & permissions](/permissions).
 
 ## Email summary
 

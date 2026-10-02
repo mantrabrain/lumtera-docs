@@ -18,7 +18,7 @@ This walkthrough takes you from a fresh install to a checked site, with the bigg
 | **Check all your content** | Runs the checks on every post and page, on your own server | Content has been checked |
 | **Try review mode on your home page** | **Open review mode** opens your home page in [review mode](/review-mode). Without a static home page, the step is **Try review mode on a page** and opens the page with the most errors. | A whole-page check of that page is saved |
 | **Get the weekly email** | **Send me the weekly email** turns on the [weekly email](/email-summary) to the address shown, in one click. **Also check my home page every week** (ticked) turns on the [weekly home page check](/settings#weekly-home-page-check) at the same time. | The weekly email is on |
-| **Check your site parts** | Headers, footers, menus and patterns: fix a problem once there. Shown when your site has [site parts](/site-parts). | Every site part has been checked |
+| **Check your site parts** | Headers, footers, menus and patterns: fix a problem once there. **Open Site parts** opens the [Site parts](/site-parts) tab of the Content report. | Every site part has been checked |
 | **Turn on the baseline fixes** | A skip link, a visible focus outline and pinch zoom on phones. See [Site fixes](/site-fixes). | All three are on |
 | **Test your home page by hand** | Keyboard only, zoom to 200% and a screen reader. See [Manual testing](/manual-testing). | Guided checklist results are recorded on your static home page |
 | **Create your statement and feedback form** | See [Accessibility statement](/statement) | The statement is published and links to a feedback form |
@@ -27,7 +27,7 @@ When every step is done, the card says *"Every step is done. Keep testing by han
 
 ## 1. Check everything you've published
 
-Go to <span class="screen-path">Lumtera → Overview</span> and click **Check all content**. Lumtera checks your posts, pages and products, and your site parts: menus, template parts, synced patterns and widget areas. You'll get:
+Go to <span class="screen-path">Lumtera → Overview</span> and click **Check all content**. Lumtera checks your posts, pages and products, and your site parts: menus, template parts, synced patterns and widget areas. When it finishes, the progress bar says what was found, for example *"Done — 6 items checked: 2 errors on 2 items, 5 to review."*, with **See what to fix**, which takes you straight to the items that need attention. The Overview then shows:
 
 - an **Average automated score** (see [Scores & severities](/scoring))
 - **Errors**: problems Lumtera is confident about
@@ -45,7 +45,7 @@ The **Most common issues** card lists the checks that fire most often across you
 
 ## 3. Describe your images
 
-Missing alt text is usually the most common error. Go to <span class="screen-path">Lumtera → Alt text</span> (with Lumtera Pro: **Fixes → Alt text**). Describe each image once, then click **Add it to those posts** to fill in the posts that show it without a description. See [Alt text manager](/alt-text).
+Missing alt text is usually the most common error. Go to <span class="screen-path">Lumtera → Fixes → Alt text</span>. Describe each image once, then click the button that adds it to the posts that show it without a description (it says how many, such as **Add it to those 3 posts**). See [Alt text manager](/alt-text).
 
 ## 4. Fix issues in the editor
 

@@ -1,6 +1,6 @@
 ---
 title: Roles & permissions
-description: Choose which roles see Lumtera's reports, dismiss errors, use review mode and handle accessibility feedback, what every other task needs, and the Lumtera Reporter and Accessibility client roles.
+description: Choose which roles see Lumtera's reports, dismiss errors, use review mode and handle accessibility feedback, who can manage client reports with Lumtera Pro, what every other task needs, and the Lumtera Reporter and Accessibility client roles.
 ---
 
 # Roles & permissions
@@ -19,7 +19,7 @@ The **Permissions** section lists every role on your site under four headings. T
 | --- | --- | --- |
 | **See reports and check the site** | Opens the Overview, Content report and Free vs Pro screens and the Dashboard widget, and runs site-wide checks such as **Check all content**. With Lumtera Pro, it also opens Page checks, Documents, Test sessions and Reports. Roles that can't edit other people's posts, such as authors, see only published items and their own in the reports, and their totals. | Administrator, Editor |
 | **Dismiss errors** | Dismissing and restoring **errors**. Anyone who can edit a post can still dismiss items that only need review, and tips. | Administrator, Editor |
-| **Review pages on the site** | Shows the **Accessibility** item in the toolbar on the front end, which opens [review mode](/review-mode). It only appears on posts the person can edit. | Administrator, Editor, Author, Contributor |
+| **Review pages on the site** | Shows the **Accessibility** item in the toolbar on the front end, which opens [review mode](/review-mode). On a single post or page, it appears only if the person can edit it. On the blog home, archives, search results and the shop page, it also needs **See reports and check the site**. | Administrator, Editor, Author, Contributor |
 | **Handle accessibility feedback** | Opens <span class="screen-path">Lumtera → Feedback & statement → Feedback</span>: read what visitors report, change its status, reply by email and add internal notes. Feedback can hold visitors' names and email addresses, so give this only to people who answer it. See [Feedback form and inbox](/feedback). | Administrator, Editor |
 
 The defaults are every role that can edit other people's posts (for reports and dismissing errors), and every role that can edit posts (for review mode). Roles added by plugins follow the same rule. For example, WooCommerce's **Shop manager** gets all four.
@@ -39,7 +39,7 @@ Each permission is a capability that Lumtera gives to the roles you tick:
 
 Because they're ordinary capabilities, role editor plugins show them, and you can give one to a single user without changing their role.
 
-Uninstalling Lumtera removes these capabilities from every role.
+If you delete Lumtera with **Delete everything** chosen under <span class="screen-path">Lumtera → Settings → General</span> → [When Lumtera is deleted](/settings#when-lumtera-is-deleted), these capabilities are removed from every role. With the default, **Keep my data**, they stay, so reinstalling restores everyone's access.
 
 ### Change settings
 
@@ -75,7 +75,8 @@ Rows 3, 4, 7 and 8 follow your **Permissions** settings. The others use fixed Wo
 
 | Task | Administrator | Editor | Author | Contributor |
 | --- | :---: | :---: | :---: | :---: |
-| Page checks, Documents, Test sessions, Reports | ✓ | ✓ | | |
+| Page checks, Documents, Test sessions; open and download reports | ✓ | ✓ | | |
+| Create, delete and share client reports; edit the ACR | ✓ | Only if given **Manage client reports** | | |
 | Fix tracking: see every task | ✓ | ✓ | | |
 | **My fixes**: tasks assigned to them or on their posts | | | ✓ | ✓ |
 | Track a fix | ✓ | ✓ | Assign to self only | Assign to self only |
@@ -84,16 +85,23 @@ Rows 3, 4, 7 and 8 follow your **Permissions** settings. The others use fixed Wo
 | Burden records | ✓ | ✓ | | |
 | Evidence, Compare scans, Activity, Portfolio, Ignore rules, license, Pro settings | ✓ | | | |
 
-Page checks, Documents, Test sessions, Reports and seeing every fix follow **See reports and check the site**. Burden records need the right to publish pages. Anyone who can edit a post can track a fix on it. Assigning a fix to someone else needs the `edit_others_posts` capability (editors and administrators).
+Page checks, Documents, Test sessions, opening reports and seeing every fix follow **See reports and check the site**. Burden records need the right to publish pages. Anyone who can edit a post can track a fix on it. Assigning a fix to someone else needs the `edit_others_posts` capability (editors and administrators).
 
-Lumtera Pro adds two permissions to this section, for the [Fixes queue](/pro/fixes-queue):
+Lumtera Pro adds three permissions to this section:
 
 | Permission | Capability | Default roles |
 | --- | --- | --- |
 | **Propose fixes** | `lumtera_propose_changes` | Administrator, Editor |
 | **Approve and apply fixes** | `lumtera_approve_changes` | Administrator, Editor |
+| **Manage client reports** | `lumtera_manage_reports` | Administrator |
 
-People also need to be able to edit the page. Anyone who can edit a page can still fix one issue at a time from the editor or the Content report, unless **Require a second person to approve** is on (Agency plan and up): then these choices apply there too.
+**Propose fixes** and **Approve and apply fixes** are for the [Fixes queue](/pro/fixes-queue). People also need to be able to edit the page. Anyone who can edit a page can still fix one issue at a time from the editor or the Content report, unless **Require a second person to approve** is on (Agency plan and up): then these choices apply there too.
+
+#### Manage client reports {#manage-client-reports}
+
+**Manage client reports** is needed to create and delete [client reports](/pro/reports), make and revoke share links, and edit the [conformance report](/pro/acr). Anyone with **See reports and check the site** can still open and download reports, and view the conformance report.
+
+It has its own card below the other permissions, **Manage client reports (Lumtera Pro)**. **Administrator (always)** is ticked and can't be unticked. The card lists the roles that can edit posts. Tick the roles you want and click **Save report permissions**. Changes apply right away, to every user with the role. Share links let anyone with the address read a report, so give this only to people who send reports to clients. The Accessibility client role is never listed. See [Who can manage reports](/pro/reports#manage-permission).
 
 ### Accessibility client {#accessibility-client}
 
@@ -115,7 +123,7 @@ The summary includes the site name and address, the Lumtera version, the score a
 
 To revoke access, delete the Application Password or the user.
 
-The Reporter role appears in the **Permissions** settings like any other role. Leave it unticked.
+Under <span class="screen-path">Lumtera → Settings → Permissions</span>, the **Share the site summary with an agency dashboard** card shows which roles can read the summary, and has **Add a user** to start. The Reporter role also appears in the permission lists like any other role. Leave it unticked there.
 
 ## Changing permissions with code (developers)
 

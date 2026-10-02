@@ -11,7 +11,7 @@ No tool can do that on its own, and you should be wary of any that claims to. Lu
 
 ## How much of WCAG does Lumtera check automatically?
 
-WCAG 2.2 has 55 success criteria at levels A and AA. With review mode's whole-page checks, Lumtera's automated checks cover **37 of 55** of them, fully or in part. The checks of saved content alone cover **25 of 55**, and Lumtera Pro's form tests bring it to **40 of 55**. "Covers" means a check looks at that criterion; it doesn't mean your site meets it. The rest need a person, and the [guided checklists](/manual-checks) walk you through them. The Overview shows your site's own coverage. See [Review coverage](/scoring#review-coverage).
+WCAG 2.2 has 55 success criteria at levels A and AA. With review mode's whole-page checks, Lumtera's automated checks cover **37 of 55** of them, fully or in part. The checks of saved content alone cover **25 of 55**. Lumtera Pro's form tests bring it to **40 of 55**, and its consistency checks (Growth plan and up) to **44 of 55**. "Covers" means a check looks at that criterion; it doesn't mean your site meets it. The rest need a person, and the [guided checklists](/manual-checks) walk you through them. The Overview shows your site's own coverage. See [Review coverage](/scoring#review-coverage).
 
 ## How accurate are the checks?
 
@@ -23,7 +23,7 @@ No. Lumtera never adds a widget to your site or rewrites your pages in the visit
 
 ## Does it add anything to my site's front end?
 
-Not unless you choose to. Signed-in users who can edit a post can open [review mode](/review-mode) from the admin bar, if their role is allowed under [Permissions](/permissions). That only loads for them, and only when they ask for it. Visitors see something only where you add it: one of Lumtera's blocks or shortcodes (the [feedback form](/feedback), the statement link or a plain-language summary), the optional footer link to your statement, or a [site fix](/site-fixes) you switch on.
+Not unless you choose to. Signed-in users who can edit a post can open [review mode](/review-mode) from the admin bar, if their role is allowed under [Permissions](/permissions). People who can see the reports can also open it on the blog home, archives, search results and the shop page. That only loads for them, and only when they ask for it. Visitors see something only where you add it: one of Lumtera's blocks or shortcodes (the [feedback form](/feedback), the statement link or a plain-language summary), the optional footer link to your statement, or a [site fix](/site-fixes) you switch on.
 
 ## Which standards does it check against?
 
@@ -59,7 +59,7 @@ Anyone who can edit a post can dismiss items that need review, and tips. Dismiss
 
 ## Can I choose who sees the reports?
 
-Yes. Under <span class="screen-path">Lumtera → Settings → Permissions</span>, choose which roles can see the reports and check the site, dismiss errors, use review mode and handle accessibility feedback. Administrators always can. See [Roles & permissions](/permissions).
+Yes. Under <span class="screen-path">Lumtera → Settings → Permissions</span>, choose which roles can see the reports and check the site, dismiss errors, use review mode and handle accessibility feedback. With Lumtera Pro, you also choose who can [manage client reports](/permissions#manage-client-reports). Administrators always can. See [Roles & permissions](/permissions).
 
 ## Does it work with my page builder?
 
@@ -90,7 +90,9 @@ Not by default. Checks, reports, fixes and the feedback inbox all run and are st
 
 The weekly email summary and feedback notifications are sent by your own site's email. The optional [weekly home page check](/settings#weekly-home-page-check) loads the home page from your own server, and refuses any other address. **Report a false positive** and the **Docs** buttons are ordinary links: nothing is sent unless you post the report yourself. Feedback messages are included in WordPress's personal data export and erase tools. See [Data & uninstall](/developers/data).
 
-See [Data & uninstall](/developers/data).
+## What happens to my data if I delete Lumtera?
+
+It's kept by default, so reinstalling picks up your results, feedback and settings. To remove everything instead, choose **Delete everything** under <span class="screen-path">Lumtera → Settings → General</span> → **When Lumtera is deleted**. Deactivating never removes anything. See [When Lumtera is deleted](/settings#when-lumtera-is-deleted).
 
 ## Does the alt text manager change my posts?
 
@@ -120,7 +122,9 @@ The Content report's CSV export is part of the free plugin. Everything in the fr
 
 ## What happens when my Pro license expires?
 
-Pro keeps working on the sites where it is active. Updates, support and activating new sites pause until you renew. A reminder shows 30 and 7 days before a yearly license expires. Lifetime licenses never expire. See [License & plans](/pro/license#when-a-license-expires).
+Pro keeps working on the sites where it is active. Updates, support and activating new sites pause until you renew. A reminder shows 30 and 7 days before a yearly license expires. Personal, Growth and Agency are also sold as lifetime licenses, which never expire. Unlimited is sold yearly only. See [License & plans](/pro/license#when-a-license-expires).
+
+A refunded key is different: Pro's features turn off, and the free plugin keeps working. See [Refunds](/support#refunds).
 
 ## Can I use Lumtera on client sites?
 
@@ -128,4 +132,4 @@ Yes. The free plugin is GPL and has no site limits. To see all your clients' sit
 
 ## Can I use Lumtera in CI?
 
-Yes. `wp lumtera check --page=/` checks a page of your site and exits with an error code when it finds problems. It writes SARIF for GitHub code scanning, or JUnit for other CI tools. Record today's issues with `--write-baseline=<file>`, then run with `--baseline=<file>`, so the build fails only on new issues. A ready-made GitHub Action is coming. See [CI](/developers/ci).
+Yes. `wp lumtera check --page=/` checks a page of your site and exits with an error code when it finds problems. It writes SARIF for GitHub code scanning, or JUnit for other CI tools. Record today's issues with `--write-baseline=<file>`, then run with `--baseline=<file>`, so the build fails only on new issues. A ready-made GitHub Action is coming, but it isn't available yet. See [CI](/developers/ci).

@@ -58,7 +58,7 @@ On the [Overview](/site-report#overview):
 
 ## Review coverage {#review-coverage}
 
-Next to the score, the **Review coverage** meter shows how much of WCAG your checks and your own testing cover. It is never merged into the score.
+Next to the score on the Overview, the Dashboard widget and the block editor sidebar, the **Review coverage** meter shows how much of WCAG your checks and your own testing cover. It is never merged into the score.
 
 - The headline counts the WCAG 2.2 A and AA criteria that **have evidence**, out of 55. A criterion has evidence when a person recorded a pass or "not applicable" for it in the last 12 months (with no newer failure), or when the checks that cover it found no errors or items to review on your published content.
 - The line below says how many criteria your automated checks cover, how many of those fully and how many in part, and how many need a person.

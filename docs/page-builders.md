@@ -1,6 +1,6 @@
 ---
 title: Classic editor & page builders
-description: How Lumtera checks content in the classic editor, Elementor, Beaver Builder, SiteOrigin, Brizy, Visual Composer, Live Composer, Zion Builder, Divi, Bricks, Oxygen, WPBakery, Advanced Custom Fields, WooCommerce products, block libraries and shortcodes.
+description: How Lumtera checks content in the classic editor, Elementor, Beaver Builder, SiteOrigin, Brizy, Visual Composer, Live Composer, Zion Builder, Divi, Bricks, Oxygen, WPBakery, Advanced Custom Fields, WooCommerce products, translation plugins, block libraries and shortcodes.
 ---
 
 # Classic editor & page builders
@@ -94,13 +94,19 @@ Keep in mind:
 
 When WooCommerce is active, **products** are checked by default. Lumtera checks both the product **description** and the **short description**. Products appear in the reports and get the **Accessibility** column in the products list.
 
-[Page checks](/pro/page-checks) in Lumtera Pro can also check the Shop, Cart, Checkout and My account pages, with your theme.
+You can also open the **Shop** page and product category archives in [review mode](/review-mode#where-review-mode-works) to check them as rendered, theme included. On the shop page, **Edit page** opens your shop page.
+
+[Page checks](/pro/page-checks) in Lumtera Pro can also check the Shop, Cart, Checkout and My account pages, with your theme, and [form tests](/pro/form-tests) can test the WooCommerce classic checkout. The block checkout is not tested by form tests.
 
 ## Block libraries
 
 Lumtera renders third-party blocks exactly as they appear on the front end, then traces each issue back to its block. It's been tested with the blocks of **Spectra**, **Kadence Blocks**, **GenerateBlocks**, **Stackable**, **Otter**, **Essential Blocks**, **Greenshift** and **Kubio**. Some libraries always print an empty `alt=""`, which Lumtera reports as an empty alt text to review rather than a missing one.
 
 Reusable blocks (synced patterns), template parts and navigation are checked as part of the output, and each issue says which part it comes from. **Select block** takes you to the containing block, not inside it. They are also checked on their own as [site parts](/site-parts), so you can fix a problem once, in the part.
+
+## Translation plugins
+
+With **Polylang** or **WPML**, the reading level and the vague link text check use each post's own language. With **TranslatePress**, review mode outlines issues correctly on translated pages. Each translation that is its own post is checked like any other post.
 
 ## Shortcodes
 

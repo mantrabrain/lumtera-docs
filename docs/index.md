@@ -13,7 +13,7 @@ import { withBase } from 'vitepress'
 </script>
 
 <div class="lt-hero">
-  <span class="lt-hero__eyebrow">Lumtera 1.1.0 · Lumtera Pro 1.0.0</span>
+  <span class="lt-hero__eyebrow">Lumtera 1.2.1 · Lumtera Pro 1.1.0</span>
   <h1 class="lt-hero__title">Find and fix accessibility problems while you write, and on the live page.</h1>
   <p class="lt-hero__lede">Lumtera checks your posts, pages and products against <strong>WCAG 2.2 level A and AA</strong> as you write, and checks the rendered page, keyboard and widgets included. Each issue is explained in plain words. Fixes are shown before they are saved, and every one can be undone. Lumtera is <strong>not an overlay</strong>: it adds nothing to your site for visitors. It helps you fix the content itself.</p>
   <div class="lt-hero__actions">
@@ -47,13 +47,13 @@ import { withBase } from 'vitepress'
 
 <a class="lt-card" :href="withBase('/review-mode')">
   <h3>Review the live page</h3>
-  <p>33 whole-page checks with your theme included, a keyboard walk, menu and pop-up tests and a screen reader preview.</p>
+  <p>33 whole-page checks with your theme included, on any page of your site (posts, the blog home page, archives, search and the shop), a keyboard walk, menu and pop-up tests and a screen reader preview.</p>
   <span class="lt-card__cta">Open review mode →</span>
 </a>
 
 <a class="lt-card" :href="withBase('/site-report')">
   <h3>Site report</h3>
-  <p>Your score and coverage, the same issue grouped across pages, and a filterable report you can export as CSV.</p>
+  <p>Your score and coverage, the same issue grouped across pages, a filterable report you can export as CSV, and every dismissed issue with who, when and why.</p>
   <span class="lt-card__cta">Read the report →</span>
 </a>
 
@@ -135,7 +135,7 @@ import { withBase } from 'vitepress'
 
 ## Lumtera Pro {#lumtera-pro}
 
-<p><span class="pro-pill">Pro</span> Everything above is free, with no page limits. <a :href="withBase('/pro/')">Lumtera Pro</a> is an optional add-on for teams and agencies.</p>
+<p><span class="pro-pill">Pro</span> Everything above is free, with no page limits. <a :href="withBase('/pro/')">Lumtera Pro</a> is an optional add-on for teams and agencies. Lumtera Pro 1.1.0 needs Lumtera 1.2.1 or newer (see <a :href="withBase('/pro/#requirements')">requirements</a>).</p>
 
 <div class="lt-cards">
 
@@ -146,7 +146,7 @@ import { withBase } from 'vitepress'
 
 <a class="lt-card" :href="withBase('/pro/form-tests')">
   <h3>Form tests</h3>
-  <p>Required fields submitted empty to check error messages, focus and announcements, with safeguards so nothing is sent.</p>
+  <p>Required fields of Contact Form 7, WPForms, Gravity Forms, the WooCommerce classic checkout and plain HTML forms submitted empty to check error messages, focus and announcements, with safeguards so nothing is sent.</p>
 </a>
 
 <a class="lt-card" :href="withBase('/pro/fixes-queue')">
@@ -161,7 +161,7 @@ import { withBase } from 'vitepress'
 
 <a class="lt-card" :href="withBase('/pro/reports')">
   <h3>Client reports</h3>
-  <p>Branded reports covering all 55 WCAG 2.2 A and AA criteria, with share links and white-label.</p>
+  <p>Branded reports covering all 55 WCAG 2.2 A and AA criteria. Share links and white-label from the Growth plan.</p>
 </a>
 
 <a class="lt-card" :href="withBase('/pro/acr')">
@@ -171,7 +171,7 @@ import { withBase } from 'vitepress'
 
 <a class="lt-card" :href="withBase('/pro/portfolio')">
   <h3>Client portfolio</h3>
-  <p>All your client sites on one screen, connected straight from their WordPress, with trends and client emails.</p>
+  <p>From the Growth plan: all your client sites on one screen, connected straight from their WordPress, with trends and client emails.</p>
 </a>
 
 <a class="lt-card" :href="withBase('/pro/')">

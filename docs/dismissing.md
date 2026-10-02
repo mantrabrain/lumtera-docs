@@ -1,6 +1,6 @@
 ---
 title: Dismissing issues
-description: How to dismiss an issue that isn't a problem, who can dismiss errors, how dismissals survive re-scans, why a dismissed issue can show again, and how to restore them.
+description: How to dismiss an issue that isn't a problem, undo it, who can dismiss errors, how dismissals survive re-scans, why a dismissed issue can show again, and how to review and restore them in the Content report's Dismissed view.
 ---
 
 # Dismissing issues
@@ -16,6 +16,8 @@ In the block editor sidebar:
   <li>Optionally, fill in <strong>Why is this not a problem? (optional)</strong> The reason is saved with the dismissal.</li>
   <li>Click <strong>Dismiss</strong>.</li>
 </ol>
+
+A notice says **Issue dismissed.** Click **Undo** in it to report the issue again straight away. Press <kbd>Escape</kbd> to close the dismiss form without dismissing.
 
 You can also dismiss issues:
 
@@ -35,7 +37,7 @@ Dismissing re-checks and saves the post's results straight away, so the score an
 
 An administrator chooses which roles may dismiss errors under <span class="screen-path">Lumtera → Settings → Permissions</span>, in **Dismiss errors**. Administrators always can. See [Roles & permissions](/permissions).
 
-People who can't dismiss an error see *"Only an editor can dismiss an error."* in the sidebar instead of the button. Restoring needs the same permission as dismissing.
+People who can't dismiss an error see *"You can't dismiss errors. Ask someone who can, or fix the issue."* in the sidebar instead of the button. Restoring needs the same permission as dismissing.
 
 Developers can also change this with the `lumtera_dismiss_errors_capability` filter. See [Hooks & filters](/developers/hooks).
 
@@ -58,7 +60,11 @@ Each hint gives the date, who dismissed it, and the reason they gave.
 
 ## See and restore dismissed items
 
-At the bottom of the sidebar (or the Elementor panel), expand **N dismissed items**. Each shows *"Dismissed by name on date"* and the reason. Click **Restore** to bring it back.
+**In the Content report:** open <span class="screen-path">Lumtera → Checks → Content</span> and choose the **Dismissed** view. It lists every issue dismissed in your content, with who dismissed it, when and why. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**. Restored issues are reported again and count in the score. See [Site report](/site-report#dismissed).
+
+**In the editor:** at the bottom of the sidebar (or the Elementor panel), expand **N dismissed items**. Each shows *"Dismissed by name on date"* and the reason. Click **Restore** to bring it back.
+
+Restoring needs the same permission as dismissing.
 
 ## Ignore everywhere {#ignore-everywhere}
 

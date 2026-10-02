@@ -12,11 +12,19 @@ Review mode shows accessibility issues on the page itself, and checks the **whol
 ## Open review mode
 
 <ol class="step-list">
-  <li>While logged in, view a post, page or product you can edit.</li>
-  <li>Click <strong>Accessibility</strong> in the admin bar. A red count shows the errors saved for that post.</li>
+  <li>While logged in, view any page of your site: a post, page or product you can edit, or, if you can see Lumtera's reports, the blog home page, an archive, search results or the shop page.</li>
+  <li>Click <strong>Accessibility</strong> in the admin bar. On a single post, a red count shows the errors saved for that post.</li>
 </ol>
 
 A panel opens on the side, and each issue is outlined in place. Click **Close review**, or **Accessibility** again, to leave.
+
+### Where review mode works {#where-review-mode-works}
+
+Review mode works on single posts, pages and products, and on pages that list content: the blog home page, archives (categories, tags, authors and dates), search results and the WooCommerce shop page.
+
+On pages that list content, there is no **This post** tab: review mode opens on **Whole page**, and its results belong to the site rather than to one post. **Edit page** opens the page behind the listing (such as your posts page or shop page) when there is one. These pages need permission to see Lumtera's reports, not just to edit posts.
+
+On the Overview, the [weekly home page check](/site-report#weekly-home-page-check) card has **Open it in review mode**, which opens your home page in review mode.
 
 ### The admin bar menu {#the-admin-bar-menu}
 
@@ -36,7 +44,7 @@ The panel is built so your theme's CSS can't restyle it. Use the arrow keys to m
 
 ## Who can use it
 
-The **Accessibility** item appears only for signed-in users who can edit that post, and whose role may use review mode. By default, every role that can edit posts may use it: contributors, authors, editors and administrators, each on the posts they can edit.
+The **Accessibility** item appears for signed-in users whose role may use review mode: on a single post or page, when they can edit it; on the blog home page, archives, search results and the shop, when they can also see Lumtera's reports. By default, every role that can edit posts may use review mode: contributors, authors, editors and administrators, each on the posts they can edit.
 
 An administrator can change which roles may use it under <span class="screen-path">Lumtera → Settings → Permissions</span>, in **Review pages on the site**. Administrators always can. See [Roles & permissions](/permissions).
 
@@ -44,11 +52,11 @@ An administrator can change which roles may use it under <span class="screen-pat
 
 | Tab | What it does |
 | --- | --- |
-| [This post](#this-post) | The issues in the post's content, outlined on the page |
+| [This post](#this-post) | The issues in the post's content, outlined on the page. Only on a single post or page. |
 | [Whole page](#whole-page) | Checks of the rendered page, theme included, run as soon as it loads |
 | [Keyboard](#keyboard) | Walks the page with the Tab key, and tests menus, dialogs and tabs |
-| [Screen reader](#screen-reader) | What a screen reader lists: headings, landmarks, links and form fields |
 | [Manual](#manual) | The guided checklist for this page |
+| [Screen reader](#screen-reader) | What a screen reader lists: headings, landmarks, links and form fields |
 
 Each tab shows a count of what it found.
 
@@ -82,7 +90,7 @@ The full list, with IDs and WCAG criteria, is in [All checks → Whole-page chec
 
 **Reflow:** to check that the page works on narrow screens and at high zoom, make the browser window 320 pixels wide (or zoom to 400%), then click **Check again**.
 
-To keep the page responsive on very large pages, Lumtera samples up to 400 pieces of text and 1,500 click targets, and lists up to 20 items per check. The panel tells you when a page was too large to check completely.
+To keep the page responsive on very large pages, Lumtera checks up to 1,500 click targets and 300 Tab stops, and lists a limited number of items for each check. The panel tells you when a page was too large to check completely.
 
 ::: tip Fix it once
 Your header, menus and footer are usually the same on every page. Fixing a whole-page issue on one page often fixes it across the whole site.
@@ -115,6 +123,10 @@ If focusing an element reloads the page, the check can't carry on in the old pag
 Press <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> through the page yourself to confirm what the check found.
 :::
 
+## Manual {#manual}
+
+The **Manual** tab shows the [guided checklist](/manual-checks) for this page, with steps for each item and **Save result**. Results are saved with the post, the same as in the editor. On a listing page, they are saved with the page behind it (such as your posts page or shop page); archives and search results have no such page, so the **Manual** tab isn't shown there.
+
 ## Screen reader {#screen-reader}
 
 The **Screen reader** tab shows what a screen reader works with, in views:
@@ -128,10 +140,6 @@ The **Screen reader** tab shows what a screen reader works with, in views:
 In each list, use the <kbd>Up</kbd> and <kbd>Down</kbd> arrow keys to move, and <kbd>Enter</kbd> to show the item on the page. **Refresh preview** builds it again after the page changes.
 
 This is a preview, worked out from the page's code. It is not a screen reader. Real screen readers differ from each other, and they are the reference: test with NVDA (free, Windows) or VoiceOver (built into Mac and iPhone) to confirm.
-
-## Manual {#manual}
-
-The **Manual** tab shows the [guided checklist](/manual-checks) for this page, with steps for each item and **Save result**. Results are saved with the post, the same as in the editor.
 
 ## Simulate color vision
 
@@ -160,7 +168,7 @@ Saved results are used in:
 - the Overview's **Review coverage** meter, as evidence for the criteria the whole-page checks cover
 - the weekly email summary, reports, the conformance report in Lumtera Pro, and the Abilities API
 
-An administrator can turn saving off for everyone under <span class="screen-path">Lumtera → Settings → General</span> with **Allow saving whole-page results**. It is on by default, and each person still has to tick **Save results to reports** for their own checks to be stored.
+An administrator can turn saving off for everyone under <span class="screen-path">Lumtera → Settings → General</span> with **Let people save review-mode findings (theme, menus, footer) to the reports**. It is on by default, and each person still has to tick **Save results to reports** for their own checks to be stored.
 
 ## In other browsers
 

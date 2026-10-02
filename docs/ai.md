@@ -42,7 +42,7 @@ The **AI suggestions** card holds **Suggest alt text**, and shows one of these s
 
 | Status line | What it means |
 | --- | --- |
-| *AI suggestions use the AI Client built into WordPress 7.0 and later…* | Update WordPress to 7.0 or later, or turn AI back on if it's switched off in WordPress. The switch can't be turned on until then. Every check keeps working without AI. |
+| *AI suggestions use the AI Client built into WordPress 7.0 and later. Update WordPress to use them…* | Update WordPress to 7.0 or later, or turn AI back on if it's switched off in WordPress. The switch can't be turned on until then. Every check keeps working without AI. |
 | *No connected AI provider can read images yet.* | Connect a provider with an image-capable model under Settings → Connectors. |
 | *Ready: a connected AI provider can read images.* | You're set. |
 

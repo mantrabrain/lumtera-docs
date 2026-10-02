@@ -59,7 +59,7 @@ With an EN 301 549 standard, each known problem names the EN clause as well as t
 | **Organization name** | Required. Defaults to your site title. |
 | **Description of the service**, **How the service meets the accessibility requirements** | Needed for the **European Accessibility Act** template (Annex V). Other templates leave them out. |
 | **Conformance status** | **Partially conformant** (the default, and the honest choice for most sites), **Fully conformant**, **Non-conformant** or **Not yet assessed**. See [Fully conformant](#fully-conformant). |
-| **Contact email**, **Phone (optional)**, **Feedback form address (optional)** | At least one is needed. Leave the feedback form address empty to link the page that has your [feedback form](/feedback), found automatically. |
+| **Contact email**, **Phone (optional)**, **Feedback form address (optional)** | At least one is needed. Leave the feedback form address empty to link the page that has your [feedback form](/feedback), found automatically. The contact email is also where visitors' answers to your [feedback replies](/feedback#reply-update-and-note) go. |
 | **We aim to respond within** | Defaults to "5 business days" |
 | **Evaluation method** | **Self-evaluation by our own team**, **Evaluation by an outside expert**, or both, with **More about the evaluation (optional)** |
 | **Last evaluated** | Suggested from your last site-wide check and your manual checks |
@@ -99,7 +99,7 @@ Fill in the form again and click **Update draft statement**. Lumtera never overw
 
 Statements should be reviewed at least once a year. If yours was last reviewed more than a year ago, the Statement screen reminds you.
 
-The statement page is your content, so it's kept if you uninstall Lumtera.
+The statement page is your content, so it's kept if you delete Lumtera.
 
 ## Link to your statement {#link-to-your-statement}
 

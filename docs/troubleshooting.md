@@ -78,7 +78,7 @@ The list comes from Lumtera's checks, so posts that haven't been checked don't a
 What each role can do is set under <span class="screen-path">Lumtera → Settings → Permissions</span>.
 
 - **The Overview, Content report and Dashboard widget** need **See reports and check the site**. By default, that's editors and administrators.
-- **Review mode** needs **Review pages on the site**, and the person must be able to edit that post. The **Accessibility** item only shows in the admin bar on the front end of a single post or page of a content type that's checked.
+- **Review mode** needs **Review pages on the site**. On a single post or page, the person must be able to edit it. On the blog home, archives, search results and the shop page, they also need **See reports and check the site**. The **Accessibility** item only shows in the admin bar on the front end.
 - **The alt text manager** needs the ability to upload files (Authors and up).
 - **Settings** are for administrators only.
 
@@ -109,7 +109,7 @@ Each person can make 30 AI requests in 10 minutes, across all AI features. Wait 
 - Check **Send a weekly summary** is on under <span class="screen-path">Lumtera → Settings → Email summary</span>, and look at the **Next summary** date shown there.
 - **Look for a failure notice** in the same section, such as *"The summary due on … could not be sent."*, with the reason WordPress gave. See [When sending fails](/email-summary#when-sending-fails).
 - **Click Send a test summary now** to check that email arrives. Check the spam folder too.
-- **If Lumtera Pro sends its weekly digest**, the free summary isn't sent. Pro sends its own, while its license is active. See [Weekly email summary](/email-summary#with-lumtera-pro).
+- **If Lumtera Pro sends its weekly digest**, the free summary isn't sent. Pro sends its own, while it's licensed on the site (an expired license still counts). See [Weekly email summary](/email-summary#with-lumtera-pro).
 - **The email goes out with the first site visit after 9:00** on the chosen day. On a quiet site, see [Scheduled tasks run late](#scheduled-tasks-run-late-or-not-at-all).
 - **If your site can't send mail**, install an SMTP plugin, or set up an email service. Password reset emails are probably affected too.
 
@@ -131,10 +131,14 @@ Administrators can click **Check now** to try again straight away. See [Weekly h
 
 ## A site fix doesn't show on my site
 
-- **Clear your page cache** and any CDN cache.
+- **Clear your page cache** and any CDN cache. Lumtera empties the page cache of WP Super Cache, W3 Total Cache, WP Rocket, WP Fastest Cache, SiteGround Speed Optimizer, LiteSpeed Cache, Cache Enabler and Breeze when you save, but not your host's or CDN's cache.
 - **Skip link:** your theme must call `wp_body_open()`. No link is added if your theme already has one, or if it's a block theme, which gets WordPress's own. If WordPress's own skip link is switched off on a block theme, Lumtera adds one and gives the template's main area the ID `lumtera-main`. See [Site fixes](/site-fixes).
 - **Zoom:** if your theme prints its viewport tag after `wp_head()`, it wins. Ask the theme author to fix it.
 - **Link fixes** apply only to post content, not menus, widgets or the footer.
+
+## I deleted Lumtera. Is my data gone? {#i-deleted-lumtera-is-my-data-gone}
+
+Not unless you chose **Delete everything** under <span class="screen-path">Lumtera → Settings → General</span> → [When Lumtera is deleted](/settings#when-lumtera-is-deleted). By default, results, feedback and settings are kept, and installing Lumtera again picks them up. While Lumtera is active, the <span class="screen-path">Plugins</span> screen says **Data is kept if deleted** under it.
 
 ## Review mode can't find the post's content
 
@@ -156,7 +160,7 @@ or, with WP-CLI:
 */5 * * * * cd /path/to/wordpress && wp cron event run --due-now >/dev/null 2>&1
 ```
 
-Pro's background jobs also need an active license.
+Pro's background jobs also need Lumtera Pro to be licensed on the site. An expired license still counts.
 
 ## Alert emails don't arrive {#alert-emails-dont-arrive}
 

@@ -48,7 +48,7 @@ People who edit the theme start in the **Site parts & code** view, which opens t
 Fix a problem in the part and every page that uses it gets the fix. You can:
 
 - open the part from the **Site parts** tab and fix it there, or
-- use **Fix at the source** in the fix dialog, which changes only that block of the part, then checks the pages that use it again. See [Fix at the source](/fixing-issues#fix-at-the-source).
+- use **Fix at the source** in the fix dialog, which changes only that block of the part, then checks the pages that use it again. The count on the button covers only the pages that use that part. See [Fix at the source](/fixing-issues#fix-at-the-source).
 
 Widgets are fixed in <span class="screen-path">Appearance → Widgets</span>.
 

@@ -1,6 +1,6 @@
 ---
 title: Support
-description: Where to get help with Lumtera and Lumtera Pro, and what to include so we can help quickly.
+description: Where to get help with Lumtera and Lumtera Pro, Pro's direct email support and 14-day refund, and what to include so we can help quickly.
 ---
 
 # Support
@@ -11,7 +11,15 @@ Ask on the [Lumtera support forum on WordPress.org](https://wordpress.org/suppor
 
 ## Lumtera Pro
 
-For help with Pro, [contact MantraBrain](https://mantrabrain.com/contact/) and mention your license key's email address. You can manage your license, downloads and invoices in your [store account](https://store.mantrabrain.com/account/).
+Lumtera Pro includes direct email support from the MantraBrain team, and automatic updates. [Contact MantraBrain](https://mantrabrain.com/contact/) and mention the email address your license was bought with. The [license screen](/pro/license) has the same link: **Contact support**, under **Need help?**, at <span class="screen-path">Lumtera → Settings → License</span>.
+
+Support is included while your license is active. If a yearly license expires, Pro keeps working on the sites where it's active, and support and updates resume when you renew. You can manage your license, downloads and invoices in your [store account](https://store.mantrabrain.com/account/).
+
+## Refunds {#refunds}
+
+Every Lumtera Pro purchase has a 14-day refund, no reason needed. [Contact MantraBrain](https://mantrabrain.com/contact/) within 14 days of buying.
+
+A refunded license key is turned off on the store, so Lumtera Pro's features stop working on your sites the next time the license is checked. The free Lumtera plugin keeps working, with your checks, results and settings as they were. Deactivate or delete Lumtera Pro when you no longer need it.
 
 ## What to include
 

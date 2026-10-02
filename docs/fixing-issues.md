@@ -44,7 +44,7 @@ Other checks, such as lists, tables, empty paragraphs and contrast, are fixed in
 
 ## Draft with AI
 
-When an administrator has switched on [AI suggestions](/ai) for alt text, link text or headings, the dialog has **Draft with AI**. The draft is marked **AI-drafted — review before applying**. Read it, edit it if needed, then apply it yourself. An AI draft is never applied on its own. It sends the same data as the editor's AI buttons for that feature, and uses the same request limit.
+When an administrator has switched on [AI suggestions](/ai) for alt text, link text or headings, the dialog has **Draft with AI**. The draft is marked **AI draft — review before applying**. Read it, edit it if needed, then apply it yourself. An AI draft is never applied on its own. It sends the same data as the editor's AI buttons for that feature, and uses the same request limit.
 
 ## Fix at the source {#fix-at-the-source}
 
@@ -80,7 +80,7 @@ Lumtera is careful about what it writes:
 
 To fix an issue, a person needs to be able to edit that post. Fixing a site part at the source needs the rights to edit it: template parts, menus and widgets need the theme options capability (administrators), synced patterns need the right to edit them.
 
-With [Lumtera Pro](/pro/fixes-queue), the **Fixes queue** proposes fixes for many pages at once, and can require a second person to approve each one.
+With [Lumtera Pro](/pro/fixes-queue), the **Fixes queue** proposes fixes for many pages at once for you to review and apply, and from the Agency plan an approval rule can require a second person to approve each one.
 
 ## Privacy
 

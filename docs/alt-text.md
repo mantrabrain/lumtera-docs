@@ -7,9 +7,9 @@ description: See every image in your Media Library on one screen, describe each 
 
 Missing alt text is one of the most common accessibility errors. The alt text manager puts every image in your Media Library on one screen. Describe an image once, and Lumtera offers to add the description to the posts that show it without one.
 
-Go to <span class="screen-path">Lumtera → Alt text</span>. With Lumtera Pro, the **Fixes** group has more screens, so it's <span class="screen-path">Lumtera → Fixes → Alt text</span>.
+Go to <span class="screen-path">Lumtera → Fixes → Alt text</span>.
 
-![The alt text manager](/screenshots/screenshot-5.webp)
+![The alt text manager under Lumtera → Fixes → Alt text](/screenshots/screenshot-5.webp)
 
 ## Why posts need updating too
 

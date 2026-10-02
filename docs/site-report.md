@@ -1,6 +1,6 @@
 ---
 title: Site report
-description: The Overview with its coverage meter, Get started checklist and weekly home page check, continuing a stopped check, the same issue grouped across pages, the filterable Content report with free CSV export, the Accessibility column in your post lists, and the Dashboard widget.
+description: The Overview with its coverage meter, Get started checklist and weekly home page check, continuing a stopped check, the same issue grouped across pages, the filterable Content report with free CSV export and its Dismissed view, the Accessibility column in your post lists, and the Dashboard widget.
 ---
 
 # Site report
@@ -33,7 +33,7 @@ Each person answers for themselves. It never asks for a star rating, never shows
 
 ### Pro tips {#pro-tips}
 
-Without Lumtera Pro, a few screens can show one short line about a Pro feature, at the moment it's relevant, marked **Pro tip**, with an **About Lumtera Pro** link:
+Without Lumtera Pro, a few screens can show one short line about a Pro feature, at the moment it's relevant, marked **Pro tip**, with a **See the Pro plans** link that opens in a new tab:
 
 | Where | When |
 | --- | --- |
@@ -41,6 +41,8 @@ Without Lumtera Pro, a few screens can show one short line about a Pro feature, 
 | Content report, **By issue** | On a group of 10 or more items with the same issue (the fixes queue) |
 | Overview | When your site has forms (form tests), or links to PDFs (PDF checks) |
 | Accessibility statement | Once the statement is published (the evidence log) |
+| Settings → General, weekly home page check | When the weekly home page check is on (scheduled checks of your other key pages) |
+| Settings → Email summary | When the weekly summary is on (alerts soon after new errors) |
 
 At most one shows on a screen. They are never a notice or a pop-up, show no prices, and nothing free is locked. **Hide this tip** (the **×** button) hides that tip for you, for good. They never show once Pro is installed. The weekly email can carry a similar line, which you can [switch off](/email-summary#note-about-lumtera-pro).
 
@@ -50,6 +52,7 @@ Click **Check all content** to check every post, page and product, and your [sit
 
 - A progress bar shows how far it's got. Keep the tab open. You can carry on working in another tab.
 - **Stop** stops after the current batch.
+- When it finishes, the progress bar says what was found, for example *"Done — 6 items checked: 2 errors on 2 items, 5 to review."*, with **See what to fix** (or **See what to review**), which takes you to **Needs attention**. The numbers on the Overview update without reloading the page, and screen readers hear the result.
 - When some content is already checked, **Check N new items** checks only the rest.
 - After the first run, the button says **Check all content again**. Use it after you change settings.
 
@@ -110,7 +113,7 @@ With [Lumtera Pro](/pro/monitoring), the Overview also shows your **Score histor
 
 ## Content report
 
-<span class="screen-path">Lumtera → Checks → Content</span> lists every checked item, in three tabs: **By page**, **By issue** and **Site parts**. Beside the tabs, a two-way switch chooses how much you see:
+<span class="screen-path">Lumtera → Checks → Content</span> lists every checked item, in three tabs: **By page**, **By issue** and **Site parts**, plus **Dismissed** once anything has been dismissed. Beside the tabs, a two-way switch chooses how much you see:
 
 | Choice | Shows |
 | --- | --- |
@@ -166,6 +169,10 @@ You can filter this view by **Type**, **Issue** and **Severity**.
 
 The **Site parts** tab lists your template parts, synced patterns, navigation menus, classic menus and widget areas, each checked on its own, with **Check site parts now**. See [Site parts](/site-parts).
 
+### Dismissed {#dismissed}
+
+The **Dismissed (N)** tab lists every finding someone marked as not a problem, in the editor or the classic editor box: the issue, the item, **Dismissed by**, **When** and the **Reason** (or *No reason given*). Dismissed findings are left out of scores and reports. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**, to report them again; Lumtera asks you to confirm first. Restoring needs the same permission as dismissing: for errors, the **Dismiss errors** permission. See [Dismissing issues](/dismissing).
+
 ### Export CSV {#export-csv}
 
 **Export CSV** downloads every finding that matches your filters, including **Show possible issues**, so the file matches what you see. It exports only what you are allowed to see. Export is part of the free plugin.
@@ -183,11 +190,11 @@ Click the column header to **sort by score**, worst first. Items that haven't be
 
 ## Dashboard widget
 
-The **Lumtera Accessibility** widget on the WordPress Dashboard shows your **Average score**, **Errors** and **Needs review**, the review coverage, the three items with the most errors, and how many items have been checked. It appears for the same roles that can open the Overview. Hide it from **Screen Options** if you don't need it.
+The **Lumtera Accessibility** widget on the WordPress Dashboard shows your **Average automated score**, **Errors** and **Needs review**, how many issues were fixed in the last 7 days, the review coverage, the three items with the most errors under **Needs attention**, and how many items have been checked. It appears for the same roles that can open the Overview. Hide it from **Screen Options** if you don't need it.
 
 ## Share results
 
 - Get a summary by email each week: see [Weekly email summary](/email-summary).
 - Let more roles see the reports: see [Roles & permissions](/permissions).
 - Give read-only access to an agency: see the [Lumtera Reporter role](/permissions#lumtera-reporter).
-- With Lumtera Pro, send a client a branded report or a share link: see [Client reports](/pro/reports).
+- With Lumtera Pro, send a client a branded report or, from the Growth plan, a share link: see [Client reports](/pro/reports).

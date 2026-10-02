@@ -7,11 +7,11 @@ description: Optional server-side fixes for common theme accessibility problems,
 
 Some accessibility problems come from your theme, not your content. Under <span class="screen-path">Lumtera → Settings → Site fixes</span> you can switch on small fixes for the most common ones.
 
-- **Every fix is off by default.** Each one explains **What it changes:** and when to **Leave it off if**.
+- **Every fix is off by default.** Each one says when to **Leave it off if**, and **How it works** shows exactly what it changes.
 - **This isn't an overlay.** Each fix is a small change to the HTML or CSS your server sends. Every visitor gets the same page, there's no widget, and nothing rewrites the page in the browser.
 - **Fixing the theme itself is always better.** Use these while you wait for a theme fix, or when you can't change the theme.
 
-Only administrators can change these settings. Changes show on your site right away. Clear any page cache to see them. Use **Preview on your site** to open your home page, then check a page with the keyboard and a screen reader.
+Only administrators can change these settings. Changes show on your site right away: if you use WP Super Cache, W3 Total Cache, WP Rocket, WP Fastest Cache, SiteGround Speed Optimizer, LiteSpeed Cache, Cache Enabler or Breeze, Lumtera empties its page cache when you save. Otherwise, clear your host's or CDN's cache. Use **Preview on your site** to open your home page, then check a page with the keyboard and a screen reader.
 
 The skip link, the focus outline and pinch zoom are the **baseline fixes** in the Overview's **Get started** checklist. Like every site fix, they stay free.
 

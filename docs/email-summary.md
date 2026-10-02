@@ -62,13 +62,13 @@ The subject is *"[Your site name] Weekly accessibility summary"*. The email cont
 - **Error** and **needs review** counts.
 - When people have saved [whole-page results](/review-mode#save-results-to-reports), the issues found in the theme, menus and footer, and how many pages were checked as a whole.
 - How many content items have been checked, out of the total.
-- **Fixed this week**: how many issues went away from content that was edited since the last email. The first email counts the last 7 days instead.
+- **Fixed this week**: how many issues went away from content that was edited since the last email. A fix that was undone isn't counted. The first email counts the last 7 days instead.
 - **Most common issues**: the three checks with the most findings, with how many times each was found and in how many items.
 - **Got worse this week**: up to five pages whose score dropped since the last email, biggest drop first, each with its old and new score and a link to edit it. If no page got worse, it says so.
 - **Home page check**, when the [weekly home page check](/settings#weekly-home-page-check) is on: its latest result and date, or why it couldn't run.
 - An **Open the accessibility overview** button.
 - A reminder that automated checks find many problems, not all of them, and a high score doesn't mean the site is fully accessible.
-- Without Lumtera Pro, and unless you switched it off: one line saying what Lumtera Pro adds, with an **About Lumtera Pro** link.
+- Without Lumtera Pro, and unless you switched it off: one line saying what Lumtera Pro adds, with a **See the Pro plans** link.
 - A link to turn the summary off, change who gets it or leave out the note about Pro.
 
 The numbers match the [Overview](/site-report#overview), so they include drafts and other unpublished content that's been checked. If nothing has been checked yet, the email says so and asks you to run a check from the Overview.
@@ -85,7 +85,7 @@ Only drops that happen while the summary is on are noted, so the first email aft
 
 Switch off **Send a weekly summary** and save. Every email links back to this settings page.
 
-Uninstalling Lumtera also removes the setting and the scheduled email.
+Deactivating or deleting Lumtera stops the scheduled email. Your summary settings are kept unless you chose **Delete everything** under <span class="screen-path">Lumtera → Settings → General</span> → [When Lumtera is deleted](/settings#when-lumtera-is-deleted).
 
 ## With Lumtera Pro {#with-lumtera-pro}
 
@@ -97,7 +97,7 @@ Lumtera Pro has its own weekly digest, as part of [Monitoring & alerts](/pro/mon
 - Pro's summary is switched on and off with **Weekly summary email** under <span class="screen-path">Lumtera → Settings → Alerts</span>, and goes to the addresses in that section's **Send to**.
 - Your free summary settings are kept. If you deactivate Lumtera Pro, the free summary starts again with its saved settings, from the next time someone opens wp-admin.
 
-Pro's digest always goes out on Mondays at 9:00, and only while its license is active. If Lumtera Pro is installed without an active license, Pro sends no digest, so **the free summary is sent** as usual (if you switched it on).
+Pro's digest always goes out on Mondays at 9:00, while Lumtera Pro is licensed on the site. An expired yearly license still counts: only updates and support stop. If Lumtera Pro is installed but no license is activated, or the license was deactivated, Pro sends no digest, so **the free summary is sent** as usual (if you switched it on).
 
 | | Free summary | Pro summary |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ Pro's digest always goes out on Mondays at 9:00, and only while its license is a
 
 ## For developers
 
-The `lumtera_email_summary_active` filter decides whether the summary is sent. It defaults to the setting, and to off while Lumtera Pro sends its own weekly digest. Whether Pro sends it comes from the `lumtera_pro_sends_digest` filter: its default is whether Pro is active, and Pro answers with whether its license is active.
+The `lumtera_email_summary_active` filter decides whether the summary is sent. It defaults to the setting, and to off while Lumtera Pro sends its own weekly digest. Whether Pro sends it comes from the `lumtera_pro_sends_digest` filter: its default is whether Pro is active, and Pro answers with whether it's licensed on the site (an expired license counts).
 
 ```php
 // Never send the free weekly summary on this site.
