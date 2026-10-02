@@ -82,8 +82,9 @@ export default defineConfig({
             text: 'Check & fix',
             items: [
               { text: 'Block editor sidebar', link: '/block-editor' },
+              { text: 'Classic editor & page builders', link: '/page-builders' },
               { text: 'Review mode', link: '/review-mode' },
-              { text: 'Site report', link: '/site-report' },
+              { text: 'Overview & Content report', link: '/site-report' },
               { text: 'Fixing issues', link: '/fixing-issues' },
               { text: 'All checks', link: '/checks' }
             ]
@@ -92,10 +93,13 @@ export default defineConfig({
             text: 'Tools',
             items: [
               { text: 'Alt text manager', link: '/alt-text' },
+              { text: 'AI suggestions', link: '/ai' },
               { text: 'Site fixes', link: '/site-fixes' },
               { text: 'Feedback form & inbox', link: '/feedback' },
               { text: 'Accessibility statement', link: '/statement' },
-              { text: 'Settings', link: '/settings' }
+              { text: 'Settings', link: '/settings' },
+              { text: 'Weekly email summary', link: '/email-summary' },
+              { text: 'Roles & permissions', link: '/permissions' }
             ]
           }
         ]
@@ -106,9 +110,10 @@ export default defineConfig({
           { text: 'What Pro adds', link: '/pro/' },
           { text: 'License & plans', link: '/pro/license' },
           { text: 'Page checks', link: '/pro/page-checks' },
+          { text: 'Compare scans', link: '/pro/compare-scans' },
           { text: 'Fixes queue', link: '/pro/fixes-queue' },
-          { text: 'Evidence log', link: '/pro/evidence' },
           { text: 'Client reports', link: '/pro/reports' },
+          { text: 'Evidence log', link: '/pro/evidence' },
           { text: 'Conformance report (ACR)', link: '/pro/acr' },
           { text: 'Client portfolio', link: '/pro/portfolio' }
         ]
@@ -156,7 +161,7 @@ export default defineConfig({
           { text: 'Block editor sidebar', link: '/block-editor' },
           { text: 'Classic editor & page builders', link: '/page-builders' },
           { text: 'Review mode (live page)', link: '/review-mode' },
-          { text: 'Site report', link: '/site-report' },
+          { text: 'Overview & Content report', link: '/site-report' },
           { text: 'Fixing issues', link: '/fixing-issues' },
           { text: 'Site parts', link: '/site-parts' },
           { text: 'Dismissing issues', link: '/dismissing' },
@@ -173,8 +178,8 @@ export default defineConfig({
           { text: 'Site fixes', link: '/site-fixes' },
           { text: 'Feedback form & inbox', link: '/feedback' },
           { text: 'Accessibility statement', link: '/statement' },
-          { text: 'Weekly email summary', link: '/email-summary' },
           { text: 'Settings', link: '/settings' },
+          { text: 'Weekly email summary', link: '/email-summary' },
           { text: 'Roles & permissions', link: '/permissions' }
         ]
       },
@@ -190,19 +195,19 @@ export default defineConfig({
           { text: 'Consistency across pages', link: '/pro/consistency' },
           { text: 'PDF checks', link: '/pro/documents' },
           { text: 'Test sessions', link: '/pro/test-sessions' },
+          { text: 'Compare scans', link: '/pro/compare-scans' },
           { text: 'Fixes queue', link: '/pro/fixes-queue' },
           { text: 'Fix tracking', link: '/pro/fix-tracking' },
           { text: 'Ignore everywhere', link: '/pro/ignore' },
-          { text: 'Monitoring & alerts', link: '/pro/monitoring' },
           { text: 'Client reports', link: '/pro/reports' },
           { text: 'Conformance report (ACR)', link: '/pro/acr' },
           { text: 'Evidence log', link: '/pro/evidence' },
-          { text: 'Compare scans', link: '/pro/compare-scans' },
+          { text: 'Activity log & webhooks', link: '/pro/activity-webhooks' },
           { text: 'Feedback response targets', link: '/pro/feedback-targets' },
           { text: 'Burden records', link: '/pro/burden' },
           { text: 'Client portfolio', link: '/pro/portfolio' },
-          { text: 'Multisite network', link: '/pro/multisite' },
-          { text: 'Activity log & webhooks', link: '/pro/activity-webhooks' }
+          { text: 'Monitoring & alerts', link: '/pro/monitoring' },
+          { text: 'Multisite network', link: '/pro/multisite' }
         ]
       },
       {
