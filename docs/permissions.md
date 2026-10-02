@@ -95,11 +95,11 @@ Lumtera Pro adds three permissions to this section:
 | **Approve and apply fixes** | `lumtera_approve_changes` | Administrator, Editor |
 | **Manage client reports** | `lumtera_manage_reports` | Administrator |
 
-**Propose fixes** and **Approve and apply fixes** are for the [Fixes queue](/pro/fixes-queue). People also need to be able to edit the page. Anyone who can edit a page can still fix one issue at a time from the editor or the Content report, unless **Require a second person to approve** is on (Agency plan and up): then these choices apply there too.
+**Propose fixes** and **Approve and apply fixes** are for the [Fixes queue](/pro/fixes-queue). People also need to be able to edit the page, so only roles that can edit content can be given them (plus any role that already has one, so it can be taken away). Anyone who can edit a page can still fix one issue at a time from the editor or the Content report, unless **Require a second person to approve** is on (Agency plan and up): then these choices apply there too.
 
 #### Manage client reports {#manage-client-reports}
 
-**Manage client reports** is needed to create and delete [client reports](/pro/reports), make and revoke share links, and edit the [conformance report](/pro/acr). Anyone with **See reports and check the site** can still open and download reports, and view the conformance report.
+**Manage client reports** is needed to create and delete [client reports](/pro/reports), make and revoke share links, and edit the [conformance report](/pro/acr). Anyone with **See reports and check the site** can still open and download reports, and view the conformance report. Reading, changing or deleting a stored report any other way, such as over XML-RPC, also needs **Manage client reports**.
 
 It has its own card below the other permissions, **Manage client reports (Lumtera Pro)**. **Administrator (always)** is ticked and can't be unticked. The card lists the roles that can edit posts. Tick the roles you want and click **Save report permissions**. Changes apply right away, to every user with the role. Share links let anyone with the address read a report, so give this only to people who send reports to clients. The Accessibility client role is never listed. See [Who can manage reports](/pro/reports#manage-permission).
 

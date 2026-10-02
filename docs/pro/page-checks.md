@@ -97,11 +97,11 @@ WCAG 2.2.2 asks that content that moves on its own for more than five seconds ca
 
 | What happened | Finding | Severity |
 | --- | --- | --- |
-| The slides changed on their own, and no pause or stop button was found | *Carousel moves on its own with no pause button* | Error |
-| Lumtera pressed the pause button, and the slides kept changing | *Carousel's pause button does not stop it* | Error |
+| The slides changed on their own, and no pause or stop button was found | *Carousel moves on its own with no pause button* | Needs review |
+| Lumtera pressed the pause button, and the slides kept changing | *Carousel's pause button does not stop it* | Needs review |
 | The pause button stopped it | *Carousel moves on its own, and its pause button works*: check that the button works from the keyboard and has a name | Tip |
 
-The check ID is [`page-carousel-motion`](/checks#page-carousel-motion) (2.2.2, level A). Findings are "likely": a few seconds of watching can't prove the movement lasts more than five seconds, so confirm it yourself. A slider that doesn't move while it's watched isn't reported here. The free keyboard check still lists it for a person to test.
+The check ID is [`page-carousel-motion`](/checks#page-carousel-motion) (2.2.2, level A). Findings are "likely": a few seconds of watching can't prove the movement lasts more than five seconds, so they are **Needs review**, and <span class="screen-path">Lumtera → Settings → Checks</span> shows the check's default as Needs review too. Confirm it yourself. A slider that doesn't move while it's watched isn't reported here. The free keyboard check still lists it for a person to test.
 
 While sliders are watched, the progress card says so and counts down. **Skip slider checks** stops them for the rest of the run.
 
@@ -119,7 +119,7 @@ The results table lists each page with its **Errors**, **Needs review** count an
 
 - **Issues** expands the findings for that row.
 - **Check again** re-runs the check at the same width.
-- **Remove** takes a row out of the results. Removing a desktop row also makes scheduled checks skip that page, until you check it again in the browser. Removing a phone row doesn't affect scheduled checks.
+- **Remove** takes a row out of the results. Removing a desktop row also makes scheduled checks skip that page, until you check it again in the browser. Removing a phone row doesn't affect scheduled checks. You can only remove results for pages you may see, and a signed-in result only if you may run signed-in checks, because reports and the conformance report use them as evidence.
 
 With signed-in checks set up, **Show** filters the table to one role's results, or to **Not signed in as a test user**.
 

@@ -37,7 +37,7 @@ The password is stored encrypted with your site's secret keys. It's used only to
 ::: tip Which user to connect with
 - **Lumtera Reporter** is enough to see the site in your portfolio.
 - **Rescans** from the hub need a user who may run checks on the client site, such as an editor.
-- **Report links in client emails** need an administrator on a client site that runs Lumtera Pro.
+- **Report links in client emails** need an administrator with the **Manage client reports** permission on a client site that runs Lumtera Pro.
 :::
 
 ::: warning Requirements for client sites
@@ -57,7 +57,7 @@ The **Sites** table shows, for each site:
 
 | Column | What it shows |
 | --- | --- |
-| **Site** | Its name and address, when it last synced, and its labels. Your own site is always first, marked **(this site)** and **live**. |
+| **Site** | Its name and address (with the port and folder when there is one, so `example.com` and `example.com:8443`, or two sites in different folders on one host, can be told apart), when it last synced, and its labels. Your own site is always first, marked **(this site)** and **live**. |
 | **Score** | The average automated score, with a small chart of the last 90 days. Screen readers get a text summary of the trend instead. |
 | **Errors** and **Needs review** | The site's current counts. |
 | **Since last month** | **Worse**, **Better** or **No change**, with the change in errors and score, for example "errors +4, score −3 since 28 August". It says **Lumtera updated since** when the client updated Lumtera in between, because new or improved checks can change the numbers. |
@@ -109,7 +109,7 @@ Scheduled emails go out on the first day of the month or quarter and cover the o
 
 The email includes the automated score, errors, items that need review, pages checked, the change since last time, the latest full check, criteria with evidence, the statement's status and feedback waiting for an answer, with the most frequent problems. It says that automated checks don't find everything and that the numbers aren't a certification. Replies go to the contact email in your branding. With white-label on, it doesn't mention Lumtera.
 
-**The full report link.** When **Add a link to a new full report** is ticked, the client site creates a fresh [client report](/pro/reports) and the email links to its [share link](/pro/reports#share-links). This needs Lumtera Pro on the client site and an administrator as the connection user. The **Report link** line tells you whether it's **Ready** or why not. Without it, the email is sent without a link.
+**The full report link.** When **Add a link to a new full report** is ticked, the client site creates a fresh [client report](/pro/reports) and the email links to its [share link](/pro/reports#share-links). This needs Lumtera Pro on the client site, and a connection user who is an administrator with the **Manage client reports** permission there. The **Report link** line tells you whether it's **Ready** or why not, and the link is offered only when the client site would accept the request. Without it, the email is sent without a link.
 
 Before you rely on the schedule:
 

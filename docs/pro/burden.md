@@ -26,7 +26,7 @@ Click **Record your assessment** and fill in the form.
 **Scope**
 
 - **Web addresses affected**: one per line.
-- **Posts, pages and documents affected (IDs)**: IDs separated by commas. A document is its Media Library ID.
+- **Posts, pages and documents affected (IDs)**: IDs separated by commas. A document is its Media Library ID. An entry that isn't the ID of a post, page or document on this site (a typo, or a deleted post) is left out. The record still saves, and a warning after saving names the entries that weren't added, so you can edit the record to correct them.
 
 **Requirements affected.** Tick the WCAG success criteria you can't meet for this content. Each is listed with its EN 301 549 clause.
 

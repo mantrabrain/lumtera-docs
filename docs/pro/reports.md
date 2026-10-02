@@ -105,7 +105,7 @@ The role gets the **See reports and check the site** permission by default. You 
 
 ## Who can manage reports {#manage-permission}
 
-Opening and downloading reports needs only **See reports and check the site**. Creating and deleting client reports, making and revoking share links, and editing the [conformance report](/pro/acr) need **Manage client reports**. Administrators always have it.
+Opening and downloading reports needs only **See reports and check the site**. Creating and deleting client reports, making and revoking share links, and editing the [conformance report](/pro/acr) need **Manage client reports**. Administrators always have it. Reading, changing or deleting a stored report through WordPress's other routes, such as XML-RPC, needs it too.
 
 To give it to editors or another role, go to <span class="screen-path">Lumtera → Settings → Permissions</span>. In the **Manage client reports (Lumtera Pro)** card, tick the roles and click **Save report permissions**. The card lists the roles that can edit posts. Changes apply right away. Share links let anyone with the address read a report, so give this only to people who send reports to clients.
 

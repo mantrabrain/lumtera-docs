@@ -105,7 +105,7 @@ Anyone who can edit a page can still fix one issue at a time on it from the edit
 
 Administrators choose who can do what under <span class="screen-path">Lumtera → Settings → Fix approvals</span>, in the **Fixing** group.
 
-- **Propose fixes** and **Approve and apply fixes**: tick the roles that can. Each choice grants the capability to the role. A role editor plugin can also give it to single users. Role changes apply right away, to every user with the role.
+- **Propose fixes** and **Approve and apply fixes**: tick the roles that can. Each choice grants the capability to the role. A role editor plugin can also give it to single users. Role changes apply right away, to every user with the role. Only roles that can edit content are listed, plus any role that already has one of these permissions, so you can take it away. Read-only roles, such as Subscriber, the [Accessibility client](/pro/reports#client-role) and the portfolio's Lumtera Reporter, can't be given them.
 - **Review rules**: the two switches below.
 
 ### Require a second person to approve {#require-a-second-person-to-approve}

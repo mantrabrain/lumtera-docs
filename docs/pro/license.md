@@ -186,6 +186,8 @@ Lumtera Pro updates like any other plugin, from <span class="screen-path">Dashbo
 
 An active license is needed to download updates. Without one, the update row says *"A valid Lumtera Pro license is required to download this update."* with **Activate license** and **get a license** links. An expired license gets the renewal message above instead.
 
+Updates are only downloaded from secure (https) addresses. If the store ever answered with a plain http download address, the update would still be announced but couldn't be downloaded. The text the store sends for **View details**, such as the plugin name and version, is shown as plain text.
+
 ## Deleting the plugin
 
 Deleting Lumtera Pro keeps the license key on the site, so a reinstall keeps working, even with an expired key. To remove it too, define `LUMTERA_PRO_DELETE_LICENSE` as `true` in `wp-config.php` before deleting: the key is removed and this site's activation is freed on the store, so the key can be used on another site. See [Data & uninstall](/developers/data).

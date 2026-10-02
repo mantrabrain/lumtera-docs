@@ -137,7 +137,7 @@ if ( ! hash_equals( $expected, $_SERVER['HTTP_X_LUMTERA_SIGNATURE'] ?? '' ) ) {
 }
 ```
 
-Lost the secret, or think it leaked? Click **Regenerate secret**. The old one stops working straight away.
+Lost the secret, or think it leaked? Click **Regenerate secret** next to the JSON webhook and confirm. The old secret stops working straight away, so the receiving service rejects deliveries until you give it the new one, which is shown once. Slack and Teams webhooks aren't signed, so they have no secret and no **Regenerate secret** button.
 
 ### Delivery
 
