@@ -197,7 +197,7 @@ wp lumtera issues --baseline=.lumtera-baseline.json --fail-on=error
 {
     "format": "lumtera-baseline/v1",
     "tool": "Lumtera",
-    "version": "1.0.0.3",
+    "version": "1.2.1",
     "created": "2026-09-28T01:29:56+00:00",
     "fingerprints": [
         "adfca57ae5eabec4be4ea082a5697481"
@@ -263,7 +263,7 @@ wp lumtera issues [--rule=<id>] [--severity=<severity>] [--post_type=<type>] [--
 | `--format=<format>` | `table` (default), `csv`, `json`, `sarif` or `junit`. Every format except `table` streams, so large sites don't run out of memory. |
 | `--fail-on=<severity>` | The lowest severity of a listed (new) issue that makes the command exit with status 1: `error`, `warning`, `notice` or `none`. Default: `none`. |
 | `--baseline=<file>` | Leave out issues already in this [baseline](#baselines). Only new ones count towards `--fail-on`. |
-| `--write-baseline=<file>` | Record every matching issue in this file, to pass as `--baseline` later |
+| `--write-baseline=<file>` | Record every matching issue in this file, to pass as `--baseline` later. Once the file is written the command exits with `0`, whatever `--fail-on` says. |
 
 ```sh
 wp lumtera issues --severity=error
@@ -274,7 +274,7 @@ wp lumtera issues --baseline=.lumtera-baseline.json --fail-on=error
 
 Columns: `post_id`, `title`, `rule`, `severity`, `wcag`, `message`.
 
-By default (`--fail-on=none`), `issues` exits with status 0 whatever it finds. Pass `--fail-on` to fail a build on stored results. It exits with status 2 for an invalid `--fail-on` or a baseline that can't be read or written.
+By default (`--fail-on=none`), `issues` exits with status 0 whatever it finds. Pass `--fail-on` to fail a build on stored results. It works with every `--format`, including SARIF and JUnit, and with or without `--baseline` (where only new issues count). It exits with status 2 for an invalid `--fail-on` or a baseline that can't be read or written.
 
 ## wp lumtera rules
 

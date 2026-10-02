@@ -33,6 +33,7 @@ If your site uses plain permalinks, use the `?rest_route=` form. For example: `h
 | **the review capability** | The capability from the `lumtera_review_capability` filter. Default `lumtera_review_mode`. |
 | **the dismiss-errors capability** | The capability from the `lumtera_dismiss_errors_capability` filter. Default `lumtera_dismiss_errors`. |
 | **the summary capability** | `lumtera_view_summary`. The Lumtera Reporter role and administrators have it. |
+| **the manage-reports capability** (Pro) | `lumtera_manage_reports`: **Manage client reports**. Administrators always have it. Needed to create, delete and share client reports and to save the conformance report. |
 
 You give these to roles under <span class="screen-path">Lumtera → Settings → Permissions</span>. See [Roles & permissions](/permissions).
 
@@ -79,6 +80,7 @@ Checks content **without storing anything**. The editor sidebar calls it as you 
 | `content` | string | `''` | Block markup or HTML, up to 512 KB (`lumtera_max_check_bytes`) |
 | `block_ids` | string[] | `[]` | Editor block client IDs, in order, so issues map to blocks. Up to 5,000, each up to 64 characters. |
 | `elementor` | string | `''` | Unsaved Elementor data (JSON), up to the same size as `content` |
+| `limit` | int | 0 | Findings listed per check, 0 to 10,000. 0 lists them all. Counts and score always cover every finding. With a limit, the response also has `tally`, `more` (`[ { "rule", "title", "count" } ]`: findings left out per check) and `limit`. |
 
 **Permission:** `edit_post` on `post_id` when it is given. Otherwise `edit_posts`.
 
@@ -122,6 +124,7 @@ With `elementor` and a `post_id`, Lumtera renders and checks the unsaved Element
 - `dismissed` lists hidden issues with the same fields, plus `dismissed_by`, `note`, `time`, `source` and `can_restore`. `source` is `post` for a dismissal on this post. For an issue ignored site-wide in Pro, `source` is `global`, `note` is the reason, and `restore_path` and `expires` are added.
 - `can_dismiss_errors` is `false` when there's no `post_id`.
 - Posts built with a page builder also get `builder: { "name", "edit_url", "live" }`. `live` is `true` for Elementor, whose editor checks unsaved changes as you work.
+- With `limit` set, `tally` gives every finding's count by confidence and severity, as `{ "sure": { "error", "warning", "notice" }, "possible": { … } }`, so a list that shows only some findings can still filter by both.
 
 ### GET /posts/{id}/issues {#get-posts-id-issues}
 
@@ -135,12 +138,14 @@ The stored issues for a post, from its last check. Nothing is checked again.
 {
   "issues": [ … ],
   "summary": { "errors": 0, "warnings": 0, "notices": 0, "dismissed": 0, "score": 100,
-               "grade": null, "scanned_at": 1790419821, "version": "1.0.0" },
+               "grade": null, "scanned_at": 1790419821, "version": "1.2.1" },
   "read_only": false
 }
 ```
 
 Issues have the same fields as in `/check`, with `block` empty. `summary` is `null` if the post hasn't been checked. `read_only` is `true` for someone who may see the reports but not edit the post.
+
+Both `GET /posts/{id}/issues` and `POST /posts/{id}/scan` accept `limit` (int, default 0), as [`/check`](#post-check) does. With a limit, at most that many findings are listed per check, and the response adds `tally`, `more` and `limit`. `summary` always covers every finding.
 
 ### POST /posts/{id}/scan {#post-posts-id-scan}
 
@@ -212,7 +217,7 @@ Checks a page snapshot from the browser. The content checks run on the snapshot,
 The result is stored only when all of these are true:
 
 - `save` is `true`.
-- **Allow saving whole-page results** is on under <span class="screen-path">Lumtera → Settings → General</span>.
+- **Let people save review-mode findings (theme, menus, footer) to the reports** is on under <span class="screen-path">Lumtera → Settings → General</span>.
 - The person ticked **Save results to reports** in the panel (see [`/page-results/preference`](#post-page-results-preference)).
 - The page shows a post the person can edit, or the person has the report capability. A page that shows no post, such as an archive, belongs to everyone.
 
@@ -503,18 +508,21 @@ Every field is sanitised. Nothing sent is shown as HTML.
 **Spam and abuse checks, in order:**
 
 1. **Honeypot.** If `lumtera_hp` has text, the answer is the usual thank-you and nothing is stored.
-2. **Time stamp.** `lumtera_ts` must be signed by the site and at least 3 seconds old. Otherwise the status is `too_fast`.
-3. **Rate limit.** Each IP address may send **5 messages per hour** (`lumtera_feedback_rate_limit`; 0 turns it off). IPv6 addresses are counted per /64 network. Only a salted hash of the address is kept. Behind a proxy, return the real visitor address from `lumtera_feedback_client_ip`.
-4. **Spam filter.** Akismet runs only if the site owner ticked **Check messages with Akismet** under <span class="screen-path">Lumtera → Settings → Feedback</span>. The `lumtera_feedback_is_spam` filter has the last word. Spam gets the usual thank-you and is not stored.
+2. **Rate limit.** Each IP address may send **5 messages per hour** (`lumtera_feedback_rate_limit`; 0 turns it off). IPv6 addresses are counted per /64 network. Only a salted hash of the address is kept. Behind a proxy, return the real visitor address from `lumtera_feedback_client_ip`. Without JavaScript, the form also allows 30 posts per hour from one address, sent or not.
+3. **Fields.** Missing or invalid fields return `invalid` with their errors.
+4. **Time stamp.** `lumtera_ts` must be signed by the site and at least 3 seconds old. Otherwise the status is `too_fast`.
+5. **Spam filter.** Akismet runs only if the site owner ticked **Check messages with Akismet** under <span class="screen-path">Lumtera → Settings → Feedback</span>. The `lumtera_feedback_is_spam` filter has the last word. Spam gets the usual thank-you and is not stored.
 
 **Responses:**
 
 | Status | HTTP | Body |
 | --- | --- | --- |
 | Sent | 201 | `{ "status": "sent", "reference": "…", "message": "…" }` |
-| Invalid fields | 400 | `{ "status": "invalid", "errors": { "message": "…", "email": "…" } }` |
-| Too fast | 400 | `{ "status": "too_fast", "errors": { "form": "…" } }` |
-| Over the limit | 429 | `{ "status": "limited", "errors": { "form": "…" } }` |
+| Invalid fields | 200 | `{ "status": "invalid", "errors": { "message": "…", "email": "…" } }` |
+| Too fast | 200 | `{ "status": "too_fast", "errors": { "form": "…" } }` |
+| Over the limit | 200 | `{ "status": "rate_limited", "errors": { "form": "…" } }` |
+
+Refusals are answered with HTTP 200 on purpose, so a visitor's browser shows no error. Read `status`, not the HTTP code. Nothing is stored in any of these cases.
 
 `errors` is keyed by field name, or `form` for the whole form. The messages are written to be shown to the visitor.
 
@@ -533,7 +541,7 @@ A summary of the site for an agency hub, such as the Lumtera Pro [client portfol
   "name": "Crumb & Co. Bakery",
   "url": "https://example.com",
   "admin_url": "https://example.com/wp-admin/admin.php?page=lumtera",
-  "version": "1.0.0.3",
+  "version": "1.2.1",
   "totals": { "content": 18, "scanned": 18, "average": 92, "errors": 8, "warnings": 12,
               "notices": 8, "failing": 4, "unscanned": 0, "passing": 14 },
   "coverage": { "total": 55, "automated": 44, "automated_full": 1, "automated_partial": 43,
@@ -565,7 +573,7 @@ A summary of the site for an agency hub, such as the Lumtera Pro [client portfol
 **With Lumtera Pro active on the site,** Pro adds to it:
 
 - `pro_active`: `true` while the license is active.
-- `can_report`: the licence is active and the user has `manage_options`, so the hub may call [`POST /reports`](#pro-reports).
+- `can_report`: the license is active and the user has `manage_options`. [`POST /reports`](#pro-reports) also needs **Manage client reports** (`lumtera_manage_reports`). Administrators always have it, so connect the hub as an administrator.
 - `can_share`: `can_report`, and the plan includes share links (Growth and up).
 - `feedback.overdue`: the number of overdue messages, and `feedback.source` becomes `pro`.
 - `run_diff`: `{ "new", "fixed", "persisting", "at", "since", "version_changed" }` between the last two full checks, or `null`.
@@ -580,14 +588,14 @@ Records the current person's answer to the Overview's [review request](/site-rep
 
 | Argument | Type | Notes |
 | --- | --- | --- |
-| `prompt` (in the path) | string | `review`, or `hint-` plus a tip: `hint-review-page`, `hint-repeated-issue`, `hint-forms`, `hint-pdfs`, `hint-evidence` |
+| `prompt` (in the path) | string | `review`, or `hint-` plus a tip: `hint-review-page`, `hint-repeated-issue`, `hint-forms`, `hint-pdfs`, `hint-evidence`, `hint-schedule`, `hint-alerts` |
 | `do` | string | Required. For `review`: `later` (ask again in 30 days), `never` or `reviewed`. For a tip: `dismiss`. |
 
 Returns what happens now, in words, for example *"Lumtera will ask again in 30 days."* An unknown prompt or answer returns 400 `lumtera_prompt`. The same answers work without JavaScript through `admin-post.php?action=lumtera_prompt`.
 
 ## Lumtera Pro routes: `lumtera-pro/v1` {#pro}
 
-<div class="pro-callout">These routes come with Lumtera Pro. Unless a route says otherwise, its permission check also needs an <strong>active license</strong>. Some need a plan: <strong>Growth and up</strong> for consistency checks and the client portfolio. Signed-in checks are on every plan, for as many roles as the plan allows. See <a href="/pro/license">License</a>.</div>
+<div class="pro-callout">These routes come with Lumtera Pro. Unless a route says otherwise, its permission check also needs an <strong>activated license</strong>. An expired license still counts: features keep working, and only updates and support stop. Some need a plan: <strong>Growth and up</strong> for consistency checks and the client portfolio. Signed-in checks are on every plan, for as many roles as the plan allows. See <a href="/pro/license">License</a>.</div>
 
 | Route | Methods | Permission | Plan |
 | --- | --- | --- | --- |
@@ -626,7 +634,7 @@ Returns what happens now, in words, for example *"Lumtera will ask again in 30 d
 | [`/remediation/run/cancel`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
 | [`/remediation/run/dismiss`](#pro-fixes-queue) | POST | Propose or approve fixes | Every plan |
 | [`/portfolio/rescans`](#pro-portfolio) | GET | `manage_options` | Growth and up |
-| [`/reports`](#pro-reports) | POST | `manage_options` (licence checked in the route) | Every plan; share link Growth and up |
+| [`/reports`](#pro-reports) | POST | `manage_options` + Manage client reports (`lumtera_manage_reports`) (license checked in the route) | Every plan; share link Growth and up |
 
 ### Fix tracking {#pro-fix-tracking}
 
@@ -887,7 +895,7 @@ Each run handles up to the plan's fixes per queue run: Personal 25, Growth 100, 
 
 `POST /reports` runs on a **client site** that has Lumtera Pro. An agency hub calls it to create a report and a share link to put in a client email. See [Client reports](/pro/reports).
 
-**Permission:** `manage_options`. The route itself checks the license: without an active one it returns 403 `lumtera_pro_inactive`.
+**Permission:** `manage_options`, plus **Manage client reports** (`lumtera_manage_reports`, given under <span class="screen-path">Lumtera → Settings → Permissions</span>; administrators always have it) and the report capability. Lumtera Pro's read-only client role is always refused. The route itself checks the license: without an active one it returns 403 `lumtera_pro_inactive`.
 
 | Argument | Type | Default | Notes |
 | --- | --- | --- | --- |

@@ -27,13 +27,13 @@ What each format contains is described in [WP-CLI: SARIF and JUnit](/developers/
 | --- | --- |
 | `0` | No issue at or above `--fail-on` (default: `error`) |
 | `1` | At least one issue at or above `--fail-on` |
-| `2` | Lumtera couldn't use the input: the page was refused, couldn't be fetched or didn't return HTTP 200, the input was empty or over 5 MB, `--fail-on` was invalid, or a baseline file couldn't be read, isn't a Lumtera baseline, or couldn't be written |
+| `2` | Lumtera couldn't use the input: the page was refused, couldn't be fetched or didn't return HTTP 200, the input was empty or over 5 MB, `--fail-on` was invalid, a baseline or `--rendered` file couldn't be read or isn't in the right format, the baseline couldn't be written, or `--stored` / `--rendered` was used without `--page` |
 
 - The exit code is the same for every `--format`, so you can upload the report and still fail the job.
 - `--fail-on` takes `error`, `warning` (also fails on "Needs review"), `notice` (also fails on tips) or `none` (never fails).
 - WP-CLI itself exits with `1` for an unknown option or `--format` value. Test your command once by hand before relying on the difference between `1` and `2`.
 
-`wp lumtera issues` exits with `0` whatever it finds, unless you pass `--fail-on` (default `none`). With `--fail-on=error` it exits with `1` when a stored issue at or above that severity is listed.
+`wp lumtera issues` exits with `0` whatever it finds, unless you pass `--fail-on` (default `none`). With `--fail-on=error` it exits with `1` when a stored issue at or above that severity is listed, in every format, so you can write SARIF or JUnit and still fail the job. With `--baseline`, only new issues count. Once `--write-baseline` has written its file, it exits with `0`.
 
 ## Fail only on new issues: baselines {#baselines}
 

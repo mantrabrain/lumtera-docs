@@ -8,7 +8,7 @@ description: Lumtera registers 13 abilities with the WordPress Abilities API, an
 On **WordPress 6.9 and later**, Lumtera registers its checks with the WordPress Abilities API. An AI assistant connected to your site, for example through the [WordPress MCP Adapter](https://github.com/WordPress/mcp-adapter), can use them to check content, read stored results and propose fixes.
 
 - Lumtera registers **13 abilities**: 12 that only read, and `lumtera/propose-fix`, which saves a proposal but never changes a post.
-- Lumtera Pro adds **6 more** while its license is active, including two that write to pages: `lumtera/apply-approved-changes` and `lumtera/revert-change`.
+- Lumtera Pro adds **6 more** while its license is activated (an expired license keeps them), including two that write to pages: `lumtera/apply-approved-changes` and `lumtera/revert-change`.
 
 Nothing here calls an AI service. The abilities are ordinary server-side functions. Which assistant may use them, and as which user, is your choice.
 
@@ -171,7 +171,7 @@ The proposal's origin is recorded as `agent`, with the name you passed, so peopl
 
 <p><span class="pro-pill">Pro</span> Every plan</p>
 
-Lumtera Pro registers these while its license is active. They work with the [fixes queue](/pro/fixes-queue), [fix tracking](/pro/fix-tracking), [compare scans](/pro/compare-scans) and the [evidence ledger](/pro/evidence).
+Lumtera Pro registers these while its license is activated. An expired license keeps them. They work with the [fixes queue](/pro/fixes-queue), [fix tracking](/pro/fix-tracking), [compare scans](/pro/compare-scans) and the [evidence ledger](/pro/evidence).
 
 | Ability | Does | Permission | Annotations |
 | --- | --- | --- | --- |

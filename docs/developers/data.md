@@ -5,7 +5,7 @@ description: What Lumtera and Lumtera Pro store (tables, options, post meta, use
 
 # Data & uninstall
 
-This page lists everything Lumtera 1.0 and Lumtera Pro 1.0 store in your database. `{prefix}` is your table prefix, usually `wp_`.
+This page lists everything Lumtera 1.2 and Lumtera Pro 1.1 store in your database. `{prefix}` is your table prefix, usually `wp_`.
 
 ## Nothing leaves your site by default {#nothing-leaves-your-site-by-default}
 
@@ -26,13 +26,13 @@ Lumtera Pro contacts `store.mantrabrain.com` to check your license and updates. 
 
 ### Tables {#tables}
 
-The database version is `5`. It's stored in the `lumtera_db_version` option. When the number in the code is higher, Lumtera upgrades the tables once, on the first request that gets a database lock.
+The database version is `6`. It's stored in the `lumtera_db_version` option. When the number in the code is higher, Lumtera upgrades the tables once, on the first request that gets a database lock.
 
 | Table | What it holds | Key columns |
 | --- | --- | --- |
 | `{prefix}lumtera_issues` | One row per open finding in saved content. A post's rows are replaced each time it's checked, and removed when it's deleted. Dismissed findings, and findings ignored site-wide in Pro, have no rows. | `post_id`, `rule_id`, `severity`, `fingerprint`, `occurrence`, `message`, `context` (the markup snippet), `created_at`, `source_type` and `source_id` (the [site part](/site-parts) the finding comes from, or `content`), `confidence` |
 | `{prefix}lumtera_parts` | Findings in [site parts](/site-parts): template parts, synced patterns, navigation menus, classic menus and widget areas. Each part is checked on its own. | `part_type`, `part_key`, `rule_id`, `severity`, `confidence`, `fingerprint`, `occurrence`, `message`, `context`, `created_at` |
-| `{prefix}lumtera_page_results` | Whole-page results saved from [review mode](/review-mode), one row per address, viewport and role. Only saved when the person ticked **Save results to reports**. Up to 500 rows; the oldest go first. | `url_hash`, `url`, `post_id`, `viewport`, `width`, `role`, `source`, `engine`, `errors`, `warnings`, `notices`, `issues`, `snapshot`, `checked_at`, `checked_by` |
+| `{prefix}lumtera_page_results` | Whole-page results saved from [review mode](/review-mode), one row per address, viewport and role. Only saved when the person ticked **Save results to reports**. Up to 500 rows; the oldest go first. | `url_hash`, `url`, `post_id`, `viewport`, `width`, `role`, `source`, `engine`, `errors`, `warnings`, `notices`, `issues`, `snapshot`, `checked_at`, `checked_by`, `summary` (a compact summary of the findings, so site-wide numbers never decode every one; rows saved before 1.2.0 get theirs in the background) |
 | `{prefix}lumtera_changes` | Change sets: fixes proposed for content, who approved and applied them, and what undoing one restores. See [Fixing issues](/fixing-issues). | `post_id`, `part_key`, `rule_id`, `fingerprint`, `origin`, `before`, `after`, `patch`, `status`, `proposed_by`, `approved_by`, `applied_by`, `revision_before`, `revision_after`, `verify`, `verify_detail`, `created_at`, `updated_at` |
 
 Lumtera checks that its tables exist and offers a repair button when one is missing. Add-ons add their tables to that check with the `lumtera_tables` filter, and recreate them on the `lumtera_repair_tables` action. See [Hooks](/developers/hooks).
@@ -43,7 +43,7 @@ Lumtera checks that its tables exist and offers a repair button when one is miss
 
 | Option | Contents | Autoloaded |
 | --- | --- | --- |
-| `lumtera_settings` | Content types, check on save, before-publishing mode, outlines, per-check severities and the AI switches | Yes |
+| `lumtera_settings` | Content types, check on save, before-publishing mode, outlines, per-check severities, the AI switches, whether review-mode findings may be saved, and what happens to your data when Lumtera is deleted (`uninstall`: `keep`, the default, or `delete`) | Yes |
 | `lumtera_site_fixes` | Site fix switches and options | Yes |
 | `lumtera_statement` | Your statement form answers, and the statement page and draft IDs | No |
 | `lumtera_statement_footer` | Whether classic themes print the statement link in the footer | Yes |
@@ -133,6 +133,8 @@ Lumtera also keeps the editor's highlighting preference in WordPress's own prefe
 | `lumtera_image_review` | An hour |
 | `lumtera_page_run_{user ID}_{hash}` | An hour: whole-page findings from review mode, so they can be dismissed |
 | `lumtera_rate_fb_{hash}` | An hour: the feedback form's limit per connection |
+| `lumtera_rate_fba_{hash}` | An hour: feedback form posts without JavaScript per connection (sent or not), up to 30 |
+| `lumtera_linked_pdfs` | An hour: how many PDFs the site links to, for a Pro tip |
 | `lumtera_fb_{key}` | 10 minutes: the result of a feedback form sent without JavaScript, encrypted |
 | `lumtera_ai_ready`, `lumtera_ai_text_ready` | 10 minutes |
 | `lumtera_rate_{user ID}` | A minute: live-check rate limit. Stored in the object cache instead when the site has a persistent one. |
@@ -166,6 +168,7 @@ The free plugin uses WP-Cron.
 | `lumtera_feedback_retention` | Daily: removes personal data from feedback older than the retention period |
 | `lumtera_site_parts_check` | Once, straight away, after a theme switch, a menu or widget change, or when **Check all content** finishes: checks every site part |
 | `lumtera_part_rescan` | Once, a minute after a fix is applied or undone, with the change ID: finishes re-checking the pages it touched if the screen was closed |
+| `lumtera_page_summaries_backfill` | After an upgrade, then a minute apart until done: adds a summary to whole-page results saved before Lumtera 1.2.0. The numbers stay the same. |
 
 ## Lumtera Pro {#lumtera-pro}
 
@@ -173,13 +176,13 @@ The free plugin uses WP-Cron.
 
 ### Tables {#pro-tables}
 
-The Pro schema version is `6`. It's stored in the `lumtera_pro_db_version` option and upgraded the same way as the free tables.
+The Pro schema version is `7`. It's stored in the `lumtera_pro_db_version` option and upgraded the same way as the free tables.
 
 | Table | What it holds | Key columns |
 | --- | --- | --- |
 | `{prefix}lumtera_pro_tasks` | Fix tracking tasks | `post_id`, `fingerprint`, `rule_id`, `severity`, `status`, `assignee`, `created_by`, `resolved_at`, `verified` (1 when a re-check confirmed the fix), `change_id` (the fix from the [Fixes queue](/pro/fixes-queue)) |
 | `{prefix}lumtera_pro_task_log` | Task history, including issues created in a tracker | `task_id`, `user_id`, `action`, `detail`, `created_at` |
-| `{prefix}lumtera_pro_pages` | Page check results, one row per address and role (`''` for logged-out checks) | `url_hash`, `url`, `title`, `errors`, `warnings`, `notices`, `score`, `issues`, `checked_at`, `source`, `browser_at`, `baseline`, `role` |
+| `{prefix}lumtera_pro_pages` | Page check results, one row per address and role (`''` for logged-out checks) | `url_hash`, `url`, `title`, `errors`, `warnings`, `notices`, `score`, `issues`, `checked_at`, `source`, `browser_at`, `baseline`, `role`, `summary` (a compact summary of the findings; rows from before schema 7 get theirs in the background) |
 | `{prefix}lumtera_pro_audit` | The activity log and the [evidence](/pro/evidence) ledger | `created_at`, `user_id`, `event`, `object_type`, `object_id`, `summary`, `data`, `prev_hash` and `row_hash` (the tamper-evident hash chain over evidence entries; empty on entries from before schema 6) |
 | `{prefix}lumtera_pro_runs` | One row per finished scan: a full content check, a site-parts check or a scheduled page check. Pro keeps the 12 newest of each kind and up to 24 months. | `kind`, `run_trigger`, `lumtera_version`, `started_at`, `finished_at`, `totals`, `items` |
 | `{prefix}lumtera_pro_run_items` | A snapshot of every finding in a run, used to compare scans | `run_id`, `object_type`, `object_key`, `rule_id`, `fingerprint`, `severity`, `source` |
@@ -191,7 +194,7 @@ Pro adds these tables to the free plugin's missing-table check with the `lumtera
 
 | Option | Contents |
 | --- | --- |
-| `lumtera_pro_license` | The license. Stored network-wide (site option) when Pro is network-activated. |
+| `lumtera_license` | The license, keyed by product. Stored network-wide (site option) when Pro is network-activated. Lumtera Pro 1.0 used `lumtera_pro_license`; it is moved here on first read. |
 | `lumtera_pro_alerts` | Alert and weekly digest settings |
 | `lumtera_pro_branding` | Report branding |
 | `lumtera_pro_history` | Daily score snapshots, 400 days |
@@ -215,6 +218,7 @@ Pro adds these tables to the free plugin's missing-table check with the `lumtera
 | `lumtera_pro_feedback_targets` | Response targets per feedback request type |
 | `lumtera_pro_remediation` | **Fix approvals** settings: the approval policy and whether agents may approve rule fixes |
 | `lumtera_pro_remediation_caps` | Version marker for the default fix capabilities |
+| `lumtera_pro_report_caps` | Version marker for the default **Manage client reports** capability |
 | `lumtera_pro_remediation_run`, `lumtera_pro_remediation_lock`, `lumtera_pro_remediation_stop` | The current Fixes queue run, its lock, and a request to stop it |
 | `lumtera_pro_agent_approvals` | Changes an AI agent approved (the newest 2,000) |
 | `lumtera_pro_webhooks`, `lumtera_pro_webhook_status` | Webhooks (secrets encrypted) and their last delivery |
@@ -223,7 +227,7 @@ Pro adds these tables to the free plugin's missing-table check with the `lumtera
 | `lumtera_pro_client_role_version` | Version marker for the Accessibility client role |
 | `lumtera_pro_db_version` | Schema version |
 
-Pro options are not autoloaded, except `lumtera_pro_db_version`, `lumtera_pro_pages_home`, `lumtera_pro_client_role_version` and `lumtera_pro_remediation_caps`, which are read on every request, and settings saved through the WordPress settings screens (such as `lumtera_pro_branding`).
+Pro options are not autoloaded, except `lumtera_pro_db_version`, `lumtera_pro_pages_home`, `lumtera_pro_client_role_version`, `lumtera_pro_remediation_caps` and `lumtera_pro_report_caps`, which are read on every request, and settings saved through the WordPress settings screens (such as `lumtera_pro_branding`).
 
 Portfolio passwords, webhook secrets and issue tracker tokens are encrypted with libsodium, using a key derived from your site's secret keys, or `LUMTERA_PRO_ENCRYPTION_KEY` if defined.
 
@@ -271,6 +275,7 @@ All are private, with no admin UI of their own and no REST route.
 | `lumtera_client` (role, "Accessibility client") | Users you choose | `read` and `lumtera_view_reports`, limited to the Overview and Reports. Every Lumtera change is refused. |
 | `lumtera_propose_changes` | Roles ticked under **Propose fixes**. Default: administrators and roles that can edit others' posts. | Drafting fixes in the Fixes queue |
 | `lumtera_approve_changes` | Roles ticked under **Approve and apply fixes**. Same default. | Approving, applying and undoing fixes |
+| `lumtera_manage_reports` | Roles ticked under **Manage client reports (Lumtera Pro)** on <span class="screen-path">Lumtera → Settings → Permissions</span>. Always administrators. | Creating, deleting and sharing client reports, and saving the conformance report. Opening and downloading reports needs only `lumtera_view_reports`. |
 
 ### Scheduled jobs {#scheduled-jobs}
 
@@ -278,7 +283,7 @@ Pro uses Action Scheduler (group `lumtera-pro`) when it's loaded, for example wi
 
 | Hook | When |
 | --- | --- |
-| `lumtera_pro_license_check` | Daily |
+| `lumtera_pro_daily_license_check` | Daily (on a network license, once, from the main site). Lumtera Pro 1.0 used `lumtera_pro_license_check`. |
 | `lumtera_pro_daily` | Daily at 02:00: score snapshot, and cleanup of the activity log and old scan snapshots |
 | `lumtera_pro_weekly` | Mondays at 09:00: weekly digest, with overdue feedback |
 | `lumtera_pro_scheduled_checks`, `lumtera_pro_scheduled_batch` | 03:00, daily or weekly: scheduled page checks, in batches |
@@ -295,6 +300,7 @@ Pro uses Action Scheduler (group `lumtera-pro`) when it's loaded, for example wi
 | `lumtera_pro_tracker_issue` | A few seconds apart, when **auto-create** is on: creates tracker issues for new tasks, retrying up to 5 times when the tracker asks to wait |
 | `lumtera_pro_tracker_comment` | A few seconds apart: comments on a linked issue when a fix is applied or undone |
 | `lumtera_pro_remediation_run` | While a Fixes queue run is going: five items per tick |
+| `lumtera_pro_page_summaries` | After the upgrade to schema 7, in batches until done: adds a summary to page results stored before it |
 
 **Tools → Site Health** includes a **Lumtera Pro background tasks** test that warns when jobs are more than an hour late.
 
@@ -327,11 +333,15 @@ Lumtera also adds suggested text to <span class="screen-path">Settings → Priva
 
 ## Uninstall {#uninstall}
 
-**Deactivating** the free plugin unschedules the email summary, the weekly home page check and the feedback clean-up. **Deactivating** Pro cancels all its scheduled jobs, on every site when it's network-deactivated. Neither deletes any data.
+**Deactivating** the free plugin unschedules the email summary, the weekly home page check, the feedback clean-up and the background summary job. **Deactivating** Pro cancels all its scheduled jobs, on every site when it's network-deactivated. Neither deletes any data.
 
 ### Deleting the free plugin {#deleting-the-free-plugin}
 
-On every site of a network, it removes:
+What happens is your choice, under <span class="screen-path">Lumtera → Settings → General</span> → **When Lumtera is deleted**. See [Settings](/settings#when-lumtera-is-deleted). On a network, each site follows its own choice. Deactivating never removes anything.
+
+**Keep my data (recommended)** is the default. Deleting the plugin then removes only its scheduled jobs and cached totals. Feedback messages, results, settings, tables and meta stay, so installing Lumtera again picks them up. The Plugins screen says **Data is kept if deleted**.
+
+**Delete everything** removes, on that site:
 
 - the four tables `lumtera_issues`, `lumtera_parts`, `lumtera_page_results` and `lumtera_changes`
 - every feedback record (`lumtera_feedback` posts and their meta)
@@ -341,7 +351,9 @@ On every site of a network, it removes:
 - its scheduled jobs
 - the Lumtera Reporter role, and the `lumtera_view_summary`, `lumtera_view_reports`, `lumtera_dismiss_errors`, `lumtera_review_mode` and `lumtera_manage_feedback` capabilities from every role
 
-It **keeps**:
+With **Delete everything** chosen, the Plugins screen warns how many feedback messages and results will go, offers **Export feedback first (CSV)**, and asks you to confirm when you deactivate.
+
+Either way, it **keeps**:
 
 - your accessibility statement page (it's your content)
 - alt text Lumtera added to images and posts
@@ -351,17 +363,17 @@ It **keeps**:
 
 On every site of a network, it removes:
 
-- every `lumtera_pro_*` option and transient, including the conformance report details, issue tracker settings, portfolio sites and webhooks. The license and the ledger head are exceptions, see below.
+- every `lumtera_pro_*` option and transient, including the conformance report details, issue tracker settings, portfolio sites and webhooks. The license (`lumtera_license`, and `lumtera_pro_license` from 1.0) and the ledger head are exceptions, see below.
 - the post meta `_lumtera_pro_errors`, `_lumtera_pro_pdf`, `_lumtera_pro_pdf_attempt`, `_lumtera_pro_assignee`, `_lumtera_pro_overdue_alerted`, `_lumtera_pro_task`, `_lumtera_session_screenshot` and the share link meta
-- the test users made for signed-in checks, and the `lumtera_pro_fft_active` user meta. (The `lumtera_pro_dismissed` user meta is currently left behind.)
-- the `lumtera_propose_changes` and `lumtera_approve_changes` capabilities from every role
+- the test users made for signed-in checks, and the `lumtera_pro_fft_active` and `lumtera_pro_dismissed` user meta
+- the `lumtera_propose_changes`, `lumtera_approve_changes` and `lumtera_manage_reports` capabilities from every role
 - the Accessibility client role. Users who had it keep their accounts, without a role.
 - all its scheduled jobs, in WP-Cron and Action Scheduler
 - the cached update details
 
 By default it **keeps**:
 
-- your **license**, because an expired key can't be activated again. Define `LUMTERA_PRO_DELETE_LICENSE` as `true` to remove it. On a network, this also removes the network-wide license.
+- your **license**, because an expired key can't be activated again. Define `LUMTERA_PRO_DELETE_LICENSE` as `true` to remove it. Lumtera Pro then also frees this site's activation on the store, so the key can be used on another site. On a network, this also removes the network-wide license.
 - your **records**: reports, burden records, test sessions, fix tracking history, page results, the activity log with its evidence ledger (and `lumtera_pro_ledger_head`), and scan snapshots. Define `LUMTERA_PRO_DELETE_REPORTS` as `true` to remove them: the `lumtera_report`, `lumtera_burden` and `lumtera_test_session` posts and all seven Pro tables.
 - test session screenshots, which stay in the media library like any other upload
 
@@ -371,6 +383,6 @@ define( 'LUMTERA_PRO_DELETE_REPORTS', true );
 define( 'LUMTERA_PRO_DELETE_LICENSE', true );
 ```
 
-There is no setting for this. Only the two constants change what is deleted.
+There is no setting for this in Lumtera Pro. Only the two constants change what Pro deletes. The free plugin has its own choice, under **When Lumtera is deleted** (see above).
 
 On multisite, deleting a site drops its Lumtera and Lumtera Pro tables.

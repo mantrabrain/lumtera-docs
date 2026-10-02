@@ -227,11 +227,15 @@ If `run()` throws, the rest of the scan carries on without your check. With `WP_
 
 Findings the site owner dismissed, or that match a Pro ignore rule, are removed after `run()` returns. Your check doesn't need to handle them.
 
+### Checks that need a browser
+
+`run()` sees markup only. For contrast, layout or keyboard checks that must measure the rendered page, write a browser measure instead: enqueue a script on the [`lumtera_audit_scripts`](/developers/hooks#whole-page) action that calls `window.lumteraAudit.register()`, and add a `MeasuredRule` class for its wording with the [`lumtera_measured_rule_classes`](/developers/hooks#checks-and-scanning) filter. Its findings then appear in review mode and Pro page checks. See [Hooks: JavaScript](/developers/hooks#javascript) for an example.
+
 ## Helpers in AbstractRule
 
 | Helper | What it does |
 | --- | --- |
-| `issue( $message, $node, $severity = null )` | Builds an issue for this check. **Always pass the node**: it gives the snippet and line, maps the issue to its block, and makes the fingerprint that dismissals, Pro tasks and Pro ignore rules use. |
+| `issue( $message, $node, $severity = null, $confidence = null )` | Builds an issue for this check. `$severity` overrides the check's default for this finding. `$confidence` can lower (never raise) the check's confidence for it. **Always pass the node**: it gives the snippet and line, maps the issue to its block, and makes the fingerprint that dismissals, Pro tasks and Pro ignore rules use. |
 | `elements( $xpath, $query, $context = null )` | Runs an XPath query and returns only elements |
 | `attr( $el, $name )` | Trimmed attribute value, or `''` |
 | `inside_link( $el )` | Whether the element is inside an `<a href>` |

@@ -5,7 +5,7 @@ description: Every public action and filter in Lumtera and Lumtera Pro, in PHP a
 
 # Hooks & filters
 
-This page lists every public action and filter in Lumtera 1.0.0.3 and Lumtera Pro 1.0.0, grouped by area. Parameters are listed in the order the hook passes them. When you use more than one, pass the count to `add_filter()` or `add_action()`.
+This page lists every public action and filter in Lumtera 1.2.1 and Lumtera Pro 1.1.0, grouped by area. Parameters are listed in the order the hook passes them. When you use more than one, pass the count to `add_filter()` or `add_action()`.
 
 ## Checks and scanning {#checks-and-scanning}
 
@@ -25,6 +25,7 @@ This page lists every public action and filter in Lumtera 1.0.0.3 and Lumtera Pr
 | `lumtera_review_html` | filter | `string $content`, `int $post_id` | The content HTML as it reaches the browser, used to map issues to elements in review mode. For plugins that wrap the content in markers they remove later (TranslatePress, for example). |
 | `lumtera_max_check_bytes` | filter | `int $bytes` (default 524288) | The largest content accepted for a live check. At least 1024. |
 | `lumtera_check_rate_limit` | filter | `int $limit` (default 120) | Live checks per user per minute. 0 turns the limit off. |
+| `lumtera_list_limit` | filter | `int $limit` (default 50) | How many findings of each check the editor sidebar, review mode and the Content report list before **Show all**. At least 1. Counts and scores always cover every finding. |
 | `lumtera_readability_language` | filter | `string $lang`, `int $post_id` | Two-letter language code used to pick the reading-level formula. Default: the post's language in Polylang or WPML, otherwise the site language. `$post_id` is 0 when unknown. |
 | `lumtera_readability_supported` | filter | `bool $supported`, `string $lang` | Whether to measure a reading level. Default: true for `en`, `es`, `fr`, `de`, `it` and `nl`. Forcing it on for another language uses the English formula. |
 | `lumtera_link_to_document_message` | filter | `string $message`, `string $href`, `string $ext` | Message for the [link-to-document](/checks#link-to-document) check |
@@ -93,9 +94,112 @@ Review mode's whole-page checks and Lumtera Pro's page checks run in a browser, 
 | `lumtera_signed_check_request` | filter | `bool $signed` (default false), `string $context` | Whether this request is a check an add-on verified itself (with a signed, one-time pass), so it gets audit mode (`$context` `audit`) or source markers (`markers`) without a signed-in editor. Return true only for a request you verified. Lumtera Pro's signed-in checks use it. |
 | `lumtera_max_page_bytes` | filter | `int $bytes` (default 3 MB) | The largest page snapshot the whole-page checks may send to the server |
 | `lumtera_page_results_max_rows` | filter | `int $rows` (default 500) | Most whole-page results kept: one per address, screen width and role. Older rows are removed first. |
-| `lumtera_page_result_sources` | filter | `array $rows` (default empty), `array $filters` | Whole-page results from other sources, merged with review mode's. Each row: `url`, `issues`, `source`, `origin`, `viewport`, `role`, `post_id`, `checked_at`. `$filters` holds what was asked for (`url`, `post_id`, `limit`). Lumtera Pro's page checks use it. |
+| `lumtera_page_result_summaries` | filter | `array $rows` (default empty), `array $filters` | Since 1.2.0. Whole-page results from other sources, **without their findings**, so site-wide numbers stay light. Each row: `url`, `source`, `origin`, `viewport`, `width`, `role`, `post_id`, `engine`, `checked_at` (Unix time), `checked_by`, and either `ref` (any scalar your `lumtera_page_result_load` filter reads the row by) or `summary` (from `PageResults::summarise()`). `$filters` holds what was asked for (`url`, `post_id`, `limit`). Lumtera Pro's page checks use it. See [Whole-page results for add-ons](#page-results-for-add-ons). |
+| `lumtera_page_result_load` | filter | `array $found` (default empty), `string $origin`, `array $refs`, `string $what` | Since 1.2.0. Return the summaries or findings of your rows by the `ref` your `lumtera_page_result_summaries` rows carry, as ref => value. `$what` is `summary` (return the `PageResults::summarise()` shape) or `issues` (return the findings array). `$origin` is your rows' origin, for example `pro`. Lumtera asks for a few rows at a time. Lumtera Pro's page checks use it. |
+| `lumtera_page_summary_backfilled` | action | `string $table`, `int $id` | Since 1.2.0. Fires once for each saved whole-page result that gets its summary in the background (results saved before 1.2.0). `$table` is the prefixed table name, Lumtera's or an add-on's of the same shape. |
+| `lumtera_page_result_sources` | filter | `array $rows` (default empty), `array $filters` | Older way to add whole-page results, with all their findings. Each row: `url`, `issues`, `source`, `origin`, `viewport`, `role`, `post_id`, `checked_at`. `$filters` holds what was asked for (`url`, `post_id`, `limit`) and, since 1.2.0, `summaries` => true when Lumtera has already read your rows through `lumtera_page_result_summaries`. In that case return nothing more. It still works, but loads every finding into memory. New add-ons should use `lumtera_page_result_summaries` and `lumtera_page_result_load`. |
+| `lumtera_review_listing_page` | filter | `int $post_id` (0 for none) | The page that stands for a listing in review mode (its edit link and guided checklist): by default the posts page on the blog home. Lumtera's WooCommerce integration returns the shop page for product archives. Return a page ID for your own listings. |
 | `lumtera_page_features` | filter | `array\|null $found`, `int $post_id` | What a post's page contains (forms, video, search…), used to suggest checklist items that don't apply. Return `[ 'features' => array<string, bool>, 'time' => int ]` to replace an older record. Lumtera Pro's page checks use it. |
 | `lumtera_help_lexicon` | filter | `array $lexicon` | Words that mark a link as a way to get help (WCAG 3.2.6), by kind: `contact`, `help`, `support` and `faq`. Lowercase, matched as whole words in the link's name or as a segment of its path. |
+
+## Whole-page results for add-ons {#page-results-for-add-ons}
+
+Since Lumtera 1.2.0, whole-page results are read through `\Lumtera\PageResults`. It merges review mode's saved results with results from add-ons (Lumtera Pro's page checks are one) and keeps memory flat however many pages a site has checked: site-wide readers get a compact summary of each page, and the findings themselves are read only for the few pages shown in full.
+
+### Reading results
+
+| Method | Returns |
+| --- | --- |
+| `PageResults::index( array $filters = [] )` | The results that stand, newest first, **without their findings**: one row per page (address and role), or per page and viewport with `per_viewport`. `latest()`, `summaries()` and `walk()` all start here, so they agree on which rows stand. |
+| `PageResults::summaries( array $filters = [] )` | The rows of `index()`, each with `counts` (`{ error, warning, notice }` of its open findings) and `dismissed` (how many findings a dismissal hides). No findings are kept in memory. |
+| `PageResults::walk( array $rows, callable $callback )` | Goes through rows of `index()` 50 at a time and calls `$callback( array $row, array $open, int $dismissed )` for each. `$open` lists the row's open findings (dismissals already applied), each as `{ fingerprint, severity, rule, criteria, source }`, where `source` is the finding's source record or `null`. Use it for your own site-wide numbers. |
+| `PageResults::with_issues( array $rows )` | The rows you pass (from `index()` or `summaries()`) with their findings, keys kept: `issues` (the open findings), `dismissed` (the findings a dismissal hides) and `counts`. For the rows you show in full, such as one screenful of a list. |
+| `PageResults::latest( array $filters = [] )` | `with_issues( index( $filters ) )`: every row with all its findings. Use it for one page or a few, not site-wide. |
+
+`$filters` can hold:
+
+| Key | Meaning |
+| --- | --- |
+| `url` | Only this address |
+| `post_id` | Only this post's page |
+| `limit` | Most rows returned. Default and maximum 1000. |
+| `per_viewport` | `true` keeps one row per page **and** viewport, instead of one per page |
+| `origin` | `free` or `pro`: only rows from that origin |
+
+Each row of `index()` has:
+
+| Key | Meaning |
+| --- | --- |
+| `url`, `url_hash` | The page's normalized address and its MD5 |
+| `post_id` | The post the page shows, or 0 |
+| `viewport`, `width` | `desktop`, `tablet` or `phone`, and the width it was checked at (0 when not known) |
+| `role` | The role a signed-in check used, empty for a logged-out page |
+| `source` | How it was checked: `review` (review mode), `scheduled` or `browser` (Lumtera Pro), or an add-on's own value |
+| `origin` | Who stored it: `free`, `pro` or an add-on's origin |
+| `engine` | The engine that produced it |
+| `issues` | `null`, or the findings of a row added through the older `lumtera_page_result_sources` filter |
+| `checked_at`, `checked_by` | Unix time, and the user ID (0 for none) |
+| `ref` | How Lumtera reads its summary or findings later. Treat it as opaque. |
+
+When a page has several rows, one stands: Lumtera Pro's scheduled (logged-out) check first, then its browser check at desktop width, then review mode's desktop result, then any other row. Among rows of the same rank, the newest wins.
+
+```php
+// Pages with open errors, from every source, without loading their findings.
+$pages = array_filter(
+	\Lumtera\PageResults::summaries(),
+	fn( array $row ) => $row['counts']['error'] > 0
+);
+```
+
+### Adding your own results
+
+An add-on that stores its own whole-page results joins them through two filters, so they show in the Overview, the weekly email, coverage, the abilities and Lumtera Pro's conformance report:
+
+1. [`lumtera_page_result_summaries`](#whole-page): return your rows **without their findings**, in the row shape above. Give each a `ref` (any scalar, such as your row ID) or a ready `summary`. Lumtera leaves out rows that don't match the `url` or `post_id` asked for, but filtering in your own query and keeping to `limit` keeps it light.
+2. [`lumtera_page_result_load`](#whole-page): when Lumtera needs some of your rows' summaries or findings, it passes your origin, the refs and `$what` (`summary` or `issues`). Return ref => value. It asks for a few rows at a time.
+
+A `summary` is the shape `PageResults::summarise( array $items, array $counts )` returns: `$items` are the stored findings (each with at least `rule`, `severity` and `fingerprint`) and `$counts` the row's error, warning and notice counts. Build it with that method rather than by hand.
+
+If your table has the same columns as Lumtera's (`id`, `issues`, `errors`, `warnings`, `notices` and `summary`), two more public methods do the work for you:
+
+- `PageResults::load_rows( string $table, array $ids, string $what, bool $summary_column = true )` reads rows' summaries or findings by ID. A summary that's missing or out of date is made from the findings as it's read. Pass `false` for `$summary_column` while your table has no `summary` column yet.
+- `PageResults::backfill( string $table, float $seconds = 20.0 )` writes the missing summaries of older rows, oldest first, within the time budget. It returns `true` when none is left, `false` when the time ran out, and `null` when another run holds the lock. Run it from your own scheduled job until it returns `true`. [`lumtera_page_summary_backfilled`](#whole-page) fires for each summary it writes.
+
+```php
+// An add-on that keeps results in its own table of the same shape.
+add_filter( 'lumtera_page_result_summaries', function ( array $rows, array $filters ) {
+	global $wpdb;
+	$limit = min( 1000, (int) ( $filters['limit'] ?? 1000 ) );
+	$found = $wpdb->get_results( $wpdb->prepare(
+		'SELECT id, url, checked_at FROM %i ORDER BY checked_at DESC LIMIT %d',
+		$wpdb->prefix . 'acme_pages',
+		$limit
+	), ARRAY_A );
+
+	foreach ( $found as $row ) {
+		$rows[] = [
+			'url'        => $row['url'],
+			'source'     => 'acme',
+			'origin'     => 'acme',
+			'viewport'   => 'desktop',
+			'engine'     => 'acme-scanner',
+			'checked_at' => strtotime( $row['checked_at'] . ' UTC' ),
+			'ref'        => (int) $row['id'],
+		];
+	}
+	return $rows;
+}, 10, 2 );
+
+add_filter( 'lumtera_page_result_load', function ( array $found, string $origin, array $refs, string $what ) {
+	if ( 'acme' !== $origin ) {
+		return $found;
+	}
+	global $wpdb;
+	return \Lumtera\PageResults::load_rows( $wpdb->prefix . 'acme_pages', $refs, $what ) + $found;
+}, 10, 4 );
+```
+
+The older [`lumtera_page_result_sources`](#whole-page) filter still works: rows added there carry all their findings, at the old memory cost. Lumtera passes `summaries => true` in its `$filters` when it has already read rows through `lumtera_page_result_summaries`, so an add-on that answers both returns nothing more there.
 
 ## WP-CLI {#wp-cli}
 
@@ -190,6 +294,7 @@ See [Accessibility feedback](/feedback).
 | `lumtera_feedback_updated` | action | `int $id`, `string $status`, `string $old` | After a feedback record changes status: `new`, `in_progress`, `answered` or `closed` |
 | `lumtera_feedback_is_spam` | filter | `bool $spam`, `array $data` | Whether a message is spam. Spam isn't stored, and the sender sees the usual thank-you. `$data` holds the cleaned fields. |
 | `lumtera_feedback_rate_limit` | filter | `int $limit` (default 5) | Messages one IP address may send per hour. 0 turns the limit off. |
+| `lumtera_feedback_reply_to` | filter | `string $address` | The Reply-To address of feedback replies sent from the inbox. Default: the contact email in your accessibility statement, otherwise the replying user's email. An invalid address is dropped. |
 | `lumtera_feedback_client_ip` | filter | `string $ip` | The visitor IP address the limit counts. Default: `REMOTE_ADDR`. Behind a proxy that sets a trusted header, return that address. |
 | `lumtera_feedback_capability` | filter | `string $capability` | Capability needed to read and answer feedback. Default `lumtera_manage_feedback` (editors and administrators). |
 | `lumtera_feedback_query_args` | filter | `array $args`, `array $filters` | The inbox's `WP_Query` arguments, for example to show only overdue items |
@@ -223,6 +328,8 @@ add_action( 'lumtera_feedback_received', function ( int $id, array $data ) {
 
 The `lumtera_*` capabilities are given to roles under <span class="screen-path">Lumtera → Settings → Permissions</span>. By default, roles that can edit others' posts get `lumtera_view_reports`, `lumtera_dismiss_errors` and `lumtera_manage_feedback`, and roles that can edit posts get `lumtera_review_mode`. Administrators always have all of them. A filter wins over the settings. See [Roles & permissions](/permissions).
 
+<span class="pro-pill">Pro</span> Lumtera Pro 1.1.0 adds `lumtera_manage_reports` (**Manage client reports**). It's needed to create and delete client reports, create and revoke share links and save the conformance report. Opening and downloading reports needs only `lumtera_view_reports`. Administrators always have it. Give it to other roles under <span class="screen-path">Lumtera → Settings → Permissions</span>.
+
 Changing settings, including check severities, always needs `manage_options`.
 
 ```php
@@ -239,8 +346,9 @@ add_filter( 'lumtera_capability', fn() => 'manage_accessibility' );
 | `lumtera_screen_order` | filter | `string[] $order` | Order of Lumtera's screens (page slugs), for the tabs and the menu |
 | `lumtera_admin_tabs` | filter | `array $tabs` (slug => label) | Screens shown as tabs in the Lumtera header. Add your own screen here, and put it in a group with `lumtera_admin_groups`. |
 | `lumtera_admin_tab_badges` | filter | `array $badges` (slug => text) | Short tags shown after a tab's label, such as "Pro" on screens that need a license |
+| `lumtera_admin_upgrade_screens` | filter | `string[] $screens` | Screens shown as an upgrade instead of a working screen. Each sorts last in its group, and a group of only these gets a tag in the menu (the screen's `lumtera_admin_tab_badges` text, or "Pro"). Default: Lumtera's Pro preview screens without Pro, and none with it. Lumtera Pro uses it for screens the active plan doesn't include. |
 | `lumtera_settings_sections` | filter | `array $sections` (slug => label) | Settings sections. See [the list below](#settings-sections). |
-| `lumtera_settings_groups` | filter | `array $groups` | How the Settings index groups its sections, as key => `{ label, sections }`. Built in: `checking`, `fixing`, `people`, `notifications`, `feedback`, `reports` and `pro`. |
+| `lumtera_settings_groups` | filter | `array $groups` | How the Settings index groups its sections, as key => `{ label, sections }`. Built in: `checking` (Checking), `fixing` (Fixing), `notifications` (Feedback and notifications), `people` (People) and `pro` (Lumtera Pro). A section no group lists goes under "More". |
 | `lumtera_settings_meta` | filter | `array $meta` | Each section's icon and one-line description on the Settings index, as slug => `{ icon, description }`. An unknown icon shows as a dot. |
 | `lumtera_settings_keywords` | filter | `array $keywords` (slug => words) | Extra words, separated by commas, that **Find a setting** matches for each section |
 | `lumtera_settings_section_{$slug}` | action | | Renders your own settings section |
@@ -252,7 +360,7 @@ add_filter( 'lumtera_capability', fn() => 'manage_accessibility' );
 | `lumtera_pricing_url` | filter | `string $url` | The pricing page that "Upgrade to Pro", plan links and [Pro tips](/site-report#pro-tips) open. Lumtera adds its own tracking tags and plan anchor to it. |
 | `lumtera_show_upgrade` | filter | `bool $show` | Whether "Upgrade to Pro" buttons, [Pro tips](/site-report#pro-tips) and the weekly email's note about Pro show. The Pro preview screens follow whether Lumtera Pro is active, not this filter. Default: true unless Lumtera Pro is active. |
 | `lumtera_docs_base` | filter | `string $base` | The documentation address the **Docs** buttons use, ending in a slash, for example for a mirror. Default `https://lumtera.mantrabrain.com/docs/`. |
-| `lumtera_docs_path` | filter | `string $path`, `string $slug`, `string $section` | Which documentation page an admin screen's **Docs** button opens. `$slug` is the screen's page slug and `$section` the settings section, if any. An empty path opens the docs home. Lumtera Pro uses it to point its own screens (Test sessions, Fixes queue, Evidence, Compare scans, the conformance report and **Fix approvals**) at their pages. |
+| `lumtera_docs_path` | filter | `string $path`, `string $slug`, `string $section` | Which documentation page an admin screen's **Docs** button opens. `$slug` is the screen's page slug and `$section` the settings section, if any. For Settings, the filter runs only for sections Lumtera doesn't already link (an add-on's own section). An empty path opens the docs home. Lumtera Pro uses it to point its own screens (Test sessions, Fixes queue, Evidence, Compare scans, the conformance report and **Fix approvals**) at their pages. |
 | `lumtera_elementor_preview_assets` | action | | Runs when Elementor's preview loads |
 
 ### Built-in settings sections {#settings-sections}
@@ -276,10 +384,10 @@ add_filter( 'lumtera_capability', fn() => 'manage_accessibility' );
 | `license` | License | Lumtera Pro |
 
 ```php
-// Add your own section to the "Reports and integrations" group.
+// Add your own section to the "Feedback and notifications" group.
 add_filter( 'lumtera_settings_sections', fn( $sections ) => $sections + [ 'acme' => 'Acme export' ] );
 add_filter( 'lumtera_settings_groups', function ( $groups ) {
-	$groups['reports']['sections'][] = 'acme';
+	$groups['notifications']['sections'][] = 'acme';
 	return $groups;
 } );
 add_action( 'lumtera_settings_section_acme', function () {
@@ -375,7 +483,7 @@ These use `wp.hooks` in the block editor. Load your script with `lumtera-editor`
 | Hook | Type | Signature | Purpose |
 | --- | --- | --- | --- |
 | `lumtera.quickFixers` | filter | `( fixers ) => fixers` | Quick fixes, keyed by check ID. Each is `( block, issue ) => { label, done, apply } \| null`. See [Add a quick fix](/developers/custom-checks#add-a-quick-fix-in-the-block-editor). |
-| `lumtera.issueActions` | filter | `( actions, issue, { postId, recheck } ) => actions` | Extra buttons on each issue card. Return an array of elements. `recheck()` runs the check again, for example after your action changed what's reported. Lumtera's AI writing suggestions and Pro's **Track fix** and **Ignore everywhere…** buttons use it. |
+| `lumtera.issueActions` | filter | `( actions, issue, { postId, recheck, focusNext } ) => actions` | Extra buttons on each issue card. Return an array of elements. `recheck()` runs the check again, for example after your action changed what's reported. `focusNext()` re-checks and moves focus to the next issue, as a quick fix does. Use it after your action edited the post. Lumtera's AI writing suggestions and Pro's **Track fix** and **Ignore everywhere…** buttons use it. |
 | `lumtera.readingActions` | filter | `( actions, readability, { postId, builder } ) => actions` | Extra elements under the reading level. `readability` is the report's `readability` object. `builder` is true when a page builder renders the post. Lumtera's AI summary uses it. |
 
 ```js
@@ -432,11 +540,19 @@ Findings from a measure need a matching `MeasuredRule` class on the server, adde
 | `lumtera_pro_limit` | filter | `int $limit`, `string $feature`, `int $plan` | A plan's allowance for a counted feature: `scheduled_pages` (pages per scheduled run), `batch_size` (fixes per queue run), `portfolio_sites` (client sites) or `role_scans` (roles for [signed-in checks](/pro/signed-in-checks)). 0 means no set number, and -1 that the plan doesn't include it. A feature that isn't listed gets -1. Defaults below. |
 | `lumtera_pro_price_plan_map` | filter | `array $map` (price ID => plan) | Maps the store's price IDs to plans (1 Personal, 2 Growth, 3 Agency, 4 Unlimited). Default: 1–4 are the yearly prices and 5–8 the [lifetime](/pro/license#yearly-and-lifetime-licenses) prices of the same plans. Entries that aren't a positive price ID mapped to a known plan are ignored, and an ID missing from the map counts as Personal. |
 | `lumtera_pro_license_activated` | action | `int $plan` | After a key is activated on this site (or network). Pro uses it to put every scheduled job back in place. |
-| `lumtera_pro_license_checked` | action | `string $status` | After each daily license check with the store, with the stored status, such as `valid` or `expired`. |
+| `lumtera_pro_license_checked` | action | `string $status` | After each daily license check with the store, with the stored status, such as `active`, `expired` or `inactive`. |
 | `lumtera_pro_onboarding_steps` | filter | `array $steps`, `int $plan` | The steps of the [first-run checklist](/pro/license#first-run-checklist). Each step is `{ id, title, text, url, action, done }`; `done` ticks it off. |
 | `lumtera_pro_scheduled_page_limit` | filter | `int $limit`, `int $plan` | Pages one scheduled check run may fetch, after `lumtera_pro_limit`. A run always has a cap: 0 from `lumtera_pro_limit` becomes the top plan's 500. At least 1. |
 | `lumtera_pro_license_is_active` | filter | `bool $active`, `string $status` | Master switch for Pro features. On a network, a license below the Agency plan is already `false` here for sites other than the main site. |
 | `lumtera_pro_network_license` | filter | `bool $network` | Whether the license is stored and activated once for the network. Default: whether Pro is network-activated. |
+| `lumtera_pro_license_data_updated` | action | `string $key`, `string $status`, `array $response` | After the stored license changes (activate, check, save or deactivate). `$status` is the stored status (`active`, `expired`, `inactive`…). `$response` holds the fields Lumtera keeps from the store's answer. On deactivation `$key` is empty and `$status` is `inactive`. Pro's updater uses it to forget its cached update check. |
+| `lumtera_pro_license_store_url` | filter | `string $url` | The store endpoint that license and update requests go to. Only an `https` address is used. Otherwise nothing is sent. `lumtera_pro_license_store_url_default` sets the fallback when no constant sets one. For a staging store only. |
+| `lumtera_pro_license_store_url_default` | filter | `string $url` | The store endpoint used when neither `LUMTERA_PRO_LICENSE_STORE_URL` nor `LUMTERA_PRO_STORE_URL` is defined. |
+| `lumtera_pro_license_item_id` | filter | `int $id` | The store's download ID for Lumtera Pro, sent with license and update requests. `lumtera_pro_license_item_id_default` sets the fallback when no constant sets one. For a staging store only. |
+| `lumtera_pro_license_item_id_default` | filter | `int $id` | The download ID used when neither `LUMTERA_PRO_LICENSE_ITEM_ID` nor `LUMTERA_PRO_ITEM_ID` is defined. |
+| `lumtera_pro_license_item_name` | filter | `string $name` | The product name sent with the download ID |
+| `lumtera_pro_license_admin_url` | filter | `string $url` | Where the **Activate license** link in the Plugins screen's update row goes. Default: <span class="screen-path">Lumtera → Settings → License</span>. |
+| `lumtera_pro_license_upgrade_url` | filter | `string $url` | Where the "get a license" link in the update row goes. Default: the store's account page. |
 
 Default limits for `lumtera_pro_limit`:
 
@@ -504,7 +620,7 @@ add_filter( 'lumtera_pro_limit', function ( int $limit, string $feature ) {
 | `lumtera_pro_client_rest_allowed` | filter | `string[] $allowed` (default empty) | REST routes the read-only client role may still write to, for an add-on's read-style POST route, for example `/my-addon/v1/preview` |
 | `lumtera_pro_portfolio_safe_http` | filter | `bool $safe` (default true) | Use WordPress's safe HTTP client for portfolio connections. Turn off only for local development. |
 
-Lumtera Pro also uses the free plugin's hooks: `lumtera_ignored_issue` (ignore rules, and on whole pages), `lumtera_page_result_sources`, `lumtera_page_features`, `lumtera_measured_rule_classes`, `lumtera_audit_scripts`, `lumtera_signed_check_request`, `lumtera_statement_burden_items`, `lumtera_feedback_views`, `lumtera_feedback_badges`, `lumtera_can_check_all`, `lumtera_permission_defaults`, `lumtera_pro_sends_digest` and `lumtera_settings_sections`.
+Lumtera Pro is built on the free plugin's hooks, including `lumtera_ignored_issue` (ignore rules, and on whole pages), `lumtera_page_result_summaries`, `lumtera_page_result_load` and `lumtera_page_result_sources`, `lumtera_page_features`, `lumtera_measured_rule_classes`, `lumtera_audit_scripts`, `lumtera_signed_check_request`, `lumtera_change_allowed`, `lumtera_statement_burden_items`, `lumtera_feedback_views`, `lumtera_feedback_badges`, `lumtera_can_check_all`, `lumtera_permission_defaults`, `lumtera_pro_sends_digest`, `lumtera_docs_path`, `lumtera_admin_upgrade_screens`, `lumtera_show_getting_started`, `lumtera_tables` and the settings filters (`lumtera_settings_sections`, `_groups`, `_meta`, `_keywords`).
 
 ```php
 // Don't alert about posts in the "Archive" category.
@@ -534,4 +650,6 @@ Set these in `wp-config.php`:
 | --- | --- |
 | `LUMTERA_PRO_ENCRYPTION_KEY` | Key used to encrypt portfolio passwords, webhook secrets and issue tracker tokens. Set it if your salts change, for example when a host rotates them. |
 | `LUMTERA_PRO_DELETE_REPORTS` | `true` deletes reports, fix history, page results and the activity log on uninstall |
-| `LUMTERA_PRO_DELETE_LICENSE` | `true` deletes the license on uninstall |
+| `LUMTERA_PRO_DELETE_LICENSE` | `true` deletes the license on uninstall, and first frees this site's activation on the store |
+| `LUMTERA_PRO_LICENSE_STORE_URL` | The store endpoint for license and update requests, instead of the default. Must be `https`. (`LUMTERA_PRO_STORE_URL` also works.) For a staging store only. |
+| `LUMTERA_PRO_LICENSE_ITEM_ID` | The store's download ID for Lumtera Pro, instead of the default. (`LUMTERA_PRO_ITEM_ID` also works.) For a staging store only. |
