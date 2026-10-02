@@ -15,7 +15,7 @@ WCAG 2.2 has 55 success criteria at levels A and AA. With review mode's whole-pa
 
 ## How accurate are the checks?
 
-It was measured against the W3C's ACT rules test cases, whose right answers are known. On the 21 W3C ACT rules its checks cover, Lumtera reported 130 of 132 known failures (98%) at any severity: 95 as errors and 35 for review, with 4 false alarms in 222 clean examples. That covers those 21 rules only: across all 34 rules tested, including those outside Lumtera's checks, axe-core found more failures than Lumtera. Where a check isn't sure, it says **Needs review** rather than raising a false error. See [How accurate is Lumtera?](/accuracy).
+It was measured against the W3C's ACT rules test cases, whose right answers are known. On the 21 W3C ACT rules its checks cover, Lumtera reported 130 of 132 known failures (98%) at any severity: 95 as errors and 35 for review, with 4 false alarms in 222 clean examples. That covers those 21 rules only: across all 34 rules tested, including those outside Lumtera's checks, axe-core found more failures than Lumtera. Where a check isn't sure, it says **Needs review** rather than raising a false error. A second test, on 529 accessible and real-world pages, took the errors we judged to be false alarms from 194 to none in review mode in Lumtera 1.2.2, with the same number of ACT failures found. Both are our own tests, not independent audits. See [How accurate is Lumtera?](/accuracy).
 
 ## Is Lumtera an overlay?
 

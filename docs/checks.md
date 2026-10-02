@@ -31,6 +31,8 @@ Every finding also has a **confidence**: how sure the check is that it is a real
 
 A check can lower the confidence of a single finding when something makes it less sure, but it never raises it. Findings of **possible** confidence are hidden until you tick **Show possible issues** in the Content report or the editor sidebar, and they never count in the score.
 
+The content checks skip markup inside `<noscript>` and `<template>`, which visitors with scripts on never see, and treat content inside an `inert` element as hidden, like content with the `hidden` attribute. A tracking pixel in a `<noscript>` tag, for example, isn't reported as an image without alt text. The one exception is [Page refreshes or redirects on a timer](#meta-refresh), which still reads `<noscript>` (as Needs review), because a refresh there fires for visitors with scripts off.
+
 Every finding has a **Why is this flagged?** panel that gives the reason in plain words. The same reason is shown under each check below. To see how well the checks find real problems without false alarms, read [How accurate is Lumtera?](/accuracy).
 
 ::: tip Linking to a check
@@ -174,7 +176,7 @@ Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` 
 
 **How to fix:** Select the image and fill in "Alternative text" in the block settings. Describe what the image shows or does in context. If the image is purely decorative, mark it decorative so screen readers skip it: "Mark as decorative" in the Image settings (WordPress 7.1 and later), or "Decorative image" under Accessibility on older versions. Outside the block editor, give decorative images an empty alt (alt="").
 
-**Good to know:** Also reports elements with `role="img"` and SVGs with an image role that have no name. An image named only by its `title` attribute, or with `alt=" "` (a space), is **Needs review**.
+**Good to know:** Also reports elements with `role="img"` and SVGs with an image role that have no name. An image named only by its `title` attribute, or with `alt=" "` (a space), is **Needs review**. So is an Image block whose alt text is empty and that isn't marked decorative: the block saves `alt=""` both when the field is left empty and when someone meant the image to be decorative, so Lumtera can't be certain. An image with no `alt` attribute at all is still an error.
 
 #### Image has empty alt text {#image-empty-alt}
 
@@ -325,6 +327,8 @@ Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` 
 **Why it's flagged:** WCAG 2.4.4 asks that links lead where their text says; this in-page link points at an ID that is not in the content, so it goes nowhere, unless the theme or a plugin adds that ID on the live page.
 
 **How to fix:** Give the section the link should jump to a matching HTML anchor: select its block (usually a heading) and fill in Advanced &gt; HTML anchor with the text after the # in the link, spelled exactly the same. Or change the link to point at an anchor that exists.
+
+**Good to know:** Links that belong to a scripted widget are left out, because the widget's script handles them, not the address: links with a menu item, tree item, tab, option or grid cell role, and links inside a menu, menu bar, tree, tab list, list box or grid.
 
 #### Link or button may be too small to tap {#target-size-small}
 
@@ -514,7 +518,7 @@ Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` 
 
 **How to fix:** Turn off "Autoplay" in the Audio or Video block settings. If a video must start by itself, also turn on "Muted" so it plays silently.
 
-**Good to know:** Clips of 3 seconds or less are not reported. When the player has native controls or its own Pause or Mute button, the finding is **Needs review** instead of an error.
+**Good to know:** Clips of 3 seconds or less are not reported. Autoplaying audio is an error. An autoplaying video without **Muted** is **Needs review**, because whether the file has a sound track isn't in the markup: a silent background clip is fine. When the player has native controls or its own Pause or Mute button, the finding is **Needs review** too.
 
 #### Moving video cannot be paused {#media-no-pause}
 
@@ -688,7 +692,7 @@ Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` 
 
 **How to fix:** Select the block and open Styles → Color. Pick a darker text color or a lighter background (or the reverse) until the editor's own contrast warning disappears. Normal text needs 4.5:1; large text (24px, or 18.66px bold) needs 3:1.
 
-**Good to know:** Disabled buttons and fields, and the labels of disabled fields, are left out, as WCAG allows. Text with an inline `text-shadow` is **Needs review**, because the shadow can change how readable it is. Text on a Cover block or a gradient background is left out here, because its background is an image or a blend; the whole-page checks in review mode measure it as it is painted.
+**Good to know:** Disabled buttons and fields, and the labels of disabled fields, are left out, as WCAG allows. Symbols (such as `★` or `±`) and a one-letter icon (such as "X" in a button named "Close") aren't text in a human language, so they are measured at 3:1, as graphics, and are **Needs review**. Text with an inline `text-shadow` is **Needs review**, because the shadow can change how readable it is. Text on a Cover block or a gradient background is left out here, because its background is an image or a blend; the whole-page checks in review mode measure it as it is painted.
 
 ### ARIA & keyboard
 
@@ -699,6 +703,8 @@ Lumtera Pro stores three whole-page checks under older IDs: `rendered-contrast` 
 **Why it's flagged:** WCAG 4.1.2 asks that every control exposes a name and role, and 2.4.3 that focus moves in a meaningful order; this element is hidden from screen readers with aria-hidden but can still take keyboard focus, so keyboard users land on something that announces nothing.
 
 **How to fix:** Either remove aria-hidden="true", or add tabindex="-1" to every link, button and field inside the hidden element so keyboard focus skips it too.
+
+**Good to know:** Two cases are **Needs review** instead of an error, because the markup alone can't settle them. Focus guards, the empty links a focus-trap script puts around a dialog to pass focus straight on (React Focus Lock, Radix, Headless UI and "sentinel" links a script on the page can act on), are Needs review: check with the keyboard that focus never stops on them. A sentinel that no script on the page mentions is still an error. Hidden slides, drawers, dialogs, menus and panels that the theme's CSS may hide are Needs review in the content check. In [review mode](/review-mode), which sees what CSS hides, one that is really on screen is still an error.
 
 #### Unknown ARIA role {#aria-invalid-role}
 
@@ -781,7 +787,7 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 | [Skip link goes nowhere](#page-skip-broken) | `page-skip-broken` | 2.4.1 | A | Error |
 | [No "Skip to content" link](#page-no-skip) | `page-no-skip` | 2.4.1 | A | Needs review |
 | [Page has no H1 heading](#page-no-h1) | `page-no-h1` | 1.3.1 | A | Needs review |
-| [More than one H1 heading](#page-many-h1) | `page-many-h1` | 1.3.1 | A | Needs review |
+| [More than one H1 heading](#page-many-h1) | `page-many-h1` | 1.3.1 | A | Tip |
 | [Heading level skipped](#page-heading-skip) | `page-heading-skip` | 1.3.1 | A | Needs review |
 
 ### Color and contrast
@@ -876,6 +882,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 **How to fix:** Give each one a short, different aria-label, for example "Main menu" and "Footer menu". In block themes, set it in the Navigation block's Advanced → ARIA label; in classic themes it is set in the theme's templates.
 
+**Good to know:** Only landmarks people can't tell apart are reported: two or more of the same kind with the same name, or with no name at all. One unnamed menu among named ones is distinct, so it isn't reported.
+
 #### Skip link goes nowhere {#page-skip-broken}
 
 `page-skip-broken` · WCAG [2.4.1 Bypass Blocks](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html) · Level A · Default: **Error**
@@ -883,6 +891,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criterion 2.4.1 asks for a way past blocks repeated on every page. A skip link whose target is missing does not move focus anywhere.
 
 **How to fix:** Make the skip link's href match the id of the element that wraps the main content (for example href="#main" and &lt;main id="main"&gt;).
+
+**Good to know:** A link counts as a skip link when it is among the first three stops the Tab key reaches and its words ("Skip", "Jump to content" and the same in many languages), its class or its target (such as `#main` or `#content`) say it jumps past the header. A menu's first link to `#1`, a year link such as `#2021`, or a script route such as `#/home` isn't treated as a broken skip link.
 
 #### No "Skip to content" link {#page-no-skip}
 
@@ -902,11 +912,13 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 #### More than one H1 heading {#page-many-h1}
 
-`page-many-h1` · WCAG [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) · Level A · Default: **Needs review**
+`page-many-h1` · WCAG [1.3.1 Info and Relationships](https://www.w3.org/WAI/WCAG22/Understanding/info-and-relationships.html) · Level A · Default: **Tip** · Confidence: possible
 
 **Why it's flagged:** Success criterion 1.3.1 asks that the page's structure is in its markup. One H1 that names the page is the usual pattern; several can be fine.
 
 **How to fix:** Keep the post title as the only H1. The site name in the header, or H1 blocks in the content, usually belong at a lower level.
+
+**Good to know:** Several H1s are valid HTML and often fine, so this is a tip, not a WCAG failure on its own. Like other possible issues, it doesn't count in the score.
 
 #### Heading level skipped {#page-heading-skip}
 
@@ -925,6 +937,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criterion 1.4.3 asks for a contrast ratio of at least 4.5:1 for text, or 3:1 for large text, measured here from the colors the browser paints.
 
 **How to fix:** Darken the text or lighten its background (or the reverse) until the ratio reaches 4.5:1, or 3:1 for large text (24px, or 18.66px bold). On theme parts these colors usually come from the Site Editor's Styles, the Customizer or the page builder's global colors.
+
+**Good to know:** Modern CSS colors (`color-mix()`, `oklch()`, `lab()` and wide-gamut colors) are read as painted. A color the engine still can't read makes the background unknown, so the finding is Needs review rather than a guess. The background is measured under the text's own letters, so an icon beside the text doesn't count as its background. Text hidden in a collapsed panel is skipped. Text over a photo or video behind a semi-transparent overlay passes when it would pass on both black and white. Symbols and one-letter icons are measured at 3:1 and are **Needs review**, as in the [content check](#color-contrast).
 
 #### Text over an image: check contrast {#page-contrast-image}
 
@@ -951,6 +965,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criterion 1.4.11 asks that visual information needed to identify a control's state, including the keyboard focus indicator, has a contrast ratio of at least 3:1 against adjacent colors.
 
 **How to fix:** Make the focus outline (or ring) a color with at least 3:1 contrast against the background around the element, for example a 2px solid outline in a dark color on light backgrounds. Set it with :focus-visible in the theme's CSS.
+
+**Good to know:** Every part of the element that changes on focus is measured, and one part with 3:1 is enough, so a yellow fill with a dark bar (GOV.UK style) or an outline beside a thicker border passes. Offset box shadows count. The browser's own default focus ring, when the theme leaves it untouched, isn't reported, and neither is a skip link that appears on focus, which is its own indicator.
 
 #### Links look the same as the text around them {#page-link-color}
 
@@ -1012,6 +1028,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 **How to fix:** Give links, buttons and form fields a clear focus style, for example a:focus-visible, button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }, and remove any "outline: none" or "outline: 0" rule that has no replacement.
 
+**Good to know:** Focus shown on the control's label, a neighbouring or parent element, an inner element (such as an accordion button's text) or an SVG icon's fill or stroke counts as a visible change.
+
 #### Keyboard focus goes somewhere invisible {#page-focus-ghost}
 
 `page-focus-ghost` · WCAG [2.4.7 Focus Visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html), [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html) · Level AA · Default: **Error**
@@ -1019,6 +1037,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criteria 2.4.7 and 2.4.3 ask that keyboard focus is visible and moves in a meaningful order. Lumtera moved focus to this element and measured it afterwards: it could not be seen.
 
 **How to fix:** Take hidden content out of the tab order while it is hidden: use display: none or visibility: hidden (or the inert attribute) on closed menus, drawers and slides, and show it again when it opens.
+
+**Good to know:** Custom checkboxes, radio buttons and switches (as in GOV.UK, WooCommerce and many themes) hide the real input and draw the focus ring on its label or the element next to it. When focus shows on a label, a neighbouring element, a parent or an element inside the control, the stop counts as visible. An image link in a slide is placed by what is visible of it, and an element on the page is scrolled into view as the Tab key would.
 
 #### Sticky bar hides the keyboard focus {#page-focus-obscured}
 
@@ -1083,6 +1103,8 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 **Why it's flagged:** Success criteria 2.4.3 and 4.1.2 ask that focus moves in a meaningful order and that a dialog is exposed as one, with a name. Lumtera opened it with a script click and checked where focus went.
 
 **How to fix:** Use the &lt;dialog&gt; element opened with showModal(), or a role="dialog" container with aria-modal="true" and a name (aria-labelledby its heading). Move focus into it when it opens, close it on Escape, and move focus back to the button that opened it.
+
+**Good to know:** A dialog with no name is **Needs review**: ARIA asks for one, but whether a missing name fails 4.1.2 is debated. Focus not moving in, a dialog not marked as modal, Escape not closing it and focus not going back are Needs review too, and a reminder to check that Tab stays inside is a tip. A combobox labelled with a `<label>` element counts as named.
 
 #### Tabs do not work as tabs {#page-tabs}
 
