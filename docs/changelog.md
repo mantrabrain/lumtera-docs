@@ -1,9 +1,37 @@
 ---
 title: Changelog
-description: Release notes for Lumtera 1.0.0 to 1.1.0 and Lumtera Pro 1.0.0.
+description: Release notes for Lumtera 1.0.0 to 1.2.1 and Lumtera Pro 1.0.0 to 1.1.0.
 ---
 
 # Changelog
+
+Lumtera Pro 1.1.0 needs Lumtera 1.2.1 or newer. See [Requirements](/pro/#requirements).
+
+## Lumtera 1.2.1 {#lumtera-1-2-1}
+
+- After **Check all content**, your results appear first, with a summary of what was found and a link to what to fix. See [Site report](/site-report).
+- [Review mode](/review-mode#where-review-mode-works) works on the blog home page, archives, search and the shop page, and the [weekly home page check](/settings#weekly-home-page-check) opens it.
+- New: a [**Dismissed** view](/site-report#dismissed) in the Content report shows who dismissed each issue, when and why, with **Restore**.
+- New: [choose what happens to your data](/settings#when-lumtera-is-deleted) when Lumtera is deleted (keep it by default, or delete everything), with a [feedback export](/feedback).
+- [Feedback](/feedback) replies use your statement's contact email as Reply-To, and include the reference number and the original message.
+- Contrast is checked for text on a Cover block whose overlay is set to 0%.
+- Issues anywhere in a synced pattern link back to their block.
+- [Fix at the source](/fixing-issues#fix-at-the-source) counts only the pages that use that part.
+- WP-CLI: `wp lumtera issues --fail-on` sets the exit status in every format, with or without `--baseline`. See [WP-CLI](/developers/wp-cli).
+- Editor: the toolbar button names its counts, <kbd>Escape</kbd> closes the dismiss form, dismissing can be undone, and the summary block starts in its text. See [Block editor sidebar](/block-editor).
+- Clearer wording throughout.
+
+## Lumtera 1.2.0 {#lumtera-1-2-0}
+
+- Faster, lighter Overview, coverage, weekly email and abilities on sites with many saved whole-page results: each saved result now keeps a small summary, so site-wide numbers no longer load every finding into memory. Results saved before this version get their summary in the background, a few at a time; the numbers are the same.
+- The **Fixed this week** count in the [weekly email](/email-summary) no longer counts a fix that was undone.
+- For add-on developers: new filters `lumtera_page_result_summaries` and `lumtera_page_result_load`, and `PageResults::index()`, `summaries()`, `walk()` and `with_issues()`. `lumtera_page_result_sources` still works. See [Whole-page results for add-ons](/developers/hooks#page-results-for-add-ons).
+
+## Lumtera 1.1.1 {#lumtera-1-1-1}
+
+- Output buffers used while checking content always close back to where they started, even when a block, widget or shortcode leaves its own buffer open.
+- No longer loads WordPress admin files it doesn't use.
+- The readme lists the chat widgets Lumtera recognizes in your page's HTML, and confirms it never contacts them.
 
 ## Lumtera 1.1.0 {#lumtera-1-1-0}
 
@@ -79,11 +107,30 @@ First public release.
 - Personal data export and erase for dismissals and feedback; fix history is exported and anonymised.
 - Multisite support, including clean uninstall across a network.
 
+## Lumtera Pro 1.1.0 {#lumtera-pro-1-1-0}
+
+- License and updates rebuilt: a new [license screen](/pro/license#your-license-card) (save, activate, check status, deactivate), plan and site counts, a daily license check, and updates with a changelog in **View details**. Existing licenses move over automatically.
+- New permission: **Manage client reports** is needed to create, delete and share reports and to edit the conformance report. Administrators have it; give it to editors under <span class="screen-path">Lumtera → Settings → Permissions</span>. See [Who can manage reports](/pro/reports#manage-permission).
+- Deactivating or uninstalling Lumtera Pro no longer fails when Lumtera is inactive.
+- [Scheduled checks](/pro/page-checks): **Save** works while the usage tip is showing.
+- [Form tests](/pro/form-tests) can test hand-made forms that post to the same page.
+- [Client portfolio](/pro/portfolio): sites that haven't been checked are left out of the average.
+- Expanded snippets can be scrolled with the keyboard; the portfolio table fits at 1280px; clearer messages.
+- **Check again** on the Updates screen shows a new version on the first click.
+- Deleting Lumtera Pro with `LUMTERA_PRO_DELETE_LICENSE` frees this site's activation on the store. See [Data & uninstall](/developers/data).
+- Needs Lumtera 1.2.1.
+
+## Lumtera Pro 1.0.1 {#lumtera-pro-1-0-1}
+
+- Faster, lighter conformance report and Overview on sites with many page check results: each result now keeps a small summary, so site-wide numbers no longer load every finding into memory. Results from 1.0.0 get their summary in the background, a few at a time; the numbers are the same.
+- Needs Lumtera 1.2.0 or newer. With an older Lumtera, Pro asks you to update it and stays off until you do.
+- The readme says what deleting Lumtera Pro keeps, and how to remove it too. See [Data & uninstall](/developers/data).
+
 ## Lumtera Pro 1.0.0 {#lumtera-pro-1-0-0}
 
-First release. The current build of 1.0.0 also includes:
+First release. 1.0.0 also included:
 
-- The plans are **Personal**, **Growth**, **Agency** and **Unlimited**. Each plan can be a yearly or a [lifetime license](/pro/license#yearly-and-lifetime-licenses).
+- The plans are **Personal**, **Growth**, **Agency** and **Unlimited**. Personal, Growth and Agency can be a yearly or a [lifetime license](/pro/license#yearly-and-lifetime-licenses); Unlimited is yearly.
 - [Signed-in checks](/pro/signed-in-checks) on every plan: 1 role on Personal and Growth, any number on Agency and Unlimited.
 - A [first-run checklist](/pro/license#first-run-checklist) after a license is activated, tailored to the plan, with steps that tick themselves off.
 - Plan limits that link to the plan with more, and a quiet tip at 80% of a limit. See [When you reach a limit](/pro/license#when-you-reach-a-limit).
@@ -99,7 +146,7 @@ Features in 1.0.0:
 - [Page checks](/pro/page-checks) in the browser for many pages, at desktop and phone width, on the free plugin's audit engine.
 - Scheduled page checks as a logged-out visitor, with key templates found automatically and a per-plan page limit.
 - [Signed-in checks](/pro/signed-in-checks) with one-time passes and view-only test users: one role on Personal and Growth, any number on Agency and Unlimited.
-- [Form tests](/pro/form-tests) with dry-run safeguards for Contact Form 7, WPForms, Gravity Forms, WooCommerce checkout and plain HTML forms.
+- [Form tests](/pro/form-tests) with dry-run safeguards for Contact Form 7, WPForms, Gravity Forms, WooCommerce classic checkout and plain HTML forms.
 - Hover, focus and pressed-state contrast, and a runtime carousel check.
 - [Consistency checks across pages](/pro/consistency) (Growth plan and up).
 - [PDF checks](/pro/documents) for the Media Library.
