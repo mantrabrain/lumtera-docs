@@ -270,11 +270,20 @@ wp lumtera issues --severity=error
 wp lumtera issues --rule=image-missing-alt --post_type=page --format=csv > alt.csv
 wp lumtera issues --format=sarif > lumtera.sarif
 wp lumtera issues --baseline=.lumtera-baseline.json --fail-on=error
+wp lumtera issues --format=junit --fail-on=error > lumtera-junit.xml
 ```
 
 Columns: `post_id`, `title`, `rule`, `severity`, `wcag`, `message`.
 
-By default (`--fail-on=none`), `issues` exits with status 0 whatever it finds. Pass `--fail-on` to fail a build on stored results. It works with every `--format`, including SARIF and JUnit, and with or without `--baseline` (where only new issues count). It exits with status 2 for an invalid `--fail-on` or a baseline that can't be read or written.
+By default (`--fail-on=none`), `issues` exits with status 0 whatever it finds. Pass `--fail-on` to fail a build on stored results. It works with every `--format`, including SARIF and JUnit, and with or without `--baseline` (where only new issues count). **Exit codes:**
+
+| Code | Meaning |
+| --- | --- |
+| `0` | No listed issue at or above `--fail-on` (always, with the default `--fail-on=none`), or `--write-baseline` wrote its file |
+| `1` | At least one listed issue at or above `--fail-on` (with `--baseline`: at least one new one) |
+| `2` | An option has a bad value (an unknown `--rule`, a `--post_type` Lumtera doesn't check, or an invalid `--fail-on`), or a baseline couldn't be read or written |
+
+A typo in `--rule` or `--post_type` exits with `2`, not `1`, so a CI job never mistakes it for issues found.
 
 ## wp lumtera rules
 

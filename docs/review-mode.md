@@ -113,7 +113,7 @@ The **Keyboard** tab checks what keyboard users meet. It has two buttons:
 - pop-up content that appears on focus and doesn't close with <kbd>Escape</kbd> (WCAG 1.4.13)
 - possible keyboard traps
 
-**Test menus and pop-ups** operates disclosures, menus, dialogs, tabs and accordions from the keyboard, including the Navigation block's mobile menu. It checks that each one opens, says whether it is open, moves focus sensibly and closes with <kbd>Escape</kbd>. Then it puts the page back as it was. If something can't be put back exactly, the panel says so, and **Reload page to reset** reloads it.
+**Test menus and pop-ups** operates disclosures, menus, dialogs, tabs and accordions from the keyboard, including the Navigation block's mobile menu. It checks that each one opens, says whether it is open, moves focus sensibly and closes with <kbd>Escape</kbd>. Then it puts the page back as it was. If something can't be put back exactly, the panel says so, and **Reload page to reset** reloads it. When the page has nothing to test, the panel says *"No menus, pop-ups or other widgets were found to test on this page."* rather than reporting a pass. A menu that only becomes a pop-up on small screens can be tested in a narrower window.
 
 While either check runs, the status says **Press Escape to stop.** Press <kbd>Escape</kbd>, or click **Stop**, and the results cover the part of the page checked so far. The check moves focus through the page, so <kbd>Escape</kbd> is the way to stop it from the keyboard.
 

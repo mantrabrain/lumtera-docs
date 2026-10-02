@@ -11,7 +11,7 @@ Lumtera checks your post while you write and lists each issue next to the block 
 
 ## Open the sidebar
 
-Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review, and screen readers hear the counts in the button's name, such as *"Lumtera Accessibility: 2 errors, 1 to review"*. The sidebar is called **Lumtera Accessibility**. You'll also find it in the **Options** menu (⋮) under that name.
+Click the **Lumtera icon** in the editor's top toolbar. The icon shows a colored dot when there are errors or items to review, and screen readers hear the counts in the button's name, such as *"Lumtera Accessibility: 2 errors, 1 to review"*. The counts match the sidebar: possible issues are counted only while **Show possible issues** is ticked. The sidebar is called **Lumtera Accessibility**. You'll also find it in the **Options** menu (⋮) under that name.
 
 The sidebar appears for the content types Lumtera checks: posts, pages and products by default. You can change this in [Settings](/settings#content-to-check).
 

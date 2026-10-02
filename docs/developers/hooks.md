@@ -295,6 +295,7 @@ See [Accessibility feedback](/feedback).
 | `lumtera_feedback_is_spam` | filter | `bool $spam`, `array $data` | Whether a message is spam. Spam isn't stored, and the sender sees the usual thank-you. `$data` holds the cleaned fields. |
 | `lumtera_feedback_rate_limit` | filter | `int $limit` (default 5) | Messages one IP address may send per hour. 0 turns the limit off. |
 | `lumtera_feedback_reply_to` | filter | `string $address` | The Reply-To address of feedback replies sent from the inbox. Default: the contact email in your accessibility statement, otherwise the replying user's email. An invalid address is dropped. |
+| `lumtera_feedback_allowed_hosts` | filter | `string[] $hosts` (default empty) | Extra host names, such as `example.com`, that the feedback form may be sent from. The form refuses a message whose browser `Origin` header names another site; the site's home and site address hosts, and the host the request came in on, are always allowed, with or without `www.`. Add a host here when the form is embedded on another domain you own. |
 | `lumtera_feedback_client_ip` | filter | `string $ip` | The visitor IP address the limit counts. Default: `REMOTE_ADDR`. Behind a proxy that sets a trusted header, return that address. |
 | `lumtera_feedback_capability` | filter | `string $capability` | Capability needed to read and answer feedback. Default `lumtera_manage_feedback` (editors and administrators). |
 | `lumtera_feedback_query_args` | filter | `array $args`, `array $filters` | The inbox's `WP_Query` arguments, for example to show only overdue items |
@@ -328,7 +329,7 @@ add_action( 'lumtera_feedback_received', function ( int $id, array $data ) {
 
 The `lumtera_*` capabilities are given to roles under <span class="screen-path">Lumtera → Settings → Permissions</span>. By default, roles that can edit others' posts get `lumtera_view_reports`, `lumtera_dismiss_errors` and `lumtera_manage_feedback`, and roles that can edit posts get `lumtera_review_mode`. Administrators always have all of them. A filter wins over the settings. See [Roles & permissions](/permissions).
 
-<span class="pro-pill">Pro</span> Lumtera Pro 1.1.0 adds `lumtera_manage_reports` (**Manage client reports**). It's needed to create and delete client reports, create and revoke share links and save the conformance report. Opening and downloading reports needs only `lumtera_view_reports`. Administrators always have it. Give it to other roles under <span class="screen-path">Lumtera → Settings → Permissions</span>.
+<span class="pro-pill">Pro</span> Lumtera Pro 1.1.0 adds `lumtera_manage_reports` (**Manage client reports**). It's needed to create and delete client reports, create and revoke share links and save the conformance report. Opening and downloading reports needs only `lumtera_view_reports`. Every capability of the `lumtera_report` post type maps to `lumtera_manage_reports` (with `map_meta_cap` off), so core routes such as XML-RPC's `wp.getPost`, `wp.editPost` and `wp.deletePost` need it too. Administrators always have it. Give it to other roles under <span class="screen-path">Lumtera → Settings → Permissions</span>.
 
 Changing settings, including check severities, always needs `manage_options`.
 

@@ -10,7 +10,7 @@ Lumtera's [WP-CLI commands](/developers/wp-cli) can run in a CI pipeline. The bu
 | Command | What it checks | Exit code |
 | --- | --- | --- |
 | `wp lumtera check --page=<url>` | One page of the site, fetched and checked as a visitor gets it, with the theme, menus and footer. Nothing is stored. | `0`, `1` or `2` (see [below](#exit-codes)) |
-| `wp lumtera issues` | Every issue already stored from checks of saved content | `0` unless you pass `--fail-on` |
+| `wp lumtera issues` | Every issue already stored from checks of saved content | `0` unless you pass `--fail-on`; `2` for a bad option or baseline |
 
 Both commands can write two report formats:
 
@@ -33,7 +33,7 @@ What each format contains is described in [WP-CLI: SARIF and JUnit](/developers/
 - `--fail-on` takes `error`, `warning` (also fails on "Needs review"), `notice` (also fails on tips) or `none` (never fails).
 - WP-CLI itself exits with `1` for an unknown option or `--format` value. Test your command once by hand before relying on the difference between `1` and `2`.
 
-`wp lumtera issues` exits with `0` whatever it finds, unless you pass `--fail-on` (default `none`). With `--fail-on=error` it exits with `1` when a stored issue at or above that severity is listed, in every format, so you can write SARIF or JUnit and still fail the job. With `--baseline`, only new issues count. Once `--write-baseline` has written its file, it exits with `0`.
+`wp lumtera issues` exits with `0` whatever it finds, unless you pass `--fail-on` (default `none`). With `--fail-on=error` it exits with `1` when a stored issue at or above that severity is listed, in every format, so you can write SARIF or JUnit and still fail the job. With `--baseline`, only new issues count. Once `--write-baseline` has written its file, it exits with `0`. It exits with `2` for a bad option value (an unknown `--rule`, a `--post_type` Lumtera doesn't check, an invalid `--fail-on`) or a baseline that can't be read or written, so a typo never looks like issues found.
 
 ## Fail only on new issues: baselines {#baselines}
 

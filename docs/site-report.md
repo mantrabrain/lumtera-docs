@@ -171,7 +171,7 @@ The **Site parts** tab lists your template parts, synced patterns, navigation me
 
 ### Dismissed {#dismissed}
 
-The **Dismissed (N)** tab lists every finding someone marked as not a problem, in the editor or the classic editor box: the issue, the item, **Dismissed by**, **When** and the **Reason** (or *No reason given*). Dismissed findings are left out of scores and reports. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**, to report them again; Lumtera asks you to confirm first. Restoring needs the same permission as dismissing: for errors, the **Dismiss errors** permission. See [Dismissing issues](/dismissing).
+The **Dismissed (N)** tab lists every finding someone marked as not a problem, in the editor or the classic editor box: the issue, the item, **Dismissed by**, **When** and the **Reason** (or *No reason given*). Dismissed findings are left out of scores and reports. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**, to report them again; Lumtera asks you to confirm first. Restoring needs the same permission as dismissing: being able to edit the item and, for errors, the **Dismiss errors** permission. Where you can't restore a row, it says why: *"Only people who can edit this item can restore it"*, or *"Needs the "Dismiss errors" permission to restore"*. See [Dismissing issues](/dismissing).
 
 ### Export CSV {#export-csv}
 

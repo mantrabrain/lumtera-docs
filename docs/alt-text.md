@@ -1,6 +1,6 @@
 ---
 title: Alt text manager
-description: See every image in your Media Library on one screen, describe each one once, and add the text to the posts that show it without a description. Images from outside the Media Library are listed too.
+description: See every image in your Media Library on one screen, describe each one once, and add the text to the posts that show it without a description, leaving out any where the image is decorative. Images from outside the Media Library are listed too.
 ---
 
 # Alt text manager
@@ -42,8 +42,11 @@ Copies of a Media Library image aren't listed here: the main list covers them.
 <ol class="step-list">
   <li>Type a description in the <strong>Alt text</strong> field and click <strong>Save</strong>. This updates the image in the Media Library.</li>
   <li>If checked posts show the image without alt text, the row says <em>"Shown without alt text in N posts"</em> and lists them.</li>
-  <li>Click <strong>Add it to those N posts</strong> (or <strong>Add it to that post</strong>).</li>
+  <li>When two or more of those posts are yours to edit, each has a ticked checkbox under <em>"Posts to add it to (untick any where the image is decorative):"</em>. Untick any post that should keep the image without alt text, such as a Cover background.</li>
+  <li>Click <strong>Add it to those N posts</strong> (or <strong>Add it to that post</strong>). When you've unticked some, the button says <strong>Add it to N chosen posts</strong>. With none ticked, it says <em>"Choose at least one post."</em> and changes nothing.</li>
 </ol>
+
+Posts you left out stay listed under the image, so you can add the text to them later.
 
 Lumtera then adds the description to those posts:
 
@@ -64,7 +67,7 @@ The list of posts that use each image comes from Lumtera's checks. Posts that ha
 
 Cover and Media & Text blocks have no "decorative" switch. WordPress asks you to leave their alt text empty when the image is only decoration. Lumtera can't tell a deliberate empty alt from a forgotten one, so it still lists those copies here, and as items to review in the content report.
 
-If the image really is decorative, don't add text to that post. [Dismiss](/dismissing) its review item with a reason instead.
+If the image really is decorative, untick that post when you add the alt text to the others. Then [dismiss](/dismissing) its review item with a reason.
 
 ## Who can use it
 

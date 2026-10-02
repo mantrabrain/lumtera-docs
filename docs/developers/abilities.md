@@ -28,7 +28,7 @@ To run one through the REST API, call `/wp-abilities/v1/abilities/{name}/run`, f
 | --- | --- | --- | --- |
 | `lumtera/check-content` | Checks a piece of HTML or block markup. Nothing is saved. | `edit_posts` | read-only, idempotent |
 | `lumtera/check-post` | Checks a saved post and **stores** the result, like saving it | `edit_post` on that post | idempotent |
-| `lumtera/site-summary` | Site-wide totals and the ten most common issues | Lumtera's report capability | read-only, idempotent |
+| `lumtera/site-summary` | Site-wide totals, WCAG coverage and the ten most common issues | Lumtera's report capability | read-only, idempotent |
 | `lumtera/list-rules` | Every check, with its current severity | `edit_posts` | read-only, idempotent |
 | `lumtera/list-issues` | Stored findings, a page at a time, with filters | Lumtera's report capability, and only items the user may see | read-only, idempotent |
 | `lumtera/list-issue-groups` | Stored findings grouped by check and markup, most widespread first | Lumtera's report capability, and only items the user may see | read-only, idempotent |
@@ -82,7 +82,7 @@ To run one through the REST API, call `/wp-abilities/v1/abilities/{name}/run`, f
 
 ### lumtera/site-summary
 
-**Input:** none. **Output:** `{ "totals": { … }, "top_issues": [ { "rule", "title", "issues", "posts" } ] }`, with the ten most common checks. `totals` has `content`, `scanned`, `unscanned`, `average`, `errors`, `warnings`, `notices`, `failing` and `passing`, as in [`wp lumtera stats`](/developers/wp-cli#wp-lumtera-stats).
+**Input:** none. **Output:** `{ "totals": { … }, "coverage": { … }, "top_issues": [ { "rule", "title", "issues", "posts" } ] }`, with the ten most common checks. `totals` has `content`, `scanned`, `unscanned`, `average`, `errors`, `warnings`, `notices`, `failing` and `passing`, as in [`wp lumtera stats`](/developers/wp-cli#wp-lumtera-stats). `coverage` is the same coverage summary as [`GET /site-summary`](/developers/rest-api#get-site-summary) (`total`, `automated`, `with_evidence`, `label` and the rest). Covering a criterion means a check looks at it, not that the site meets it.
 
 ### lumtera/list-rules
 

@@ -60,7 +60,7 @@ Each hint gives the date, who dismissed it, and the reason they gave.
 
 ## See and restore dismissed items
 
-**In the Content report:** open <span class="screen-path">Lumtera → Checks → Content</span> and choose the **Dismissed** view. It lists every issue dismissed in your content, with who dismissed it, when and why. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**. Restored issues are reported again and count in the score. See [Site report](/site-report#dismissed).
+**In the Content report:** open <span class="screen-path">Lumtera → Checks → Content</span> and choose the **Dismissed** view. It lists every issue dismissed in your content, with who dismissed it, when and why. Click **Restore** on a row, or tick several (or **Select all on this page**) and click **Restore selected**. Restored issues are reported again and count in the score. Restoring needs edit access to the item (and, for errors, the **Dismiss errors** permission); a row you can't restore says which one you're missing. See [Site report](/site-report#dismissed).
 
 **In the editor:** at the bottom of the sidebar (or the Elementor panel), expand **N dismissed items**. Each shows *"Dismissed by name on date"* and the reason. Click **Restore** to bring it back.
 

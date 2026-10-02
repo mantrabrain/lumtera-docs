@@ -78,6 +78,7 @@ Without Akismet, the form still protects itself:
 - a hidden field that people don't see and bots fill in
 - a time check, so a form sent too quickly is refused
 - a limit per visitor, 5 messages an hour by default
+- messages sent from another website's page are refused before they count or are stored, so a hostile page can't make its own visitors' browsers flood your inbox. The visitor sees *"Your feedback was not sent, because the form was sent from another website. Open the form on this site and send it again."* If you show the form on another domain you own, a developer can allow it with the `lumtera_feedback_allowed_hosts` filter.
 
 The visitor's IP address is not stored. A scrambled form of it is kept for up to an hour, only to count messages for the limit.
 
@@ -95,4 +96,4 @@ People with the **Handle accessibility feedback** permission can open the inbox.
 
 ## For developers
 
-The form posts to `POST /lumtera/v1/feedback` (public, sanitised and rate-limited). The capability is `lumtera_manage_feedback` (filter `lumtera_feedback_capability`). Filters include `lumtera_feedback_rate_limit`, `lumtera_feedback_client_ip`, `lumtera_feedback_is_spam` and `lumtera_feedback_reply_to` (the Reply-To of inbox replies), and the actions `lumtera_feedback_received` and `lumtera_feedback_updated` fire when a message arrives or changes. See [Hooks & filters](/developers/hooks) and [REST API](/developers/rest-api).
+The form posts to `POST /lumtera/v1/feedback` (public, sanitised and rate-limited). The capability is `lumtera_manage_feedback` (filter `lumtera_feedback_capability`). Filters include `lumtera_feedback_rate_limit`, `lumtera_feedback_client_ip`, `lumtera_feedback_allowed_hosts`, `lumtera_feedback_is_spam` and `lumtera_feedback_reply_to` (the Reply-To of inbox replies), and the actions `lumtera_feedback_received` and `lumtera_feedback_updated` fire when a message arrives or changes. See [Hooks & filters](/developers/hooks) and [REST API](/developers/rest-api).

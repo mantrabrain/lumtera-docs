@@ -467,6 +467,8 @@ Adds the image's alt text to posts that show it without any. Existing alt text i
 
 **Permission:** `edit_post` on the image. Each post is skipped unless you can edit it.
 
+**Parameters:** `posts` (optional), an array of post IDs: add the alt text only to these. It is matched against the posts that show this image without alt text, so it can never change any other post. Leave it out to update all of them. The alt text manager sends it when someone unticks a post, for example one where the image is decorative.
+
 **Response:** `{ "updated": [ … ], "skipped": 0, "skipped_reasons": { "permission": 0, "filtered": 0 } }` plus the image state. **Error:** 400 `lumtera_no_alt` if the image has no alt text yet.
 
 ### POST /images/{id}/suggest {#post-images-id-suggest}
@@ -573,7 +575,7 @@ A summary of the site for an agency hub, such as the Lumtera Pro [client portfol
 **With Lumtera Pro active on the site,** Pro adds to it:
 
 - `pro_active`: `true` while the license is active.
-- `can_report`: the license is active and the user has `manage_options`. [`POST /reports`](#pro-reports) also needs **Manage client reports** (`lumtera_manage_reports`). Administrators always have it, so connect the hub as an administrator.
+- `can_report`: the license is active and the user may create a report: `manage_options` **and** **Manage client reports** (`lumtera_manage_reports`), the same rule [`POST /reports`](#pro-reports) checks, so a hub only offers a report link the site will accept. Administrators always have both, so connect the hub as an administrator.
 - `can_share`: `can_report`, and the plan includes share links (Growth and up).
 - `feedback.overdue`: the number of overdue messages, and `feedback.source` becomes `pro`.
 - `run_diff`: `{ "new", "fixed", "persisting", "at", "since", "version_changed" }` between the last two full checks, or `null`.
