@@ -1,11 +1,28 @@
 ---
 title: Changelog
-description: Release notes for Lumtera 1.0.0 to 1.2.1 and Lumtera Pro 1.0.0 to 1.1.0.
+description: Release notes for Lumtera 1.0.0 to 1.2.2 and Lumtera Pro 1.0.0 to 1.1.1.
 ---
 
 # Changelog
 
-Lumtera Pro 1.1.0 needs Lumtera 1.2.1 or newer. See [Requirements](/pro/#requirements).
+Lumtera Pro 1.1.1 needs Lumtera 1.2.1 or newer. See [Requirements](/pro/#requirements).
+
+## Lumtera 1.2.2 {#lumtera-1-2-2}
+
+- New: when you add alt text to the posts that show an image, you choose which posts get it, so decorative copies (such as Cover backgrounds) can be left out.
+- Fewer false alarms in colour contrast: modern CSS colours (color-mix(), oklch(), lab()) are read correctly, and text beside an icon, in a collapsed panel or under an image or video overlay is no longer flagged.
+- Fewer false alarms in the keyboard check: focus shown on a checkbox's label, a switch's track, or a button's inner text or icon is recognised.
+- Content checks no longer report markup that is never shown (`<noscript>`, `<template>`, `inert`). Hidden slides, drawers and menus are Needs review instead of errors.
+- Links in menus, trees and tabs, menu links to "#…", and theme search buttons are no longer reported.
+- Changed: more than one H1 is a tip. A dialog without a name, symbol icons, an autoplaying video that isn't muted, and an Image block with empty alt text are Needs review instead of errors.
+- The dialog and pop-up check defaults to Needs review on Settings → Checks, as its findings are reported.
+- Security: the feedback form refuses messages sent from another website's page.
+- Saved code snippets no longer keep security tokens from the page address, so they never reach reports or share links.
+- Keyboard focus stays in place after "Show all findings" in the editor, while the fix dialog applies or undoes a fix, in review mode (Check again, Dismiss, Restore, the Manual tab) and when hiding a tip.
+- The editor toolbar counts match the sidebar when possible issues are hidden, and the dismiss form's help text meets AA contrast.
+- The Dismissed view says why Restore is missing, and review mode says when a page has no menus or pop-ups to test.
+- WP-CLI: `wp lumtera issues` exits with 2 for an unknown --rule or --post_type, and its help explains JUnit failures, --fail-on and exit codes.
+- The lumtera/site-summary ability returns the coverage summary its description promises.
 
 ## Lumtera 1.2.1 {#lumtera-1-2-1}
 
@@ -106,6 +123,22 @@ First public release.
 - [Permissions](/permissions), a "Lumtera Reporter" role for agency hubs, an optional [weekly email summary](/email-summary) and a dashboard widget.
 - Personal data export and erase for dismissals and feedback; fix history is exported and anonymised.
 - Multisite support, including clean uninstall across a network.
+
+## Lumtera Pro 1.1.1 {#lumtera-pro-1-1-1}
+
+- Security: client reports can be read, changed or deleted only by people with "Manage client reports", including through XML-RPC.
+- Security: a page check's results can be removed only by people who may see that page, and signed-in results only by administrators who run signed-in checks.
+- Security: updates are downloaded only from https addresses, and "View details" never shows markup from the store.
+- Security: scheduled signed-in checks never send their one-time pass over plain http.
+- Deleting Lumtera Pro also removes the daily licence check from WP-Cron.
+- Client portfolio: a report link is offered only when the client site would accept the request ("Manage client reports"). Lists show the port and path, so two sites on one host can be told apart, and the limit message is right on plans without the portfolio.
+- Webhooks: "Regenerate secret" asks first, and only appears for signed JSON webhooks.
+- Fix approval permissions can be given only to roles that can edit content.
+- The carousel motion check shows "Needs review" on Settings → Checks, as its findings are stored.
+- Saving signed-in check addresses says how many were not added, and burden records name the post IDs that were not added.
+- Test sessions: "1 difference to review" uses the right plural.
+- With Lumtera 1.2.2, page checks share its fewer false alarms in colour contrast and the keyboard check.
+- Needs Lumtera 1.2.1 or newer.
 
 ## Lumtera Pro 1.1.0 {#lumtera-pro-1-1-0}
 
