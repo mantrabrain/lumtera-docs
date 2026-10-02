@@ -44,7 +44,7 @@ Cart and Checkout are listed "(with a sample product)". Checking them adds a pro
 
 Only pages on this site can be checked. A page that blocks being embedded, or redirects to another site, shows *"The page could not be read."* A page gets 20 seconds to load. Pages that fail are listed with **Try again**.
 
-A run takes about 12 seconds for two pages at both widths, in Chrome, Edge, Firefox and Safari alike. Pages with sliders take longer: see [Carousels](#carousel-motion).
+Each page usually takes a few seconds at each width; how long depends on the page and your computer. It works in Chrome, Edge, Firefox and Safari alike. Pages with sliders take longer: see [Carousels](#carousel-motion).
 
 ### Phone width
 

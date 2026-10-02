@@ -103,7 +103,7 @@ Anyone who can edit a page can still fix one issue at a time on it from the edit
 
 ## Fix approvals settings {#fix-approvals-settings}
 
-Administrators choose who can do what under <span class="screen-path">Lumtera → Settings → Fix approvals</span>, in the **People** group.
+Administrators choose who can do what under <span class="screen-path">Lumtera → Settings → Fix approvals</span>, in the **Fixing** group.
 
 - **Propose fixes** and **Approve and apply fixes**: tick the roles that can. Each choice grants the capability to the role. A role editor plugin can also give it to single users. Role changes apply right away, to every user with the role.
 - **Review rules**: the two switches below.

@@ -1,6 +1,6 @@
 ---
 title: License & plans
-description: Activate, refresh and deactivate your Lumtera Pro license, what each plan includes, what happens when a license expires, and how updates work.
+description: Save, activate, check and deactivate your Lumtera Pro license, what each plan includes, what happens when a license expires, and how updates work.
 ---
 
 # License & plans
@@ -16,21 +16,25 @@ You can activate from the License screen, or straight from any Pro screen.
 ### From the License screen
 
 <ol class="step-list">
-  <li>Go to <span class="screen-path">Lumtera → Settings → License</span>. There's also a <strong>License</strong> link on the Lumtera Pro row of the Plugins screen.</li>
+  <li>Go to <span class="screen-path">Lumtera → Settings → License</span>. There's also a <strong>License</strong> link on the Lumtera Pro row of the Plugins screen. Until a key is active, the <strong>Lumtera Pro</strong> group with <strong>License</strong> is listed first on the Settings screen.</li>
   <li>Paste your key into <strong>License key</strong>. Spaces and line breaks are removed for you.</li>
-  <li>Click <strong>Activate</strong>. You'll see <em>"License activated. Thank you!"</em></li>
+  <li>Click <strong>Save &amp; activate</strong>. You'll see <em>"License activated: your Lumtera Pro … plan is ready."</em>, with your plan's name, and your <a href="#first-run-checklist">first-run checklist</a> below it.</li>
 </ol>
+
+**Save** keeps the key on the site without activating it, for example to activate later: *"License key saved. Activate it to turn Pro features on and get updates."* Once a key is saved, the field says *"Saved key: ….1234. Enter it again, or another key, to activate."*, and **Check status** checks that saved key with the store again. Under the field, **Get it from your account** opens your store account, and **License guide** opens this page.
+
+Until a key works, the Overview and Settings screens show a banner, **License not activated:**, with an **Activate now** button. If a saved key was refused, it says **Invalid license:** and names the status instead.
 
 ### From any Pro screen
 
-Until the license is active, each Pro screen shows an activation card instead of the feature, for example **Activate your license to use page checks**. It says: *"Lumtera Pro is installed; it needs your license key to turn on."*
+Until the license is active, each Pro screen shows an activation card instead of the feature, for example **Activate your license to use page checks**. It says: *"Lumtera Pro is installed; it needs your license key to turn on."* If a saved key was refused, the card says *"Your license key was not accepted, so you can't use … yet"* and shows the license status.
 
 <ol class="step-list">
   <li>Paste your key into the card's <strong>License key</strong> field.</li>
   <li>Click <strong>Activate license</strong>.</li>
 </ol>
 
-If it works, you come straight back to the same screen, now unlocked, with *"License activated. Thank you!"* If it doesn't, you're taken to the License screen, which explains why.
+If it works, you come straight back to the same screen, now unlocked, with *"License activated: your Lumtera Pro … plan is ready."* and a **See your first steps** link. If it doesn't, you're taken to the License screen, which explains why.
 
 ## First-run checklist {#first-run-checklist}
 
@@ -53,34 +57,27 @@ When every step is done, the card says **You are set up**. **Hide checklist** (o
 
 People who can't manage the license see *"Ask a site administrator to activate the Lumtera Pro license."* instead of the key field.
 
-## The License card
+## Your license card {#your-license-card}
 
-![The Lumtera Pro license card: plan, key, licensed to, renewal date and sites, with What your license covers](/screenshots/pro-license.webp)
+![The Lumtera Pro license card: plan, license key, licensed to, renewal date, active sites and last checked, with Check status and Deactivate license, and What your license covers](/screenshots/pro-license.webp)
 
 Once a key is active, the **Lumtera Pro license** card shows:
 
-- **Plan**, **Key** (only the last four characters are shown), **Licensed to** and **Sites**, for example "3 of 5", or "2 (unlimited)".
+- A status at the top: **Active**, **Expired**, **Disabled**, **Revoked**, **Invalid**, **Not active on this site**, **Not activated on this site** or **Not activated**. On a multisite network you may also see **Main site only** (see [Multisite](#multisite)).
+- **Plan** (with a **Lifetime** badge for lifetime keys), **License key** (only the last four characters are shown), **Licensed to**, **Active sites**, for example "3 / 5", or "2 / ∞" for no set number, and **Last checked**, the time of the last check with the store.
 - **Renewal date**, or **Expired on** if it has expired, or **Expires: Never (lifetime)** for lifetime keys.
-- Under a yearly license's date: *"Renew by this date to keep getting updates and support. If it lapses, Pro keeps working on this site; only updates and support stop."* with **Renew now** and **Manage in your account** links. In the last 30 days, and after it expires, this becomes a [renewal reminder](#renewal-reminders).
-- A status: **Active**, **Expired**, **Disabled**, **Revoked**, **Invalid**, **Not active on this site** or **Not activated on this site**. On a multisite network you may also see **Main site only** (see [Multisite](#multisite)).
+- Under a yearly license's date: *"Renew by this date to keep getting updates and support. If it lapses, Pro keeps working on this site; only updates and support stop."* with a **Renew now** link. In the last 30 days, and after it expires, this becomes a [renewal reminder](#renewal-reminders).
 
 Buttons:
 
-- **Refresh license** checks the key with the store again. Use it after you renew or upgrade.
-- **Deactivate on this site** frees the activation so you can use it on another site. The key is always removed here, even if the store can't be reached. If the store didn't confirm it, a message tells you to free the site from **Licenses** in your store account.
+- **Check status** checks the key with the store again, and says *"License checked with the store. Status: Active."* Use it after you renew or upgrade.
+- **Deactivate license** frees the activation so you can use it on another site. You're asked to confirm first: *"Deactivate the license on this site? Pro features stop here until a key is activated again."* Then you see *"License deactivated on this site."* The key is always removed here, even if the store can't be reached. If the store didn't confirm it, a message tells you to remove this site from the license under **Licenses** in your store account.
 
-Next to it, **What your license covers** lists what Pro includes, and your plan's limits, for example *"Your Unlimited plan checks up to 500 pages in each scheduled run and handles up to 500 fixes in each queue run"*. It covers:
+Under **Need help?**, **Manage license** opens your store account and **Contact support** opens the support form.
 
-- page checks for many pages and scheduled checks as a logged-out visitor, with form tests, hover and focus contrast and carousel checks
-- PDF checks for your Media Library
-- a tamper-evident evidence log, scan comparison and test sessions
-- a fixes queue to propose, review, apply and undo fixes on many pages at once: built-in fixes or text you write, plus AI drafts if you connect an AI provider. A person approves every change.
-- email and Slack alerts, a weekly summary, score history and fix tracking with issue trackers
-- branded client reports with a full WCAG 2.2 A and AA checklist, and a VPAT 2.5 style conformance report, on every plan
-- Growth and above: white-label reports, the client portfolio, client emails, share links and consistency checks across pages
-- Agency and above: signed-in checks as any number of roles, an approval rule for fixes, and multisite network tools
-- automatic updates and support while the license is active
-- a reminder that if a license expires, Pro keeps working on the sites where it is active; only updates, support and activating new sites pause
+Next to it, **What your license covers** starts *"Included in your … plan:"* and lists what your plan includes, with its limits, for example *"…up to 500 pages in each scheduled run…"* and *"…up to 500 changes in each run"*. Below, **Needs a higher plan** lists what a higher plan adds, for example *"Growth plan and above: white-label reports without the Lumtera credit, the client portfolio, scheduled client emails, read-only share links and consistency checks across pages."*, with **See the … plan** and **Upgrade in your account** links. It ends with a reminder that if a license expires, Pro keeps working on the sites where it is active; only updates, support and activating new sites pause.
+
+Before a key is active, the card is called **What Lumtera Pro includes** and lists every plan's features.
 
 The card shows no prices.
 
@@ -103,7 +100,7 @@ The card shows no prices.
 
 ### Yearly and lifetime licenses {#yearly-and-lifetime-licenses}
 
-Each plan is sold as a yearly license or a lifetime license. Both include the same features and limits. A lifetime license never expires, so it never shows a renewal date or reminder; the card says **Expires: Never (lifetime)**.
+Personal, Growth and Agency are sold as a yearly license or a lifetime license; Unlimited is sold yearly. Both kinds include the same features and limits. A lifetime license never expires, so it never shows a renewal date or reminder; the card says **Expires: Never (lifetime)**.
 
 A key without a plan recorded in the store counts as Personal. See [pricing](https://mantrabrain.com/plugins/lumtera/pricing/?utm_source=docs&utm_medium=referral&utm_campaign=lumtera-docs) for current prices.
 
@@ -127,7 +124,7 @@ Developers can change both with the `lumtera_pro_limit` filter. See [For develop
 
 ### Upgrade or change plan
 
-Buy the upgrade in your store account, then click **Refresh license**. The message says, for example, *"Your plan changed from Growth to Agency."*
+Buy the upgrade in your store account, then click **Check status** on the License screen. The message says, for example, *"License checked with the store. Status: Active. Your plan changed from Growth to Agency."*
 
 A feature your plan doesn't include shows a short note naming the plan that does, with the same **See the … plan** and **Upgrade in your account** links.
 
@@ -147,7 +144,7 @@ A yearly license shows a reminder **30 days** and **7 days** before it expires, 
 - support
 - activating the key on new sites
 
-The License card says *"Your license has expired. Pro keeps working on this site, but updates and support have stopped until you renew."* with a **Renew now** link. On the other Lumtera screens, a reminder says *"Lumtera Pro updates and support have stopped."* until you renew or dismiss it. The update row on the Plugins screen says *"Renew your license to get updates."*
+The License card says *"Your license has expired. Pro keeps working on this site, but updates and support have stopped until you renew."* with a **Renew now** link. On the other Lumtera screens, a reminder says *"Lumtera Pro license expired. Your Lumtera Pro license expired on September 30, 2027. Pro keeps working here; renew to get updates and support again."* with **Renew now** and **License details**, until you renew or dismiss it. The update row on the Plugins screen says *"Your Lumtera Pro license has expired. Renew your license to download this update."* with a **Renew now** link.
 
 ::: warning Don't deactivate an expired key
 An expired license can't be activated again, here or on any other site, until it's renewed. If you deactivate it, Pro features stop on this site. An expired key only keeps Pro working where it was already active: entering an expired key on a new site doesn't turn Pro on.
@@ -155,10 +152,10 @@ An expired license can't be activated again, here or on any other site, until it
 
 ## If the license can't be confirmed
 
-Lumtera Pro checks the license with the store once a day. **Refresh license** runs the same check straight away, with the same rules.
+Lumtera Pro checks the license with the store once a day. **Check status** runs the same check straight away, with the same rules.
 
 - **The store can't be reached** (for example, your host blocks outgoing requests), or can't look the license up: nothing changes. The last known status is kept.
-- **The store says the license is disabled or revoked:** Pro stops on this site straight away.
+- **The store says the license is disabled or revoked** (for example after a refund): Pro features turn off on this site straight away, with no grace period. The card's status shows **Disabled** (or **Revoked**), the key field comes back, and the Overview and Settings screens say *"Invalid license: Lumtera Pro could not activate the saved key (status: Disabled). Please check your license key."* This is different from an expired license, which keeps working.
 - **Any other answer that the key isn't valid for this site** (it can be a store problem, a moved domain or a staging copy): you get a **grace period**. Pro keeps working, and a notice says *"Lumtera Pro could not confirm your license."* with the date it will pause, and a **Check the license** link. Pro only pauses after **three** failed checks spread over at least **7 days**. One odd answer never switches Pro off.
 - **Paused:** if the grace period runs out, the notice changes to *"Lumtera Pro features are paused."* with the reason, and **Check license again** and **Open the license screen** buttons. When the store confirms the license again, Pro starts working again.
 
@@ -176,7 +173,7 @@ Lumtera Pro remembers the address the license was activated for. If the site's a
 | Message | What to do |
 | --- | --- |
 | *This license has reached its site limit…* | Deactivate it on a site you no longer use, or upgrade to a bigger plan in your account. |
-| *This license expired on …* | Renew it in your store account, then click **Refresh license**. |
+| *This license expired on …* | Renew it in your store account, then click **Check status**. |
 | *That license key was not recognized. Check it for typos.* | Copy the key again from your purchase email or store account. |
 | *That key is for a different product…* or *That key belongs to a bundle…* | Use the Lumtera Pro key from your purchase email. |
 | *This license has been disabled…* | Contact support. |
@@ -185,17 +182,17 @@ Lumtera Pro remembers the address the license was activated for. If the site's a
 
 ## Updates
 
-Lumtera Pro updates like any other plugin, from <span class="screen-path">Dashboard → Updates</span> and the Plugins screen, including the **View details** window. Update information is cached for 3 hours. **Check again** on the Updates screen fetches it fresh.
+Lumtera Pro updates like any other plugin, from <span class="screen-path">Dashboard → Updates</span> and the Plugins screen. **View details** shows the new version's description and changelog. Update information is cached for 3 hours; **Check again** on the Updates screen fetches it fresh, and a new version shows on the first click.
 
-An active license is needed to download updates. Without one, the update row says *"Activate your license to update."*
+An active license is needed to download updates. Without one, the update row says *"A valid Lumtera Pro license is required to download this update."* with **Activate license** and **get a license** links. An expired license gets the renewal message above instead.
 
 ## Deleting the plugin
 
-Deleting Lumtera Pro keeps the license key on the site, so a reinstall keeps working, even with an expired key. To remove it too, define `LUMTERA_PRO_DELETE_LICENSE` as `true` in `wp-config.php` before deleting. See [Data & uninstall](/developers/data).
+Deleting Lumtera Pro keeps the license key on the site, so a reinstall keeps working, even with an expired key. To remove it too, define `LUMTERA_PRO_DELETE_LICENSE` as `true` in `wp-config.php` before deleting: the key is removed and this site's activation is freed on the store, so the key can be used on another site. See [Data & uninstall](/developers/data).
 
 ## Multisite
 
-If Lumtera Pro is **network-activated**, one license covers the whole network and uses a single site activation. A network license needs the **Agency** or **Unlimited** plan. Manage it under <span class="screen-path">Network Admin → Accessibility → License</span>. Each site's License tab shows a read-only summary.
+If Lumtera Pro is **network-activated**, one license covers the whole network and uses a single site activation. A network license needs the **Agency** or **Unlimited** plan. Manage it under <span class="screen-path">Network Admin → Lumtera → License</span>; there the button is **Deactivate on this network**. Each site's License section shows a read-only summary, with a **Manage the network license** button for super admins.
 
 A network license on the Personal or Growth plan works on the **main site only**, and the network screen says so. To use Pro on the other sites, upgrade the plan, or network-deactivate Pro and activate it and a key on each site. See [Multisite network](/pro/multisite).
 
@@ -206,5 +203,9 @@ A network license on the Personal or Growth plan works on the **main site only**
 - `lumtera_pro_price_plan_map( $map )` maps the store's price IDs to plans. By default, 1–4 are the yearly Personal, Growth, Agency and Unlimited prices and 5–8 the lifetime prices of the same plans. An ID missing from the map counts as Personal.
 - `lumtera_pro_onboarding_steps( $steps, $plan )` changes the [first-run checklist](#first-run-checklist).
 - The `lumtera_pro_license_activated` and `lumtera_pro_license_checked` actions run after a key is activated and after each daily license check.
+- `lumtera_pro_license_is_active( $active, $status )` decides whether Pro features are on.
+- `lumtera_pro_network_license( $network )` decides whether the license is managed once for the network.
+- `lumtera_pro_license_admin_url` and `lumtera_pro_license_upgrade_url` change where the update row's **Activate license** and **get a license** links go.
+- The `lumtera_pro_license_data_updated( $key, $status, $response )` action runs whenever the stored license changes.
 
 See [Hooks & filters](/developers/hooks).

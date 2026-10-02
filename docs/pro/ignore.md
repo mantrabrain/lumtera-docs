@@ -17,7 +17,7 @@ Only administrators can add and remove ignore rules. The settings are under <spa
 
 ## What an ignore rule does
 
-- Every matching finding, on every post and page, is hidden. It counts as dismissed, so it leaves scores and totals the same way a [dismissal](/dismissing) does.
+- Every matching finding, on every post and page, is hidden. It counts as dismissed, so it leaves scores and totals the same way a [dismissal](/dismissing) does. A one-off dismissal on a single page is undone from the Content report's [Dismissed view](/site-report#dismissed) instead.
 - It applies to content checks and to [page checks](/pro/page-checks), both browser and scheduled.
 - A rule made in the editor from an item that needs review never hides an error of the same check.
 - When you add or remove a rule, the pages that may be affected are checked again in the background, so scores and totals catch up.

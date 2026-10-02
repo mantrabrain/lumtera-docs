@@ -27,11 +27,13 @@ The conformance report belongs to the **Reports** group, but it isn't one of its
 
 If your license isn't active, the card says *"Every Lumtera Pro plan includes conformance reports. Activate your license to open one."* with a link to enter your license key.
 
-Anyone with the **See reports and check the site** permission can open and edit it (editors and administrators by default). To give a client the finished report, send them the PDF, HTML or CSV you export below, or give them a client sign-in.
+Anyone with **See reports and check the site** can view, print and download it (editors and administrators by default). Editing and saving it needs the **Manage client reports** permission, which administrators always have. Give it to other roles under <span class="screen-path">Lumtera → Settings → Permissions</span> (see [Who can manage reports](/pro/reports#manage-permission)). To give a client the finished report, send them the PDF, HTML or CSV you export below, or give them a client sign-in.
 
-### For clients {#for-clients}
+### For clients and read-only staff {#for-clients}
 
-A user with the [Accessibility client](/pro/reports#client-role) role sees **View conformance report** on the card instead. It opens the finished report in a new tab, read-only, with the same print and download buttons. Its back link says **Back to reports**. Clients never see the editor, so they can't change or save the report.
+A user with the [Accessibility client](/pro/reports#client-role) role, or anyone else without the **Manage client reports** permission, sees **View conformance report** on the card instead. It opens the finished report in a new tab, read-only, with the same print and download buttons. Its back link says **Back to reports**. They never see the editor, so they can't change or save the report.
+
+If someone without the permission opens the editor's address directly, they get a read-only screen instead: *"You can view, print and download the conformance report. Editing it needs the "Manage client reports" permission, which an administrator can give under Lumtera → Settings → Permissions."*, with **View and print**, **Download HTML** and **Download CSV**.
 
 There's one conformance report per site. It always reflects your current results, and the report date is the day you view or export it.
 
@@ -122,7 +124,7 @@ The report includes:
 - **Table 3: Success Criteria, Level AAA**, which says level AAA wasn't evaluated
 - **About this report**, which says it isn't a certification, doesn't promise that the site is free of barriers or meets any law, and doesn't reflect changes made after the report date
 
-The report uses your [branding](/pro/reports#branding) accent color, logo and footer. It ends with *"Prepared with Lumtera"* unless white-label is on. With white-label on, the evaluation methods don't name Lumtera either.
+The report uses your [branding](/pro/reports#branding) accent color, logo and footer. It ends with *"Prepared with Lumtera"* unless white-label is on (Growth plan and up). With white-label on, the evaluation methods don't name Lumtera either.
 
 A summary of the saved conformance report is also part of the [evidence pack](/pro/evidence#evidence-pack).
 

@@ -52,7 +52,7 @@ Results that fail, such as **Not tagged**, show as errors. Items like **Tags may
 
 ## Links to PDFs in your content
 
-The free plugin's [Link opens a document file](/checks#link-to-document) check flags links to PDFs so people know what they're opening. With Pro, when the PDF is in your Media Library, the finding adds: *"Lumtera Pro checks this PDF: see its result under Lumtera → Documents."* The Documents screen is under <span class="screen-path">Lumtera → Checks → Documents</span>.
+The free plugin's [Link opens a document file](/checks#link-to-document) check flags links to PDFs so people know what they're opening. With Pro, when the PDF is in your Media Library, the finding adds: *"Lumtera Pro checks this PDF: see its result under Lumtera → Checks → Documents."*
 
 ## If the license stops
 

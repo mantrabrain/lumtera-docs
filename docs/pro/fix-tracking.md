@@ -66,7 +66,7 @@ Go to <span class="screen-path">Lumtera → Fixes → Fix tracking</span>. Tiles
 
 Filter by **Show** (**Open and in progress** by default, any single status, or **Everything**) and **Assigned to** (**Anyone**, **Nobody yet** or a person). In the table you can change a task's assignee and status in place, and open its **History**.
 
-People without the **See reports and check the site** permission, such as authors and contributors, see **My fixes** instead, in the menu and as the screen's title: tasks assigned to them, or on posts they wrote.
+People without the **See reports and check the site** permission, such as authors and contributors, see **My fixes** instead, in the menu and as the screen's title: tasks assigned to them, or on posts they wrote. The screen says *"Fixes assigned to you or on your posts. A re-scan confirms each fix when you save."*
 
 ## History
 

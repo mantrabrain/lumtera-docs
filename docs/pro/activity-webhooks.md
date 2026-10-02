@@ -141,7 +141,7 @@ Lost the secret, or think it leaked? Click **Regenerate secret**. The old one st
 
 ### Delivery
 
-Webhooks are sent in the background, so they never slow down saving. A delivery that fails with a network error, a 5xx or a 429 response is retried after 1, 5 and 30 minutes. Redirects aren't followed. Nothing is sent without an active license.
+Webhooks are sent in the background, so they never slow down saving. A delivery that fails with a network error, a 5xx or a 429 response is retried after 1, 5 and 30 minutes. Redirects aren't followed. Nothing is sent unless Lumtera Pro is licensed on the site. An expired license keeps webhooks working. Deactivating the license, or a refunded or revoked key, stops them.
 
 ## For developers
 

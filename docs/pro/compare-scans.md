@@ -7,7 +7,7 @@ description: See what changed between two scans of your site, with new findings 
 
 <p><span class="pro-pill">Pro</span> Every plan</p>
 
-Compare scans shows what changed between two scans: new findings first, then what was fixed. Use it after a theme or plugin update, a redesign or a round of fixes. Go to <span class="screen-path">Lumtera → Reports → Compare scans</span> (administrators only).
+Compare scans shows what changed between two scans: new findings first, then what was fixed. Use it after a theme or plugin update, a redesign or a round of fixes. Go to <span class="screen-path">Lumtera → Checks → Compare scans</span> (administrators only).
 
 ## Which scans are kept
 

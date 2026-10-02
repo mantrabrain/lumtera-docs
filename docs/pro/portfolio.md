@@ -51,7 +51,7 @@ If your plan's allowance is used up, the form says so. Sites beyond the allowanc
 
 ## The portfolio dashboard
 
-The tiles at the top show the **Average score** across your sites, the **Median score** (shown once 3 sites have results: half your sites score higher, half lower), **Errors** and how many sites have them, and **Sites in portfolio**.
+The tiles at the top show the **Average score** across your sites that have results (sites not checked yet are left out, and the tile says how many, for example *"across 4 sites; 1 not checked yet"*), the **Median score** (shown once 3 sites have results: half your sites score higher, half lower), **Errors** and how many sites have them, and **Sites in portfolio**.
 
 The **Sites** table shows, for each site:
 

@@ -7,9 +7,9 @@ description: Create branded, printable accessibility reports with a full WCAG 2.
 
 <p><span class="pro-pill">Pro</span> Every plan. White-label and share links: Growth, Agency and Unlimited plans.</p>
 
-Turn your results into a branded report you can send to a client. Every report covers all **55 WCAG 2.2 level A and AA success criteria**. Go to <span class="screen-path">Lumtera → Reports → Reports</span>. The screen is called **Client reports**. Anyone with the **See reports and check the site** permission can create reports (editors and administrators by default).
+Turn your results into a branded report you can send to a client. Every report covers all **55 WCAG 2.2 level A and AA success criteria**. Go to <span class="screen-path">Lumtera → Reports → Reports</span>. The screen is called **Client reports**. Anyone with **See reports and check the site** can open and download reports (editors and administrators by default). Creating, deleting and sharing reports needs the **Manage client reports** permission, which administrators always have. Give it to other roles under <span class="screen-path">Lumtera → Settings → Permissions</span> (see [Who can manage reports](#manage-permission)).
 
-The **Reports** group has four sub-tabs: **Reports**, [Evidence](/pro/evidence), [Compare scans](/pro/compare-scans) and [Activity](/pro/activity-webhooks). The [Accessibility Conformance Report](/pro/acr) opens from a card on this screen.
+The **Reports** group has three sub-tabs: **Reports**, [Evidence](/pro/evidence) and [Activity](/pro/activity-webhooks). [Compare scans](/pro/compare-scans) is under **Checks**. The [Accessibility Conformance Report](/pro/acr) opens from a card on this screen.
 
 ![The cover of a client report, with the Download HTML and Save as PDF buttons](/screenshots/pro-report.webp)
 
@@ -43,7 +43,7 @@ Scan your content first, from <span class="screen-path">Lumtera → Overview</sp
 
 - **Issues and how to fix them**, grouped by check, most severe and most frequent first.
 - **Findings by page**, for published pages. Included when **Findings for each page** is on.
-- **Live page checks**, if you use [page checks](/pro/page-checks) and **Findings for each page** is on. It shows each public page's result, preferring the scheduled, logged-out check when there is one. Pages you also check signed in as a test user ([signed-in checks](/pro/signed-in-checks), Agency and Unlimited plans) appear as their own entries, marked **Checked as:** and the role, for example "Customer".
+- **Live page checks**, if you use [page checks](/pro/page-checks) and **Findings for each page** is on. It shows each public page's result, preferring the scheduled, logged-out check when there is one. Pages you also check signed in as a test user ([signed-in checks](/pro/signed-in-checks): one role on Personal and Growth, any number on Agency and Unlimited) appear as their own entries, marked **Checked as:** and the role, for example "Customer".
 - **Recommended next steps.**
 
 The report states clearly that it's an automated review, not a statement of conformance. Form test results and signed-off [test sessions](/pro/test-sessions) are counted in the [Accessibility Conformance Report](/pro/acr) and the [evidence pack](/pro/evidence#evidence-pack), not in the client report.
@@ -56,7 +56,7 @@ Open the report and use the toolbar:
 - **Download HTML** saves a single self-contained file, with your logo embedded if it's under 1 MB.
 - **All reports** takes you back to the list.
 
-The **Reports** list shows your latest 50 reports with their **Score** and **Errors**, and **Download**, **Share** and **Delete** for each. Deleting asks first: *"Delete this report? This cannot be undone."* Reports are private and are never indexed by search engines.
+The **Reports** list shows your latest 50 reports with their **Score** and **Errors**, and **Download** for each. People with the **Manage client reports** permission also see **Delete**, and **Share** on the Growth plan and up. Deleting asks first: *"Delete this report? This cannot be undone."* Reports are private and are never indexed by search engines.
 
 ## Share links {#share-links}
 
@@ -65,7 +65,7 @@ The **Reports** list shows your latest 50 reports with their **Score** and **Err
 A share link opens one report, read-only, for someone without an account on your site.
 
 <ol class="step-list">
-  <li>In the <strong>Reports</strong> list, click <strong>Share</strong> next to the report.</li>
+  <li>In the <strong>Reports</strong> list, click <strong>Share</strong> next to the report. You need the <a href="#manage-permission">Manage client reports</a> permission.</li>
   <li>Choose when the <strong>Link stops working after</strong>: 7 days, 30 days (the default), 90 days or 1 year.</li>
   <li>Click <strong>Create share link</strong>.</li>
   <li>Copy the <strong>Link for your client</strong> with <strong>Copy link</strong>. It's shown only once.</li>
@@ -102,6 +102,14 @@ When they sign in, they land on the Lumtera Overview. They see only **Overview**
 The role works on WooCommerce shops too. WooCommerce normally sends people who can't edit posts to **My account**. Lumtera lets the Accessibility client role into its report screens.
 
 The role gets the **See reports and check the site** permission by default. You can change that under [Permissions](/permissions). If a user also has a role that can edit posts, the restrictions don't apply to them. When Lumtera Pro is deleted, the role is removed and those users keep their accounts, without a role.
+
+## Who can manage reports {#manage-permission}
+
+Opening and downloading reports needs only **See reports and check the site**. Creating and deleting client reports, making and revoking share links, and editing the [conformance report](/pro/acr) need **Manage client reports**. Administrators always have it.
+
+To give it to editors or another role, go to <span class="screen-path">Lumtera → Settings → Permissions</span>. In the **Manage client reports (Lumtera Pro)** card, tick the roles and click **Save report permissions**. The card lists the roles that can edit posts. Changes apply right away. Share links let anyone with the address read a report, so give this only to people who send reports to clients.
+
+People without it see the reports list with **Download** only, and a note: *"You can open and download reports. Creating, deleting and sharing them needs the "Manage client reports" permission, which an administrator can give under Lumtera → Settings → Permissions."* The Accessibility client role can never be given it. See [Roles & permissions](/permissions#manage-client-reports).
 
 ## Branding {#branding}
 

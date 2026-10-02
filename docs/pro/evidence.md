@@ -111,6 +111,10 @@ Evidence has its own retention setting, separate from the rest of the activity l
 
 The default is **0**, which keeps all evidence: a record of your accessibility work needs its history. When you set a number, the oldest entries are removed first, and the ledger records that it happened, so Verify ledger still checks out.
 
+### If Lumtera Pro is deleted
+
+Deleting Lumtera Pro keeps the evidence log and its chain, so a reinstall picks up where you left off and Verify ledger still checks out. To remove it too, add `define( 'LUMTERA_PRO_DELETE_REPORTS', true );` to `wp-config.php` before you delete the plugin. See [Data & uninstall](/developers/data).
+
 ## Privacy requests
 
 Evidence is part of WordPress's personal data tools (<span class="screen-path">Tools → Export Personal Data</span> and **Erase Personal Data**), as part of the activity log.

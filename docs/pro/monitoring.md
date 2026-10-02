@@ -20,7 +20,7 @@ Hear about new errors the moment they're published, not at the next audit. Set u
 
 Save, then click **Send a test alert** to check that email and Slack both arrive. The test uses the saved settings.
 
-While your Lumtera Pro license is active, Pro's weekly summary replaces the free plugin's [weekly email summary](/email-summary). The free **Email summary** settings say so, with a **Change the weekly digest in Alerts** link, and keep their values for if Pro is ever turned off. If Pro is installed but its license isn't active, Pro sends nothing and the free summary is still sent as set.
+While Lumtera Pro is licensed on the site, Pro's weekly summary replaces the free plugin's [weekly email summary](/email-summary). The free **Email summary** settings say so, with a **Change the weekly digest in Alerts** link, and keep their values for if Pro is ever turned off. If Pro is installed but no license has been activated (or it was deactivated), Pro sends nothing and the free summary is still sent as set. An expired license keeps Pro's weekly summary going: only updates and support stop.
 
 ### Set up Slack
 
@@ -65,7 +65,7 @@ Every **Monday at 9:00** (site time), the addresses in **Send to** get a summary
 
 The first summary says next week's will show the change. It's sent even if the publish alert is off.
 
-The weekly summary is only sent while the license is active. See [License & plans](/pro/license#if-the-license-can-t-be-confirmed).
+The weekly summary is sent while Lumtera Pro is licensed on the site, including after a yearly license expires. It stops if the license is deactivated, the key is refunded or revoked, or the license can't be confirmed. See [License & plans](/pro/license#if-the-license-can-t-be-confirmed).
 
 ## Score history
 
@@ -79,6 +79,6 @@ The trend line appears from the second day.
 
 - `lumtera_pro_send_alert` and `lumtera_pro_send_page_alert` can stop an alert.
 - `lumtera_pro_importing` marks a request as an import, so it records the starting point without alerting.
-- `lumtera_pro_sends_digest` (a free plugin filter) says whether Pro's weekly digest replaces the free summary. Lumtera Pro returns whether its license is active, so the free summary keeps going while Pro is unlicensed.
+- `lumtera_pro_sends_digest` (a free plugin filter) says whether Pro's weekly digest replaces the free summary. Lumtera Pro returns whether it's licensed on the site (an expired license counts), so the free summary keeps going while Pro is unlicensed.
 
 See [Hooks & filters](/developers/hooks).

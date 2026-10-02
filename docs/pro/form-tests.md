@@ -1,6 +1,6 @@
 ---
 title: Form tests
-description: Lumtera Pro submits a form empty in a hidden frame, with a safety guard so nothing is sent, and checks how its errors are shown and announced. Works with Contact Form 7, WPForms, Gravity Forms, the WooCommerce checkout and plain HTML forms.
+description: Lumtera Pro submits a form empty in a hidden frame, with a safety guard so nothing is sent, and checks how its errors are shown and announced. Works with Contact Form 7, WPForms, Gravity Forms, the WooCommerce classic checkout and plain HTML forms.
 ---
 
 # Form tests
@@ -35,9 +35,9 @@ Tests run only when you click **Test form**, one form at a time. Scheduled check
 | Contact Form 7 | Yes |
 | WPForms (Lite and Pro) | Yes |
 | Gravity Forms | Yes |
-| WooCommerce checkout (the classic `[woocommerce_checkout]` checkout) | Yes |
-| Plain HTML forms | Yes, when they send to the same page, to `admin-post.php` or to `wp-comments-post.php` |
-| WooCommerce block checkout | Not yet. Test it by hand, or use the classic checkout shortcode to test it here. |
+| WooCommerce classic checkout (the `[woocommerce_checkout]` shortcode, listed as **WooCommerce checkout**) | Yes |
+| Plain HTML forms (listed as **HTML form**) | Yes, when they send to the same page (including hand-made forms with no `action`, or `action="#"`), to `admin-post.php` or to `wp-comments-post.php` |
+| WooCommerce block checkout | Not tested yet. Test it by hand, or use the classic checkout shortcode to test it here. |
 
 A form is only tested when it has **required fields**, because an empty submission shows errors only when something is required. A form that sends to **another site** is never tested: Lumtera can't make sure nothing is processed there. Both are listed with the reason, so you know to test them by hand.
 
@@ -57,7 +57,7 @@ What each guard does:
 | Contact Form 7 | Skips every email, stops the submission before it's sent, and tells Flamingo to store nothing |
 | WPForms | Adds an error before the entry is saved, so it always stops there, and switches its emails off |
 | Gravity Forms | Marks the submission as not valid before the entry is saved, and switches notifications off |
-| WooCommerce checkout | Adds a checkout error, so no order, customer or payment is created. The block checkout's Store API refuses changes during a test. |
+| WooCommerce classic checkout | Adds a checkout error, so no order, customer or payment is created. The block checkout's Store API refuses changes during a test. |
 | Plain HTML | Refuses any form post that no form plugin owns, before WordPress hands it on |
 
 If a stored copy of the page was served, for example by a caching plugin, the guard can't be confirmed, and the form isn't submitted. The result then asks you to exclude the page from caching for logged-in users.
@@ -74,7 +74,7 @@ After submitting the form, Lumtera watches for three seconds (longer while the f
 | Error messages are not linked to their fields | [`form-error-not-linked`](/checks#form-error-not-linked) | 3.3.1 | Needs review |
 | Focus does not move to the first error | [`form-error-focus`](/checks#form-error-focus) | 3.3.1 | Needs review |
 | A field has no lasting label | [`form-error-label-lost`](/checks#form-error-label-lost) | 3.3.2 | Needs review |
-| Errors are shown by colour alone | [`form-error-color-only`](/checks#form-error-color-only) | 1.4.1, 3.3.1 | Needs review |
+| Errors are shown by color alone | [`form-error-color-only`](/checks#form-error-color-only) | 1.4.1, 3.3.1 | Needs review |
 | Error messages could say what to fix | [`form-error-not-specific`](/checks#form-error-not-specific) | 3.3.3 | Tip |
 
 In plain words, it checks that:
@@ -85,7 +85,7 @@ In plain words, it checks that:
 - each message is linked to its field (`aria-describedby`), so it's read when people reach the field;
 - focus moves to the first error, or to an error summary;
 - each field keeps a label, rather than relying on placeholder text or a label the error replaces;
-- errors aren't shown by colour alone;
+- errors aren't shown by color alone;
 - messages say what to fix, not just "invalid".
 
 These are "needs review" findings for a person to confirm. When the browser's own checks stop the empty form (for example with the `required` attribute), the result says so: screen readers announce those messages, but they disappear quickly, so test the form by hand too.
