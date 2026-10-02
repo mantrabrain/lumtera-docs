@@ -828,7 +828,7 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 | --- | --- | --- | --- | --- |
 | [Menu or disclosure toggle does not work as announced](#page-disclosure) | `page-disclosure` | 4.1.2, 2.1.1 | A | Error |
 | [Submenu opens on hover only](#page-hover-menu) | `page-hover-menu` | 2.1.1 | A | Needs review |
-| [Dialog or pop-up is hard to use with a keyboard](#page-dialog) | `page-dialog` | 2.4.3, 4.1.2 | A | Error |
+| [Dialog or pop-up is hard to use with a keyboard](#page-dialog) | `page-dialog` | 2.4.3, 4.1.2 | A | Needs review |
 | [Tabs do not work as tabs](#page-tabs) | `page-tabs` | 4.1.2, 2.1.1 | A | Error |
 | [Carousel to test with the keyboard](#page-carousel) | `page-carousel` | 2.2.2, 2.1.1 | A | Needs review |
 
@@ -1098,7 +1098,7 @@ The keyboard, menu and text-spacing checks run when you ask for them, because th
 
 #### Dialog or pop-up is hard to use with a keyboard {#page-dialog}
 
-`page-dialog` · WCAG [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html), [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) · Level A · Default: **Error**
+`page-dialog` · WCAG [2.4.3 Focus Order](https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html), [4.1.2 Name, Role, Value](https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html) · Level A · Default: **Needs review**
 
 **Why it's flagged:** Success criteria 2.4.3 and 4.1.2 ask that focus moves in a meaningful order and that a dialog is exposed as one, with a name. Lumtera opened it with a script click and checked where focus went.
 
