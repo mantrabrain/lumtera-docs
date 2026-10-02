@@ -95,7 +95,7 @@ On a multisite network, each site keeps or deletes its own data as set on that s
 
 ### Weekly home page check {#weekly-home-page-check}
 
-![The Weekly home page check card under Settings, General, below Before publishing](/screenshots/settings-home-check.webp)
+![The When Lumtera is deleted and Weekly home page check cards under Settings, General](/screenshots/settings-home-check.webp)
 
 **Off** by default. Click **Check my home page every week** to turn it on (or turn it on from the [getting-started checklist](/quick-start#the-getting-started-checklist), together with the weekly email).
 

@@ -9,7 +9,7 @@ description: The Overview with its coverage meter, Get started checklist and wee
 
 <span class="screen-path">Lumtera → Overview</span> is your site at a glance. By default, editors and administrators can open it. Administrators choose which roles can under <span class="screen-path">Lumtera → Settings → Permissions</span>, in **See reports and check the site**. See [Roles & permissions](/permissions).
 
-![The Overview: score, errors, items to review, content checked, review coverage, a Pro tip and Fix once, clear many](/screenshots/screenshot-3.webp)
+![The Overview: score, errors, items to review, content checked, review coverage, the most common issues and the items that need attention](/screenshots/screenshot-3.webp)
 
 ### Get started checklist {#get-started-checklist}
 

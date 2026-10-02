@@ -38,7 +38,7 @@ If it works, you come straight back to the same screen, now unlocked, with *"Lic
 
 ## First-run checklist {#first-run-checklist}
 
-![The first-run checklist on the License screen: Get started with your Unlimited plan, 2 of 5 done](/screenshots/pro-first-run.webp)
+![The first-run checklist on the License screen: Get started with your Unlimited plan, 1 of 5 done](/screenshots/pro-first-run.webp)
 
 After you activate a license, administrators see **Get started with your … plan** on the Overview and the License screen: five steps chosen for your plan. Each step ticks itself off once it has happened, so there's nothing to mark by hand.
 
